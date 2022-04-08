@@ -1,22 +1,22 @@
-class Barchart {
+class RaceBar {
 
     constructor(state, setGlobalState) {
       // initialize properties here
-      this.width = window.innerWidth * 0.6;
-      this.height = window.innerHeight * 0.6;
+      this.width = window.innerWidth * 0.2;
+      this.height = window.innerHeight * 0.2;
       this.margins = { top: 20, bottom: 20, left: 20, right: 20 };
       this.duration = 1000;
       this.format = d3.format(",." + d3.precisionFixed(1) + "f");
   
       this.svg = d3
-        .select("#barchart")
+        .select("#race-bar")
         .append("svg")
         .attr("width", this.width)
         .attr("height", this.height);
     }
   
     draw(state, setGlobalState) {
-      console.log("now I am drawing my Barchart");
+      console.log("now I am drawing my RaceBar");
   
       const filteredData = state.data.find(d => state.selectedState === d.State);
       const metrics = ["Age < 20", "Age 20-65", "Age 65+"];
@@ -78,5 +78,5 @@ class Barchart {
     }
   }
   
-  export { Barchart };
+  export { RaceBar };
   

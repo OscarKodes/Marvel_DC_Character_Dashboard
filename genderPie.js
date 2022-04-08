@@ -1,0 +1,5 @@
+class GenderPie {
+
+}
+
+export { GenderPie };

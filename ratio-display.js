@@ -1,7 +1,7 @@
-class Count {
+class RatioDisplay {
 
     constructor(state, setGlobalState) {
-      this.container = d3.select("#count")
+      this.container = d3.select("#ratio-display")
       this.duration = 1000
     }
   
@@ -52,5 +52,5 @@ class Count {
     }
   }
   
-  export { Count };
+  export { RatioDisplay };
   

@@ -10,17 +10,34 @@
 
 <body>
     <header>
-        <h1>Tutorial 7</h1>
-        <h2>State Management</h2>
+        <h1>Marvel and DC Physical Character Traits</h1>
+        <h2>Dashboard</h2>
     </header>
 
     <div id="dashboard">
-        <!-- all we need is an element to select -->
-        <div id="table"> </div>
-        <div id="barchart"> </div>
-        <div id="count"> </div>
+
+        <div id="sliders" class="white-frame">sliders</div>
+
+        <div id="vis-container">
+
+            <div id="bar-container">
+                <div id="eye-bar" class="white-frame">eye-bar</div>
+                <div id="hair-bar" class="white-frame">hair-bar</div>
+                <div id="race-bar" class="white-frame">race-bar</div>
+            </div>
+
+            <div id="pie-container">
+                <div id="publisher-pie" class="white-frame">publisher-pie</div>
+                <div id="ratio-display">ratio-display</div>
+                <div id="gender-pie" class="white-frame">gender-pie</div>
+            </div>
+
+            <div id="boxingring">boxingring</div>
+        </div>
 
     </div>
+
+
     <!-- this is the line that loads in d3 -->
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <!-- this is the line that loads in the main js script -->
