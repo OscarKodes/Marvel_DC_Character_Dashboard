@@ -1,12 +1,12 @@
-// import our components
-import { Sliders } from "./sliders.js";
+// // import our components
+// import { Sliders } from "./sliders.js";
 import { EyeBar } from "./eyeBar.js";
-import { HairBar } from "./hairBar.js";
-import { RaceBar } from "./raceBar.js";
-import { PublisherPie } from "./publisherPie.js";
-import { RatioDisplay } from "./ratio-display.js";
-import { GenderPie } from "./genderPie.js";
-import { BoxingRing } from "./boxingring.js";
+// import { HairBar } from "./hairBar.js";
+// import { RaceBar } from "./raceBar.js";
+// import { PublisherPie } from "./publisherPie.js";
+// import { RatioDisplay } from "./ratio-display.js";
+// import { GenderPie } from "./genderPie.js";
+// import { BoxingRing } from "./boxingring.js";
 
 
 let sliders, eyeBar, hairBar, raceBar, ratioDisplay;
@@ -15,37 +15,38 @@ let sliders, eyeBar, hairBar, raceBar, ratioDisplay;
 let state = {
   data: [],
   domain: [],
-  selectedState: null,
-  selectedMetric: null,
+  marvelSlider: true,
+  dcSlider: true,
+  femaleSlider: true,
+  maleSlider: true,
+  otherSlider: true,
+  heroSlider: true,
+  villainSlider: true
 };
 
-d3.csv("./statePopulations.csv", d3.autoType).then(data => {
+d3.csv("./cleaned_data.csv", d3.autoType).then(data => {
+
   console.log("data", data);
   state.data = data;
-  state.domain = [
-    0,
-    d3.max(data
-      .map(d => [d["Age < 20"], d["Age 20-65"], d["Age 65+"]])
-      .flat()
-    )]
+
   init();
 });
 
 function init() {
-  sliders = new Sliders(state, setGlobalState);
+//   sliders = new Sliders(state, setGlobalState);
   eyeBar = new EyeBar(state, setGlobalState);
-  hairBar = new HairBar(state, setGlobalState);
-  raceBar = new RaceBar(state, setGlobalState);
-  ratioDisplay = new RatioDisplay(state, setGlobalState);
+//   hairBar = new HairBar(state, setGlobalState);
+//   raceBar = new RaceBar(state, setGlobalState);
+//   ratioDisplay = new RatioDisplay(state, setGlobalState);
   draw();
 }
 
 function draw() {
-  sliders.draw(state);
+//   sliders.draw(state);
   eyeBar.draw(state, setGlobalState);
-  hairBar.draw(state, setGlobalState);
-  raceBar.draw(state, setGlobalState);
-  ratioDisplay.draw(state, setGlobalState);
+//   hairBar.draw(state, setGlobalState);
+//   raceBar.draw(state, setGlobalState);
+//   ratioDisplay.draw(state, setGlobalState);
 }
 
 // UTILITY FUNCTION: state updating function that we pass to our components so that they are able to update our global state object
