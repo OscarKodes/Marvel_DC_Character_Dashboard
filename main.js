@@ -24,7 +24,7 @@ let state = {
   villainSlider: true
 };
 
-d3.csv("./cleaned_data.csv", d3.autoType).then(data => {
+d3.csv("./complete_row_data.csv", d3.autoType).then(data => {
 
   console.log("data", data);
   state.data = data;

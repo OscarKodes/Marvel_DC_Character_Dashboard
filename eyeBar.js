@@ -18,7 +18,8 @@ class EyeBar {
     draw(state, setGlobalState) {
       console.log("now I am drawing my EyeBar");
   
-      let eyes = d3.rollup(state.data, d => d.length, d => d.eye);
+      let eyes = state.data;
+      
 
       console.log(eyes)
 
