@@ -7,7 +7,7 @@ class EyeBar {
       this.margin = 20;
       this.duration = 1000;
       this.format = d3.format(",." + d3.precisionFixed(1) + "f");
-  
+      
       this.svg = d3
         .select("#eye-bar")
         .append("svg")
@@ -31,7 +31,7 @@ class EyeBar {
         "mixed": 0 
       };
 
-      state.data.map(person => {
+      state.filteredData.map(person => {
         counterObj[person.eye]++;
       });
 
