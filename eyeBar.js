@@ -4,7 +4,7 @@ class EyeBar {
       // initialize properties here
       this.width = window.innerWidth * 0.2;
       this.height = window.innerHeight * 0.2;
-      this.margins = { top: 20, bottom: 20, left: 20, right: 20 };
+      this.margin = 20;
       this.duration = 1000;
       this.format = d3.format(",." + d3.precisionFixed(1) + "f");
   
@@ -18,29 +18,78 @@ class EyeBar {
     draw(state, setGlobalState) {
       console.log("now I am drawing my EyeBar");
   
-      let eyes = state.data;
-      
+      let counterObj = {
+        "yellow": 0,
+        "blue": 0,
+        "green": 0,
+        "brown": 0,
+        "red": 0,
+        "purple": 0,
+        "white": 0,
+        "black": 0,
+        "silver": 0,
+        "mixed": 0 
+      };
 
-      console.log(eyes)
+      state.data.map(person => {
+        counterObj[person.eye]++;
+      });
 
-      //   /* SCALES */
-      // const xScale = d3.scaleLinear()
-      // .domain([0, d3.max(eyes, d => d.eye)])
-      // .range([0, width - margin * 2])
-      // .nice()
+      let eyeData = Object.keys(counterObj).map(color => {
 
-      // const yScale = d3.scaleBand()
-      //   .domain(data.map(d => d.album))
-      //   .range([0, height - margin])
-      //   .paddingInner(.2)
-      //   .paddingOuter(.1)
+        return {"color": color, "count": counterObj[color]}
+      });
 
-      // // AXIS
-      // const xAxis = d3.axisBottom()
-      //   .scale(xScale);
+      console.log(eyeData)
 
-      // const yAxis = d3.axisLeft()
-      //   .scale(yScale);
+        /* SCALES */
+      const xScale = d3.scaleLinear()
+      .domain([0, d3.max(eyeData, d => d.count)])
+      .range([0, this.width - this.margin * 2])
+      .nice()
+
+      const yScale = d3.scaleBand()
+        .domain(eyeData.map(d => d.color))
+        .range([0, this.height - this.margin])
+        .paddingInner(.2)
+        .paddingOuter(.1)
+
+      // COLOR SCALE
+
+      const eyeColorArr = [
+        'yellow', 
+        'blue', 
+        'green', 
+        'brown', 
+        'red', 
+        'purple', 
+        'white', 
+        'black', 
+        'silver', 
+        'mixed'
+      ];
+
+      const colorRange = [
+        'yellow', 
+        'blue', 
+        'green', 
+        'brown', 
+        'red', 
+        'purple', 
+        'white', 
+        'black', 
+        'silver', 
+        'orange'
+      ];
+
+      const colorScale = d3.scaleOrdinal(eyeColorArr, colorRange);
+
+      // AXIS
+      const xAxis = d3.axisBottom()
+        .scale(xScale);
+
+      const yAxis = d3.axisLeft()
+        .scale(yScale);
       
       /* HTML ELEMENTS */
       
@@ -51,31 +100,31 @@ class EyeBar {
         .attr("height", this.height)
         .style("background-color", "purple")
 
-      // // bars
-      // svg.selectAll(".bar")
-      //   .data(data)
-      //   .join(
-      //     enter => enter
-      //       .append("rect")
-      //       .attr("class", "dot")
-      //       .attr("height", yScale.bandwidth())
-      //       .attr("width", 0)
-      //       .attr("x", 0)
-      //       .attr("y", d => yScale(d.album))
-      //       .attr("fill", "white")
-      //       .attr("transform", `translate(${margin}, 0)`)
-      //       .attr("stroke", "grey")
-      //       .call(enter => enter
-      //         .transition()
-      //           .duration(800)
-      //           .delay((_, i) => i * 200)
-      //           .attr("width", d => xScale(d.usSales))
-      //         .transition()
-      //           .duration(800)
-      //           .delay((_, i) => (data.length - 1 - i) * 250)
-      //           .attr("fill", schemeSet3Colors)
-      //       )
-      //   );
+      // bars
+      svg.selectAll(".bar")
+        .data(eyeData)
+        .join(
+          enter => enter
+            .append("rect")
+            .attr("class", "dot")
+            .attr("height", yScale.bandwidth())
+            .attr("width", 0)
+            .attr("x", 0)
+            .attr("y", d => yScale(d.color))
+            .attr("fill", "white")
+            .attr("transform", `translate(${this.margin}, 0)`)
+            .attr("stroke", "grey")
+            .call(enter => enter
+              .transition()
+                .duration(800)
+                .delay((_, i) => i * 200)
+                .attr("width", d => xScale(d.count))
+              .transition()
+                .duration(800)
+                .delay((_, i) => (eyeData.length - 1 - i) * 250)
+                .attr("fill", d => colorScale(d.color))
+            )
+        );
 
       // // bar numbers
       // svg.selectAll(".bar-nums")
