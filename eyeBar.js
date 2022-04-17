@@ -12,12 +12,36 @@ class EyeBar {
         .select("#eye-bar")
         .append("svg")
         .attr("width", this.width)
-        .attr("height", this.height);
+        .attr("height", this.height)
+        .style("background-color", "purple");
     }
   
     draw(state, setGlobalState) {
+
       console.log("now I am drawing my EyeBar");
+
+
+      // // remove svg each time and redraw - ghetto workaround ----
+      // this.svg.remove();
+      // this.svg = d3
+      //   .select("#eye-bar")
+      //   .append("svg")
+      //   .attr("width", this.width)
+      //   .attr("height", this.height)
+      //   .style("background-color", "purple");
+
+
+      // filter the data based on active sliders -------
+      const filteredData = state.data.filter(d => {
   
+        let publisherCheck = state.activeSliders.includes(d.publisher);
+        let genderCheck = state.activeSliders.includes(d.gender);
+        let alignmentCheck = state.activeSliders.includes(d.alignment);
+    
+        return publisherCheck && genderCheck && alignmentCheck;
+      });
+      
+      // three steps to create an array of objects [{color: , count: }, {color: , count: }] ---
       let counterObj = {
         "yellow": 0,
         "blue": 0,
@@ -31,16 +55,21 @@ class EyeBar {
         "mixed": 0 
       };
 
-      state.filteredData.map(person => {
+      filteredData.map(person => {
         counterObj[person.eye]++;
       });
 
-      let eyeData = Object.keys(counterObj).map(color => {
+      let eyeData = Object.keys(counterObj).
+        sort((a, b) => counterObj[b] - counterObj[a]).
+        map(color => {
+          return {"color": color, "count": counterObj[color]}
+        });
 
-        return {"color": color, "count": counterObj[color]}
-      });
+      console.log("eyeData", eyeData)
 
-      console.log(eyeData)
+
+      // SCALES, AXIS, SVG, BARS, (BUILDING THE VIS) -------
+
 
         /* SCALES */
       const xScale = d3.scaleLinear()
@@ -93,16 +122,9 @@ class EyeBar {
       
       /* HTML ELEMENTS */
       
-      // svg 
-      const svg = d3.select("#eye-bar")
-        .append("svg")
-        .attr("width", this.width)
-        .attr("height", this.height)
-        .style("background-color", "purple")
-
       // bars
-      svg.selectAll(".bar")
-        .data(eyeData)
+      this.svg.selectAll(".eye_color_bar")
+        .data(eyeData, d => d.color)
         .join(
           enter => enter
             .append("rect")
@@ -111,19 +133,20 @@ class EyeBar {
             .attr("width", 0)
             .attr("x", 0)
             .attr("y", d => yScale(d.color))
-            .attr("fill", "white")
+            .attr("fill", d => colorScale(d.color))
             .attr("transform", `translate(${this.margin}, 0)`)
             .attr("stroke", "grey")
             .call(enter => enter
               .transition()
                 .duration(800)
-                .delay((_, i) => i * 200)
+                .delay(250)
                 .attr("width", d => xScale(d.count))
-              .transition()
-                .duration(800)
-                .delay((_, i) => (eyeData.length - 1 - i) * 250)
-                .attr("fill", d => colorScale(d.color))
-            )
+                
+            ),
+          update => update
+              .attr("fill", "black"),
+          exit => exit
+              .remove()
         );
 
       // // bar numbers

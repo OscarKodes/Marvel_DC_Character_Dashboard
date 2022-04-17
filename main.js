@@ -1,5 +1,5 @@
 // // import our components
-// import { Sliders } from "./sliders.js";
+import { Sliders } from "./sliders.js";
 import { EyeBar } from "./eyeBar.js";
 // import { HairBar } from "./hairBar.js";
 // import { RaceBar } from "./raceBar.js";
@@ -9,23 +9,20 @@ import { EyeBar } from "./eyeBar.js";
 // import { BoxingRing } from "./boxingring.js";
 
 
-let eyeBar, hairBar, raceBar, ratioDisplay;
-
-let activeSliders = [
-  "marvel",
-  "dc",
-  "male",
-  "female",
-  "other",
-  "good",
-  "bad"
-];
+let eyeBar, sliders, hairBar, raceBar, ratioDisplay;
 
 // global state
 let state = {
   data: [],
-  filteredData:[],
-  domain: []
+  activeSliders: [
+    "marvel",
+    "dc",
+    "male",
+    "female",
+    "other",
+    "good",
+    "bad"
+  ]
 };
 
 d3.csv("./complete_row_data.csv", d3.autoType).then(data => {
@@ -38,61 +35,19 @@ d3.csv("./complete_row_data.csv", d3.autoType).then(data => {
 });
 
 function init() {
-//   sliders = new Sliders(state, setGlobalState);
+  sliders = new Sliders(state, setGlobalState);
   eyeBar = new EyeBar(state, setGlobalState);
 //   hairBar = new HairBar(state, setGlobalState);
 //   raceBar = new RaceBar(state, setGlobalState);
 //   ratioDisplay = new RatioDisplay(state, setGlobalState);
 
-  let allSliders = document.querySelectorAll(".slider_click");
-
-  for (let i = 0; i < allSliders.length; i++) {
-    allSliders[i].addEventListener("click", function(event) {
-      
-      setTimeout(() => {
-        let sliderName = event.path[0].id;
-        
-        sliderName = sliderName.split(" ")[0].toLowerCase();
-        
-        if (activeSliders.includes(sliderName)) {
-          let idx = activeSliders.indexOf(sliderName);
-
-          activeSliders.splice(idx, 1);
-        } 
-        
-        else {
-          activeSliders.push(sliderName);
-        }
-
-        console.log(activeSliders);
-        
-        updateFilteredData();
-      }, 150);
-    });
-  }
-
-
   draw();
 }
 
-function updateFilteredData() {
 
-  state.filteredData = state.data.filter(d => {
-
-    let publisherCheck = activeSliders.includes(d.publisher);
-    let genderCheck = activeSliders.includes(d.gender);
-    let alignmentCheck = activeSliders.includes(d.alignment);
-
-    return publisherCheck && genderCheck && alignmentCheck;
-  });
-
-  
-
-  console.log(state.filteredData);
-};
 
 function draw() {
-//   sliders.draw(state);
+  sliders.draw(state, setGlobalState);
   eyeBar.draw(state, setGlobalState);
 //   hairBar.draw(state, setGlobalState);
 //   raceBar.draw(state, setGlobalState);
