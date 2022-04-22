@@ -5,15 +5,16 @@ const width = window.innerWidth * 0.2;
 const height = window.innerHeight * 0.2;
 const margin = 20;
 
-let eyeBarSVG;
+let eyeBarSVG,
+xScale,
+yScale,
+colorScale;
 
 // #######################################################
 // STATE #################################################
 
 let state = {
   data: [],
-  prevFilteredData: [],
-  currFilteredData: [],
   activeToggles: [
     "marvel",
     "dc",
@@ -22,8 +23,7 @@ let state = {
     "other",
     "good",
     "bad"
-  ],
-  allEyeData: null
+  ]
 };
 
 
@@ -45,13 +45,47 @@ d3.csv("./complete_row_data.csv", d3.autoType).then(data => {
 
 function init() {
 
-  // SET UP SVGS TO BE REMOVED
-  // (each time the vis updates, it removes, then redraws)
-  // (we need to give d3 something to remove for the first iteration)
+    // SCALES -----------------------------------------------
+    xScale = d3.scaleLinear()
+      .domain([0, d3.max(state.allEyeData, d => d.count)])
+      .range([0, width - margin * 2])
+      .nice()
+  
+    yScale = d3.scaleBand()
+      .domain(state.allEyeData.map(d => d.color))
+      .range([0, height - margin])
+      .paddingInner(.2)
+      .paddingOuter(.1)
+  
+    const colorRange = [
+      'yellow', 'blue', 'green', 
+      'brown', 'red', 'purple', 
+      'white', 'black', 'silver', 
+      'orange'
+    ];
+  
+    colorScale = d3.scaleOrdinal(eyeColorArr, colorRange);
 
-  // eyeBarSVG = d3
-  //   .select("#eye-bar")
-  //   .append("svg");
+  // SVG ------------------------------------------------
+    
+    eyeBarSVG = d3
+      .select("#eye-bar")
+      .append("svg")
+      .attr("width", width)
+      .attr("height", height)
+      .style("background-color", "purple");
+  
+  
+  // AXES ------------------------------------------------
+    // svg.append("g")
+    //   .attr("transform", `translate(0,${height - margin.top})`)
+    //   .call(d3.axisBottom(xScale));
+    
+    // svg.append("g")
+    //   .attr("transform", `translate(${margin.bottom},0)`)
+    //   .call(d3.axisLeft(yScale));
+
+    
 
   // SET UP EVENT LISTENERS ON TOGGLES ------------------
 
@@ -75,10 +109,12 @@ function init() {
         state.activeToggles.push(sliderName);
       }
 
+      // Call draw each time the toggles are updated
       draw();
     });
   }
 
+  // Call draw for the first time
   draw();
 }
 
@@ -141,54 +177,20 @@ function drawEyeBar(){
     return finalData;
   }
 
-  if (state.allEyeData === null) {
-    state.allEyeData = getEyeData(state.data);
-  };
-
-  const prevEyeData = getEyeData(state.prevFilteredData);
-  const currEyeData = getEyeData(state.currFilteredData);
 
 
-  // SCALES -----------------------------------------------
-  const xScale = d3.scaleLinear()
-  .domain([0, d3.max(state.allEyeData, d => d.count)])
-  .range([0, width - margin * 2])
-  .nice()
-
-  const yScale = d3.scaleBand()
-    .domain(state.allEyeData.map(d => d.color))
-    .range([0, height - margin])
-    .paddingInner(.2)
-    .paddingOuter(.1)
-
-  const colorRange = [
-    'yellow', 'blue', 'green', 
-    'brown', 'red', 'purple', 
-    'white', 'black', 'silver', 
-    'orange'
-  ];
-
-  const colorScale = d3.scaleOrdinal(eyeColorArr, colorRange);
-
-
-  // AXES ------------------------------------------------
-  const xAxis = d3.axisBottom()
-    .scale(xScale);
-
-  const yAxis = d3.axisLeft()
-    .scale(yScale);
   
   
   // SVG ------------------------------------------------
   
-  eyeBarSVG.remove();
+  // eyeBarSVG.remove();
 
-  eyeBarSVG = d3
-    .select("#eye-bar")
-    .append("svg")
-    .attr("width", width)
-    .attr("height", height)
-    .style("background-color", "purple");
+  // eyeBarSVG = d3
+  //   .select("#eye-bar")
+  //   .append("svg")
+  //   .attr("width", width)
+  //   .attr("height", height)
+  //   .style("background-color", "purple");
 
   // bars
   eyeBarSVG.selectAll(".eye_color_bar")
@@ -197,29 +199,18 @@ function drawEyeBar(){
       enter => enter
         .append("rect")
           .attr("height", yScale.bandwidth())
-          .attr("width", d => {
-            let prevMatch = prevEyeData.find(g => g.color === d.color);
-            let prevCount = prevMatch.count;
-            return xScale(prevCount);
-          })
+          .attr("width", d => d.count))
           .attr("x", 0)
-          .attr("y", (_, i) => {
-            let prevColor = prevEyeData[i].color;
-            return yScale(prevColor);
-          })
-          .attr("fill", (_, i) => {
-            let prevColor = prevEyeData[i].color;
-            return colorScale(prevColor);
-          })
+          .attr("y", d => yScale(d.color))
+          .attr("x", 0)
+          .attr("fill", d => colorScale(d.color)
+          .attr("x", 0)
           .attr("transform", `translate(${margin}, 0)`)
           .attr("stroke", "grey")
         .call(enter => enter
           .transition()
             .duration(500)
-            .delay(50)
-            .attr("width", d => d.count))
-            .attr("y", d => yScale(d.color))
-            .attr("fill", d => colorScale(d.color)),
+            .delay(50)),
       update => update,
       exit => exit.remove()
     );
