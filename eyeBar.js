@@ -13,8 +13,10 @@ class EyeBar {
         .append("svg")
         .attr("width", this.width)
         .attr("height", this.height)
-        .style("background-color", "purple");
+        .style("background-color", "pink");
+
     }
+
   
     draw(state, setGlobalState) {
 
@@ -32,7 +34,8 @@ class EyeBar {
 
 
       // filter the data based on active sliders -------
-      const filteredData = state.data.filter(d => {
+      console.log("bar first draw");
+      let filteredData = state.data.filter(d => {
   
         let publisherCheck = state.activeSliders.includes(d.publisher);
         let genderCheck = state.activeSliders.includes(d.gender);
@@ -40,114 +43,121 @@ class EyeBar {
     
         return publisherCheck && genderCheck && alignmentCheck;
       });
-      
-      // three steps to create an array of objects [{color: , count: }, {color: , count: }] ---
-      let counterObj = {
-        "yellow": 0,
-        "blue": 0,
-        "green": 0,
-        "brown": 0,
-        "red": 0,
-        "purple": 0,
-        "white": 0,
-        "black": 0,
-        "silver": 0,
-        "mixed": 0 
-      };
 
-      filteredData.map(person => {
-        counterObj[person.eye]++;
-      });
+      filteredData = d3.groups(filteredData, d => d.eye).map(d => {
 
-      let eyeData = Object.keys(counterObj).
-        sort((a, b) => counterObj[b] - counterObj[a]).
-        map(color => {
-          return {"color": color, "count": counterObj[color]}
-        });
+        return {color: d[0], count: d[1].length};
+      })
 
-      console.log("eyeData", eyeData)
-
-
-      // SCALES, AXIS, SVG, BARS, (BUILDING THE VIS) -------
 
 
         /* SCALES */
       const xScale = d3.scaleLinear()
-      .domain([0, d3.max(eyeData, d => d.count)])
-      .range([0, this.width - this.margin * 2])
-      .nice()
-
+        .domain([0, d3.max(filteredData, d => d.count)])
+        .range([0, this.width - this.margin * 2])
+        .nice()
+  
       const yScale = d3.scaleBand()
-        .domain(eyeData.map(d => d.color))
-        .range([0, this.height - this.margin])
-        .paddingInner(.2)
-        .paddingOuter(.1)
+          .domain(filteredData.map(d => d.color))
+          .range([0, this.height - this.margin])
+          .paddingInner(.2)
+          .paddingOuter(.1)
+  
+        // COLOR SCALE
+  
+        const eyeColorArr = [
+          'yellow', 'blue', 'green', 
+          'brown', 'red', 'purple', 
+          'white', 'black', 'silver', 
+          'mixed'
+        ];
+  
+        const colorRange = [
+          'yellow', 'blue', 'green', 
+          'brown', 'red', 'purple', 
+          'white', 'black', 'silver', 
+          'orange'
+        ];
+  
+        const colorScale = d3.scaleOrdinal(eyeColorArr, colorRange);
 
-      // COLOR SCALE
+        
 
-      const eyeColorArr = [
-        'yellow', 
-        'blue', 
-        'green', 
-        'brown', 
-        'red', 
-        'purple', 
-        'white', 
-        'black', 
-        'silver', 
-        'mixed'
-      ];
 
-      const colorRange = [
-        'yellow', 
-        'blue', 
-        'green', 
-        'brown', 
-        'red', 
-        'purple', 
-        'white', 
-        'black', 
-        'silver', 
-        'orange'
-      ];
+      
 
-      const colorScale = d3.scaleOrdinal(eyeColorArr, colorRange);
+      // // AXIS
+      // const xAxis = d3.axisBottom()
+      //   .scale(xScale);
 
-      // AXIS
-      const xAxis = d3.axisBottom()
-        .scale(xScale);
-
-      const yAxis = d3.axisLeft()
-        .scale(yScale);
+      // const yAxis = d3.axisLeft()
+      //   .scale(yScale);
       
       /* HTML ELEMENTS */
       
       // bars
-      this.svg.selectAll(".eye_color_bar")
-        .data(eyeData, d => d.color)
+
+      // const bars = this.svg
+      //   .selectAll(".eye_color_bar")
+      //   .data(filteredData, d => d.color)
+      //   .join("rect")
+      //   .attr("x", 0)
+      //   .attr("y", d => yScale(d.color))
+      //   // .attr("transform", `translate(${this.margin}, 0)`)
+      //   .attr("stroke", "grey")
+      //   .attr("width", d => xScale(d.count))
+      //   .attr("height", yScale.bandwidth())
+      //   .attr("fill", d => colorScale(d.color));
+      
+      const bars = this.svg
+        .selectAll("g.bar")
+        .data(filteredData, d => d.color)
         .join(
-          enter => enter
-            .append("rect")
-            .attr("class", "dot")
-            .attr("height", yScale.bandwidth())
-            .attr("width", 0)
-            .attr("x", 0)
-            .attr("y", d => yScale(d.color))
-            .attr("fill", d => colorScale(d.color))
-            .attr("transform", `translate(${this.margin}, 0)`)
-            .attr("stroke", "grey")
-            .call(enter => enter
-              .transition()
-                .duration(800)
-                .delay(250)
-                .attr("width", d => xScale(d.count))
-                
-            ),
-          update => update
-              .attr("fill", "black"),
-          exit => exit
-              .remove()
+          enter =>
+            enter
+              .append("g")
+              .attr("class", "bar")
+              .call(enter => enter.append("rect")),
+              // .call(enter => enter.append("text")),
+          update => update,
+          exit => exit.remove()
+        )
+
+        // .attr("x", 0)
+        // .attr("y", d => this.yScale(d.color))
+        // // .attr("transform", `translate(${this.margin}, 0)`)
+        // .attr("stroke", "grey")
+        // .attr("width", d => this.xScale(d.count))
+        // .attr("height", this.yScale.bandwidth())
+        // .attr("fill", d => this.colorScale(d.color));
+
+      bars
+        .transition()
+        .duration(this.duration)
+        .attr(
+          "transform",
+          d => `translate(0, ${yScale(d.color)})`
         );
+
+      bars
+        .select("rect")
+        .transition()
+        .duration(this.duration)
+        // .data(filteredData, d => d.color)
+        // .attr("x", 0)
+        // .attr("y", d => this.yScale(d.color))
+        // .attr("transform", `translate(${this.margin}, 0)`)
+        // .attr("stroke", "grey")
+        .attr("width", d => xScale(d.count))
+        .attr("height", yScale.bandwidth())
+        .attr("fill", d => colorScale(d.color));
+
+      // bars.exit.remove()
+
+      // this.bars
+      //   .select("text")
+      //   .attr("dy", "-.5em")
+      //   .text(d => `${d.metric}: ${this.format(d.value)}`);
 
       // // bar numbers
       // svg.selectAll(".bar-nums")

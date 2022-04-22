@@ -29,7 +29,6 @@ d3.csv("./complete_row_data.csv", d3.autoType).then(data => {
 
   console.log("data", data);
   state.data = data;
-  state.filteredData = data;
 
   init();
 });
@@ -41,13 +40,14 @@ function init() {
 //   raceBar = new RaceBar(state, setGlobalState);
 //   ratioDisplay = new RatioDisplay(state, setGlobalState);
 
+  sliders.draw(state, setGlobalState);
   draw();
 }
 
 
-
 function draw() {
-  sliders.draw(state, setGlobalState);
+  
+
   eyeBar.draw(state, setGlobalState);
 //   hairBar.draw(state, setGlobalState);
 //   raceBar.draw(state, setGlobalState);
