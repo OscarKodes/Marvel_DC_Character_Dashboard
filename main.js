@@ -49,9 +49,9 @@ function init() {
   // (each time the vis updates, it removes, then redraws)
   // (we need to give d3 something to remove for the first iteration)
 
-  eyeBarSVG = d3
-    .select("#eye-bar")
-    .append("svg");
+  // eyeBarSVG = d3
+  //   .select("#eye-bar")
+  //   .append("svg");
 
   // SET UP EVENT LISTENERS ON TOGGLES ------------------
 
