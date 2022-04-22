@@ -53,15 +53,35 @@ class BarChart {
   
       // COLOR SCALE ==================================
       const propertyArr = filteredData.map(d => d.property)
-    
-      const colorRange = [
-        'yellow', 'blue', 'green', 
-        'brown', 'red', 'purple', 
-        'white', 'black', 'silver', 
-        'orange'
-      ];
+
+      console.log(filteredData)
+      console.log(propertyArr)
+
+      // !!!
+      // REMEMBER TO UPDATE
+      // !!! REMEMBER TO UPDATE COLORS TO THE NEW GROUPINGS
+
+      const colorRange = {
+        eye: [
+          'yellow', 'blue', 'green', 
+          'brown', 'red', 'white', 
+          'black', 'silver', 'magenta', 
+          'purple'
+        ],
+        hair: [
+          'navy', 'blond', 'brown', 
+          'red', 'blue', 'green', 
+          'white', 'purple', 'magenta', 
+          'silver'
+        ],
+        race: [
+          'navy', 'blond', 'brown', 
+          'red', 'blue', 'green', 
+          'white', 'purple', 'magenta'
+        ],
+      }
   
-      const colorScale = d3.scaleOrdinal(propertyArr, colorRange);
+      const colorScale = d3.scaleOrdinal(propertyArr, colorRange[barKey]);
 
       
       // DRAW BARS =====================================
