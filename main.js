@@ -1,8 +1,6 @@
 // // import our components
 import { Sliders } from "./sliders.js";
-import { EyeBar } from "./eyeBar.js";
-// import { HairBar } from "./hairBar.js";
-// import { RaceBar } from "./raceBar.js";
+import { BarChart } from "./barChart.js";
 // import { PublisherPie } from "./publisherPie.js";
 // import { RatioDisplay } from "./ratio-display.js";
 // import { GenderPie } from "./genderPie.js";
@@ -35,9 +33,9 @@ d3.csv("./complete_row_data.csv", d3.autoType).then(data => {
 
 function init() {
   sliders = new Sliders(state, setGlobalState);
-  eyeBar = new EyeBar(state, setGlobalState);
-//   hairBar = new HairBar(state, setGlobalState);
-//   raceBar = new RaceBar(state, setGlobalState);
+  eyeBar = new BarChart("#eye-bar", setGlobalState);
+  hairBar = new BarChart("#hair-bar", setGlobalState);
+  raceBar = new BarChart("#race-bar", setGlobalState);
 //   ratioDisplay = new RatioDisplay(state, setGlobalState);
 
   sliders.draw(state, setGlobalState);
@@ -49,8 +47,8 @@ function draw() {
   
 
   eyeBar.draw(state, setGlobalState);
-//   hairBar.draw(state, setGlobalState);
-//   raceBar.draw(state, setGlobalState);
+  hairBar.draw(state, setGlobalState);
+  raceBar.draw(state, setGlobalState);
 //   ratioDisplay.draw(state, setGlobalState);
 }
 
