@@ -1,13 +1,12 @@
 // // import our components
 import { Sliders } from "./sliders.js";
 import { BarChart } from "./barChart.js";
-// import { PublisherPie } from "./publisherPie.js";
+import { PieChart } from "./pieChart.js";
 // import { RatioDisplay } from "./ratio-display.js";
-// import { GenderPie } from "./genderPie.js";
 // import { BoxingRing } from "./boxingring.js";
 
 
-let eyeBar, sliders, hairBar, raceBar, ratioDisplay;
+let eyeBar, sliders, hairBar, raceBar, publisherPie, genderPie, ratioDisplay;
 
 // global state
 let state = {
@@ -36,6 +35,8 @@ function init() {
   eyeBar = new BarChart("#eye-bar", setGlobalState);
   hairBar = new BarChart("#hair-bar", setGlobalState);
   raceBar = new BarChart("#race-bar", setGlobalState);
+  publisherPie = new PieChart("#publisher-pie", setGlobalState);
+  genderPie = new PieChart("#gender-pie", setGlobalState);
 //   ratioDisplay = new RatioDisplay(state, setGlobalState);
 
   sliders.draw(state, setGlobalState);
@@ -49,6 +50,8 @@ function draw() {
   eyeBar.draw(state, setGlobalState);
   hairBar.draw(state, setGlobalState);
   raceBar.draw(state, setGlobalState);
+  publisherPie.draw(state, setGlobalState);
+  genderPie.draw(state, setGlobalState);
 //   ratioDisplay.draw(state, setGlobalState);
 }
 

@@ -1,5 +1,0 @@
-class PublisherPie {
-
-}
-
-export { PublisherPie };

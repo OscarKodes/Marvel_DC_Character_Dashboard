@@ -1,5 +1,0 @@
-class GenderPie {
-
-}
-
-export { GenderPie };
