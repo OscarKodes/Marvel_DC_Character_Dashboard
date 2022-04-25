@@ -39,6 +39,18 @@ class PieChart {
           return {property: d[0], count: d[1].length};
         }).sort((a, b) => b.count - a.count);
   
+
+        let stableData = Object.keys(state[`${barKey}Obj`]).map(category => {
+          
+          let filteredCategory = filteredData.find(d => d.property === category);
+
+          let filteredCount = filteredCategory ? 
+          filteredCategory.count : 0;
+          
+          return {property: category, count: filteredCount};
+        });
+        console.log("TEST TEST TEST", stableData);
+
         console.log(filteredData, "filteredData")
   
         // // SCALES =======================================
@@ -53,7 +65,7 @@ class PieChart {
         //     .paddingOuter(.1)
     
         // COLOR SCALE ==================================
-        const propertyArr = filteredData.map(d => d.property)
+        const propertyArr = stableData.map(d => d.property)
   
         console.log(filteredData)
         console.log(propertyArr)
@@ -92,7 +104,7 @@ class PieChart {
 
         const wedge = this.svg
             .selectAll(`g.${barKey}-wedge`)
-            .data(pie(filteredData), d => {
+            .data(pie(stableData), d => {
               console.log(propertyArr)
               console.log("d = ", d)
 

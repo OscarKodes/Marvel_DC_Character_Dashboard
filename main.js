@@ -19,7 +19,16 @@ let state = {
     "other",
     "good",
     "bad"
-  ]
+  ],
+  genderObj: {
+    male: 0,
+    female: 0,
+    other: 0
+  },
+  publisherObj: {
+    marvel: 0,
+    dc: 0
+  }
 };
 
 d3.csv("./complete_row_data.csv", d3.autoType).then(data => {
