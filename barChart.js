@@ -53,8 +53,6 @@ class BarChart {
       // COLOR SCALE ==================================
       const propertyArr = filteredData.map(d => d.property)
 
-      console.log(filteredData)
-      console.log(propertyArr)
 
       // !!!
       // REMEMBER TO UPDATE
@@ -85,7 +83,6 @@ class BarChart {
       }
 
 
-  
       const colorScale = d3.scaleOrdinal(propertyArr, propertyArr.map(d => colorRange[d]));
 
       

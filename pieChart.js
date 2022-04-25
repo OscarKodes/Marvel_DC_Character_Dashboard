@@ -14,8 +14,7 @@ class PieChart {
           .attr("width", this.width)
           .attr("height", this.height)
           .append('g')
-          .attr('transform', 'translate(' + this.width / 2 + ',' + this.height / 2 + ')')
-          .style("background-color", "lavender");
+          .attr('transform', 'translate(' + this.width / 2 + ',' + this.height / 2 + ')');
       }
   
       draw(state) {
@@ -33,43 +32,35 @@ class PieChart {
         });
   
         const barKey = this.divId.split("-")[0].slice(1);
-    
-        filteredData = d3.groups(filteredData, d => d[barKey]).map(d => {
+
+        // Group the data together
+        const groupedData = d3.groups(filteredData, d => d[barKey]).map(d => {
   
           return {property: d[0], count: d[1].length};
         }).sort((a, b) => b.count - a.count);
-  
 
-        let stableData = Object.keys(state[`${barKey}Obj`]).map(category => {
-          
-          let filteredCategory = filteredData.find(d => d.property === category);
+        // Keep all the categories in the same order
+        const indexOrder = {
+          genderOrder: ["male", "female", "other"],
+          publisherOrder: ["marvel", "dc"]
+        }
 
-          let filteredCount = filteredCategory ? 
-          filteredCategory.count : 0;
+        // Gather all the grouped data and counts in index order
+        const stableData = indexOrder[`${barKey}Order`].map(category => {
           
-          return {property: category, count: filteredCount};
+          let groupedCategory = groupedData.find(d => d.property === category);
+
+          let groupedCount = groupedCategory ? 
+                              groupedCategory.count : 0;
+          
+          return {property: category, count: groupedCount};
         });
-        console.log("TEST TEST TEST", stableData);
 
-        console.log(filteredData, "filteredData")
-  
-        // // SCALES =======================================
-        // const xScale = d3.scaleLinear()
-        //   .domain([0, d3.max(filteredData, d => d.count)]).nice()
-        //   .range([0, this.width - this.margin * 2]).nice()
-    
-        // const yScale = d3.scaleBand()
-        //     .domain(filteredData.map(d => d.property))
-        //     .range([0, this.height - this.margin])
-        //     .paddingInner(.2)
-        //     .paddingOuter(.1)
-    
+
         // COLOR SCALE ==================================
         const propertyArr = stableData.map(d => d.property)
   
-        console.log(filteredData)
-        console.log(propertyArr)
-  
+
         // !!!
         // REMEMBER TO UPDATE
         // !!! REMEMBER TO UPDATE COLORS TO THE NEW GROUPINGS
@@ -84,15 +75,10 @@ class PieChart {
   
         const colorScale = d3.scaleOrdinal(propertyArr, propertyArr.map(d => colorRange[d]));
   
-        
-        // DRAW ARCS =====================================
+        console.log(stableData)
+        // DRAW PIE =====================================
 
         const radius = Math.min(this.width, this.height) / 2.5;
-
-        // const pieSVG = this.svg
-            
-        
-
 
         const pie = d3.pie()
             .value(d => d.count)
@@ -100,36 +86,19 @@ class PieChart {
         const arc = d3.arc()
             .innerRadius(0)
             .outerRadius(radius)
-            // .startAngle(0)
 
         const wedge = this.svg
             .selectAll(`g.${barKey}-wedge`)
-            .data(pie(stableData), d => {
-              console.log(propertyArr)
-              console.log("d = ", d)
-
-              return d.index
-            })
-            // .data(filteredData, d => d.property)
+            .data(pie(stableData), d => d.index)
             .join(
                 enter =>
                   enter
                     .append("g")
                     .attr("class", `${barKey}-wedge`)
-                    // .attr('transform', 'translate(' + this.width / 2 + ',' + this.height / 2 + ')')
-
-                    // .append("text").text(d => d.property),
                     .call(enter => enter.append("path")),
                     // .call(enter => enter.append("text")),
                 update => update,
                 exit => exit.remove())
-
- 
-        // wedge
-        //     .transition()
-        //     .duration(this.duration)
-        //     .attr('transform', 'translate(' + this.width / 2 + ',' + this.height / 2 + ')')
-        //     ;
 
         wedge
             .select('path')
@@ -139,16 +108,20 @@ class PieChart {
             .attr('fill', (_, i) => colorScale(i))
             .attrTween("d", arcTween);
 
-            function arcTween(a) {
-              var i = d3.interpolate(this._current, a);
-              this._current = i(0);
-              return function(t) { return arc(i(t)); };
-            }    
-        // wedge.append("text")
+        function arcTween(a) {
+
+          let i = d3.interpolate(this._current, a);
+          this._current = i(0);
+  
+          return t => arc(i(t));
+        }    
+
+        // wedge
+        //     .select("text")
         //     .transition()
         //     .duration(this.duration)
         //     .attr('transform', d => 'translate(' + arc.centroid(d) + ')')
-        //     .text((_, i) => filteredData[i].property)
+        //     .text((_, i) => stableData[i].count)
         //     .attr('fill', 'white')
 
       }
