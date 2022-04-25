@@ -13,6 +13,8 @@ class PieChart {
           .append("svg")
           .attr("width", this.width)
           .attr("height", this.height)
+          .append('g')
+          .attr('transform', 'translate(' + this.width / 2 + ',' + this.height / 2 + ')')
           .style("background-color", "lavender");
       }
   
@@ -37,7 +39,7 @@ class PieChart {
           return {property: d[0], count: d[1].length};
         }).sort((a, b) => b.count - a.count);
   
-  
+        console.log(filteredData, "filteredData")
   
         // // SCALES =======================================
         // const xScale = d3.scaleLinear()
@@ -75,9 +77,11 @@ class PieChart {
 
         const radius = Math.min(this.width, this.height) / 2.5;
 
-        // const g = this.svg.append('g')
-        //     .attr('transform', 'translate(' + this.width / 2 + ',' + this.height / 2 + ')')
+        // const pieSVG = this.svg
+            
         
+
+
         const pie = d3.pie()
             .value(d => d.count)
         
@@ -88,7 +92,12 @@ class PieChart {
 
         const wedge = this.svg
             .selectAll(`g.${barKey}-wedge`)
-            .data(pie(filteredData), d => d.index)
+            .data(pie(filteredData), d => {
+              console.log(propertyArr)
+              console.log("d = ", d)
+
+              return d.index
+            })
             // .data(filteredData, d => d.property)
             .join(
                 enter =>
@@ -104,11 +113,11 @@ class PieChart {
                 exit => exit.remove())
 
  
-        wedge
-            .transition()
-            .duration(this.duration)
-            .attr('transform', 'translate(' + this.width / 2 + ',' + this.height / 2 + ')')
-            ;
+        // wedge
+        //     .transition()
+        //     .duration(this.duration)
+        //     .attr('transform', 'translate(' + this.width / 2 + ',' + this.height / 2 + ')')
+        //     ;
 
         wedge
             .select('path')
@@ -116,7 +125,13 @@ class PieChart {
             .duration(this.duration)
             .attr('d', arc)
             .attr('fill', (_, i) => colorScale(i))
+            .attrTween("d", arcTween);
 
+            function arcTween(a) {
+              var i = d3.interpolate(this._current, a);
+              this._current = i(0);
+              return function(t) { return arc(i(t)); };
+            }    
         // wedge.append("text")
         //     .transition()
         //     .duration(this.duration)
