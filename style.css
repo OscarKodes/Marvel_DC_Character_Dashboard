@@ -1,6 +1,7 @@
 body {
   /* ref: https://fonts.google.com/specimen/Source+Sans+Pro?selection.family=Source+Sans+Pro */
-  font-family: "Source Sans Pro", sans-serif;
+  /* font-family: "Source Sans Pro", sans-serif; */
+  font-family: 'Bangers', cursive;
   padding: 1em 3em;
   background-color: lavender;
 }
@@ -111,11 +112,12 @@ input:checked+.slider:before {
 /* RATIO DISPLAY ============================ */
 #ratio-display {
   text-align: center;
-  color: pink;
+  color: white;
   background-color: black;
   display: grid;
   /* grid-template-columns: 19% 81%; */
   grid-template-rows: 25% 75%;
+  font-family: 'Permanent Marker', cursive;
 }
 
 #three-parts-container {
@@ -123,10 +125,20 @@ input:checked+.slider:before {
   grid-template-columns: 35% 30% 35%;
 }
 
-#hero-num {}
+/* #hero-num {} */
 
-#villain-num {}
+/* #villain-num {} */
 
-.display-num {}
+#to-every-text {
+  margin-top: 5rem;
+}
 
-.ratio-unit {}
+.display-num {
+  font-size: 4.5rem;
+  color: yellow;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+}
+
+.ratio-unit {
+  font-size: 1.5rem;
+}
