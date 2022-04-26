@@ -2,7 +2,7 @@
 import { Sliders } from "./sliders.js";
 import { BarChart } from "./barChart.js";
 import { PieChart } from "./pieChart.js";
-// import { RatioDisplay } from "./ratio-display.js";
+import { RatioDisplay } from "./ratio-display.js";
 // import { BoxingRing } from "./boxingring.js";
 
 
@@ -32,27 +32,42 @@ d3.csv("./complete_row_data.csv", d3.autoType).then(data => {
 
 function init() {
   sliders = new Sliders(state, setGlobalState);
-  eyeBar = new BarChart("#eye-bar", setGlobalState);
-  hairBar = new BarChart("#hair-bar", setGlobalState);
-  raceBar = new BarChart("#race-bar", setGlobalState);
-  publisherPie = new PieChart("#publisher-pie", setGlobalState);
-  genderPie = new PieChart("#gender-pie", setGlobalState);
-//   ratioDisplay = new RatioDisplay(state, setGlobalState);
+  eyeBar = new BarChart("#eye-bar");
+  hairBar = new BarChart("#hair-bar");
+  raceBar = new BarChart("#race-bar");
+  publisherPie = new PieChart("#publisher-pie");
+  genderPie = new PieChart("#gender-pie");
+  ratioDisplay = new RatioDisplay("#ratio-display");
 
-  sliders.draw(state, setGlobalState);
   draw();
 }
 
 
 function draw() {
   
+  // FILTER DATA BASED ON ACTIVE SLIDERS ========
+  let filteredData = state.data.filter(d => {
+    
+    let publisherCheck = state.activeSliders.includes(d.publisher);
+    let genderCheck = state.activeSliders.includes(d.gender);
+    let alignmentCheck = state.activeSliders.includes(d.alignment);
 
-  eyeBar.draw(state, setGlobalState);
-  hairBar.draw(state, setGlobalState);
-  raceBar.draw(state, setGlobalState);
-  publisherPie.draw(state, setGlobalState);
-  genderPie.draw(state, setGlobalState);
-//   ratioDisplay.draw(state, setGlobalState);
+    return publisherCheck && genderCheck && alignmentCheck;
+  });
+
+  // Draw Bar Charts
+  eyeBar.draw(filteredData);
+  hairBar.draw(filteredData);
+  raceBar.draw(filteredData);
+
+  // Draw Pie Charts
+  publisherPie.draw(filteredData);
+  genderPie.draw(filteredData);
+
+  // Draw Ratio Display
+  ratioDisplay.draw(filteredData);
+
+  
 }
 
 // UTILITY FUNCTION: state updating function that we pass to our components so that they are able to update our global state object

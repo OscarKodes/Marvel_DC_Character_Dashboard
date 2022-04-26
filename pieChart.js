@@ -17,27 +17,18 @@ class PieChart {
           .attr('transform', 'translate(' + this.width / 2 + ',' + this.height / 2 + ')');
       }
   
-      draw(state) {
+      draw(filteredData) {
   
         console.log(`Draw ${this.divId}`);
   
-        // FILTER DATA BASED ON ACTIVE SLIDERS ========
-        let filteredData = state.data.filter(d => {
-    
-          let publisherCheck = state.activeSliders.includes(d.publisher);
-          let genderCheck = state.activeSliders.includes(d.gender);
-          let alignmentCheck = state.activeSliders.includes(d.alignment);
-      
-          return publisherCheck && genderCheck && alignmentCheck;
-        });
-  
+
         const barKey = this.divId.split("-")[0].slice(1);
 
-        // Group the data together
+        // Get the Property-Count Pairs for each category
         const groupedData = d3.groups(filteredData, d => d[barKey]).map(d => {
   
           return {property: d[0], count: d[1].length};
-        }).sort((a, b) => b.count - a.count);
+        });
 
         // Keep all the categories in the same order
         const indexOrder = {
