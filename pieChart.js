@@ -97,6 +97,7 @@ class PieChart {
             .duration(this.duration)
             .attr('d', arc)
             .attr('fill', (_, i) => colorScale(i))
+            .attr("stroke", "black")
             .attrTween("d", arcTween);
 
         function arcTween(a) {

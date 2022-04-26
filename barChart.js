@@ -12,8 +12,7 @@ class BarChart {
         .select(this.divId)
         .append("svg")
         .attr("width", this.width)
-        .attr("height", this.height)
-        .style("background-color", "pink");
+        .attr("height", this.height);
     }
 
     draw(filteredData) {
@@ -106,7 +105,8 @@ class BarChart {
         .duration(this.duration)
         .attr("width", d => xScale(d.count))
         .attr("height", yScale.bandwidth())
-        .attr("fill", d => colorScale(d.property));
+        .attr("fill", d => colorScale(d.property))
+        .attr("stroke", "black");
 
       // bars
       //   .select("text")
