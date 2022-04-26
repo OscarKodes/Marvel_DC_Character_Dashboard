@@ -34,8 +34,11 @@ class RatioDisplay {
       console.log(countObj);
       console.log(ratioArr)
 
+      const selectHeroNum = document.querySelector("#hero-num");
+      const selectVillainNum = document.querySelector("#villain-num");
 
-
+      selectHeroNum.innerHTML = ratioArr[0];
+      selectVillainNum.innerHTML = ratioArr[1];
   
       // const metric = this.container
       //   .selectAll("div.metric")
