@@ -125,10 +125,6 @@ input:checked+.slider:before {
   grid-template-columns: 35% 30% 35%;
 }
 
-/* #hero-num {} */
-
-/* #villain-num {} */
-
 #to-every-text {
   margin-top: 5rem;
 }
@@ -141,4 +137,25 @@ input:checked+.slider:before {
 
 .ratio-unit {
   font-size: 1.5rem;
+}
+
+
+/* BOXING RING  ===================== */
+
+#boxing-ring-container {
+  display: grid;
+  /* grid-template-columns: 19% 81%; */
+  grid-template-rows: 60% 40%;
+}
+
+#figures-container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  /* grid-template-rows: 60% 40%; */
+}
+
+#median-displays-container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  /* grid-template-rows: 60% 40%; */
 }

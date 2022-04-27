@@ -5,33 +5,10 @@ class RatioDisplay {
       this.duration = 1000
     }
   
-    draw(filteredData) {
+    draw(ratioArr) {
       console.log("Draw ratio-display");
   
-      // Get count of heroes and villains
-      const countObj = {good: 0, bad: 0};
-      filteredData.map(d => countObj[d.alignment]++);
-
-      // Create hero to villain ratio by dividing by the smaller num
-      let ratioArr = [countObj.good, countObj.bad];
-
-      let heroBig = ratioArr[0] >= ratioArr[1];
-      let biggerNum = heroBig ? ratioArr[0] : ratioArr[1];
-      let smallerNum = heroBig ? ratioArr[1] : ratioArr[0];
-
-      let ratioFloat = Math.round((smallerNum / biggerNum) * 5);
-      
-      ratioArr = heroBig ? [5, ratioFloat] : [ratioFloat, 5];
-      
-      // // simplify any multiple ratios (10:5 to 2:1)
-      // for (let i = ratioArr[1]; i > 1; i--) {
-      //   if((ratioArr[0] % i) == 0 && (ratioArr[1] % i) == 0) {
-      //       ratioArr[0] = ratioArr[0] / i;
-      //       ratioArr[1] = ratioArr[1] / i;
-      //   }
-      // }
-
-      console.log(countObj);
+    
       console.log(ratioArr)
 
       const selectHeroNum = document.querySelector("#hero-num");

@@ -3,10 +3,18 @@ import { Sliders } from "./sliders.js";
 import { BarChart } from "./barChart.js";
 import { PieChart } from "./pieChart.js";
 import { RatioDisplay } from "./ratio-display.js";
-// import { BoxingRing } from "./boxingring.js";
+import { StickFigures } from "./stickFigures.js";
 
 
-let eyeBar, sliders, hairBar, raceBar, publisherPie, genderPie, ratioDisplay;
+let eyeBar, 
+sliders, 
+hairBar, 
+raceBar, 
+publisherPie, 
+genderPie, 
+ratioDisplay,
+heroFigures,
+villainFigures;
 
 // global state
 let state = {
@@ -38,6 +46,8 @@ function init() {
   publisherPie = new PieChart("#publisher-pie");
   genderPie = new PieChart("#gender-pie");
   ratioDisplay = new RatioDisplay("#ratio-display");
+  // heroFigures = new StickFigures("#hero-figures");
+  // villainFigures = new StickFigures("#villain-figures");
 
   draw();
 }
@@ -45,7 +55,8 @@ function init() {
 
 function draw() {
   
-  // FILTER DATA BASED ON ACTIVE SLIDERS ========
+  // FILTER DATA BASED ON ACTIVE SLIDERS ====================
+
   let filteredData = state.data.filter(d => {
     
     let publisherCheck = state.activeSliders.includes(d.publisher);
@@ -54,6 +65,26 @@ function draw() {
 
     return publisherCheck && genderCheck && alignmentCheck;
   });
+
+
+  // GET RATIO OF HEROES AND VILLAINS =======================
+
+  const countObj = {good: 0, bad: 0};
+  filteredData.map(d => countObj[d.alignment]++);
+
+  // Create hero to villain ratio by dividing by the smaller num
+  let ratioArr = [countObj.good, countObj.bad];
+
+  let heroBig = ratioArr[0] >= ratioArr[1];
+  let biggerNum = heroBig ? ratioArr[0] : ratioArr[1];
+  let smallerNum = heroBig ? ratioArr[1] : ratioArr[0];
+
+  let ratioFloat = Math.round((smallerNum / biggerNum) * 5);
+  
+  ratioArr = heroBig ? [5, ratioFloat] : [ratioFloat, 5];
+
+
+  // DRAW THE CHARTS ========================================
 
   // Draw Bar Charts
   eyeBar.draw(filteredData);
@@ -64,10 +95,10 @@ function draw() {
   publisherPie.draw(filteredData);
   genderPie.draw(filteredData);
 
-  // Draw Ratio Display
-  ratioDisplay.draw(filteredData);
-
-  
+  // Draw Ratio Display and BoxingRing
+  ratioDisplay.draw(ratioArr);
+  // heroFigures.draw(ratioArr);
+  // villainFigures.draw(ratioArr);
 }
 
 // UTILITY FUNCTION: state updating function that we pass to our components so that they are able to update our global state object

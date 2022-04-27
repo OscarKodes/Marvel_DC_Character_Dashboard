@@ -1,6 +1,0 @@
-class BoxingRing {
-
-  }
-  
-  export { BoxingRing };
-  
