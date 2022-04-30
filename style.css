@@ -144,18 +144,28 @@ input:checked+.slider:before {
 
 #boxing-ring-container {
   display: grid;
-  /* grid-template-columns: 19% 81%; */
   grid-template-rows: 60% 40%;
+  background-image: url("boxing-ring.png");
+  height: 20rem;
+  background-repeat: no-repeat, repeat;
+  background-color: lavender;
+  background-position: center;
 }
 
 #figures-container {
   display: grid;
   grid-template-columns: 50% 50%;
-  /* grid-template-rows: 60% 40%; */
 }
 
 #median-displays-container {
   display: grid;
   grid-template-columns: 50% 50%;
-  /* grid-template-rows: 60% 40%; */
+}
+
+.invisible {
+  display: none;
+}
+
+#hero-figures {
+  text-align: right;
 }

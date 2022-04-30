@@ -46,8 +46,8 @@ function init() {
   publisherPie = new PieChart("#publisher-pie");
   genderPie = new PieChart("#gender-pie");
   ratioDisplay = new RatioDisplay("#ratio-display");
-  // heroFigures = new StickFigures("#hero-figures");
-  // villainFigures = new StickFigures("#villain-figures");
+  heroFigures = new StickFigures("hero");
+  villainFigures = new StickFigures("villain");
 
   draw();
 }
@@ -97,8 +97,8 @@ function draw() {
 
   // Draw Ratio Display and BoxingRing
   ratioDisplay.draw(ratioArr);
-  // heroFigures.draw(ratioArr);
-  // villainFigures.draw(ratioArr);
+  heroFigures.draw(ratioArr);
+  villainFigures.draw(ratioArr);
 }
 
 // UTILITY FUNCTION: state updating function that we pass to our components so that they are able to update our global state object
