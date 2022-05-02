@@ -75,13 +75,15 @@ function draw() {
   // Create hero to villain ratio by dividing by the smaller num
   let ratioArr = [countObj.good, countObj.bad];
 
-  let heroBig = ratioArr[0] >= ratioArr[1];
-  let biggerNum = heroBig ? ratioArr[0] : ratioArr[1];
-  let smallerNum = heroBig ? ratioArr[1] : ratioArr[0];
+  if (ratioArr[0] + ratioArr[1] > 0) {
+    let heroBig = ratioArr[0] >= ratioArr[1];
+    let biggerNum = heroBig ? ratioArr[0] : ratioArr[1];
+    let smallerNum = heroBig ? ratioArr[1] : ratioArr[0];
 
-  let ratioFloat = Math.round((smallerNum / biggerNum) * 5);
-  
-  ratioArr = heroBig ? [5, ratioFloat] : [ratioFloat, 5];
+    let ratioFloat = Math.round((smallerNum / biggerNum) * 5);
+    
+    ratioArr = heroBig ? [5, ratioFloat] : [ratioFloat, 5];
+  }
 
 
   // DRAW THE CHARTS ========================================
