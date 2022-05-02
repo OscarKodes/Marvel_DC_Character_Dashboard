@@ -129,3 +129,24 @@ input[type=radio] {
 #hero-figures {
   text-align: right;
 }
+
+#hero-medians {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+#villain-medians {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.median-display {
+  background-color: rgb(43, 43, 43);
+  margin: 1rem;
+  border-radius: 1rem;
+  color: white;
+}
+
+#median-displays-container span {
+  color: yellow;
+}

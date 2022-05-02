@@ -4,6 +4,7 @@ import { BarChart } from "./barChart.js";
 import { PieChart } from "./pieChart.js";
 import { RatioDisplay } from "./ratio-display.js";
 import { StickFigures } from "./stickFigures.js";
+import { MedianDisplay } from "./medianDisplay.js";
 
 
 let eyeBar, 
@@ -14,7 +15,9 @@ publisherPie,
 genderPie, 
 ratioDisplay,
 heroFigures,
-villainFigures;
+villainFigures,
+heroMedian,
+villainMedian;
 
 // global state
 let state = {
@@ -48,6 +51,8 @@ function init() {
   ratioDisplay = new RatioDisplay("#ratio-display");
   heroFigures = new StickFigures("hero");
   villainFigures = new StickFigures("villain");
+  heroMedian = new MedianDisplay("#hero-medians");
+  villainMedian = new MedianDisplay("#villain-medians");
   
   draw();
 }
@@ -84,6 +89,25 @@ function draw() {
     ratioArr = heroBig ? [5, ratioFloat] : [ratioFloat, 5];
   }
 
+  // GET MEDIANS OF HERO AND VILLAIN WEIGHT AND HEIGHT ======
+
+  const heroesOnly = filteredData.filter(d => d.alignment === "good");
+
+  const heroWeightArr = heroesOnly.map(d => d.weight_kg);
+  const heroHeightArr = heroesOnly.map(d => d.height_cm);
+  
+  const heroMedianWeight = d3.median(heroWeightArr);
+  const heroMedianHeight = d3.median(heroHeightArr);
+
+
+  const villainsOnly = filteredData.filter(d => d.alignment === "bad");
+
+  const villainWeightArr = villainsOnly.map(d => d.weight_kg);
+  const villainHeightArr = villainsOnly.map(d => d.height_cm);
+  
+  const villainMedianWeight = d3.median(villainWeightArr);
+  const villainMedianHeight = d3.median(villainHeightArr);
+
 
   // DRAW THE CHARTS ========================================
   
@@ -100,6 +124,9 @@ function draw() {
   ratioDisplay.draw(ratioArr);
   heroFigures.draw(ratioArr);
   villainFigures.draw(ratioArr);
+
+  heroMedian.draw(heroMedianWeight, heroMedianHeight);
+  villainMedian.draw(villainMedianWeight, villainMedianHeight);
 }
 
 // UTILITY FUNCTION: state updating function that we pass to our components so that they are able to update our global state object

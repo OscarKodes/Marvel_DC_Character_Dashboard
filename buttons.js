@@ -62,15 +62,8 @@ class Buttons {
         })
       }
 
-      
-
-
-
     }
   
-    draw() {
-      console.log("test");
-    }
   }
   
   export { Buttons };
