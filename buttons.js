@@ -7,7 +7,6 @@ class Buttons {
       // select the toggle switches
       let allButtons = document.querySelectorAll("input");
 
-      console.log("BUTTONS", allButtons[0].checked);
 
       for (let i = 0; i < allButtons.length; i++) {
 
@@ -25,7 +24,23 @@ class Buttons {
             }; 
           }
 
-          console.log("ACTIVE BTNS ARR", activeButtonsArr);
+          // if a btn is clicked we change the .checked classes
+          
+
+          // theParentDiv.classList.add("checked");
+
+          const theContainerDiv = event.target.parentNode.parentNode;
+          const theClickedDiv = event.target.parentNode;
+          const allBtnDivs = theContainerDiv.querySelectorAll(".btn");
+
+          for (let i = 0; i < allBtnDivs.length; i++) {
+            let thisDiv = allBtnDivs[i];
+
+            thisDiv.classList.remove("checked");
+          }
+
+          theClickedDiv.classList.add("checked");
+
 
           setGlobalState({ 
             activeButtons: activeButtonsArr
@@ -33,25 +48,22 @@ class Buttons {
         });
       };
 
-      // loop through all switches and place event listeners on them
-      // for (let i = 0; i < allButtons.length; i++) {
 
-      //   // if clicked remove/add the id label to the active array
-      //   allButtons[i].addEventListener("click", function(event) {
-          
-      //     let sliderName = event.path[0].id;
-          
-      //     sliderName = sliderName.split(" ")[0].toLowerCase();
-          
-      //     if (activeButtonsArr.includes(sliderName)) {
-      //       let idx = activeButtonsArr.indexOf(sliderName);
-  
-      //       activeButtonsArr.splice(idx, 1);
-      //     } 
-          
-      //     else {
-      //       activeButtonsArr.push(sliderName);
-      //     }
+      // if click on the btn's div, it auto clicks the btn
+      const selectDiv = document.querySelectorAll(".btn");
+      
+      for (let i = 0; i < selectDiv.length; i++) {
+
+        const thisDiv = selectDiv[i];
+
+        thisDiv.addEventListener("click", function(event){
+
+          event.target.querySelector("input").click();
+        })
+      }
+
+      
+
 
 
     }

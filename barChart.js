@@ -17,8 +17,6 @@ class BarChart {
 
     draw(filteredData) {
       
-      console.log(`Draw ${this.divId}`);
-
       const barKey = this.divId.split("-")[0].slice(1);
   
       // Get the Property-Count Pairs for each category
@@ -46,7 +44,6 @@ class BarChart {
       // COLOR SCALE ==================================
       const propertyArr = filteredData.map(d => d.property)
 
-      console.log("PROPERTY ARR", propertyArr);
       // !!!
       // REMEMBER TO UPDATE
       // !!! REMEMBER TO UPDATE COLORS TO THE NEW GROUPINGS

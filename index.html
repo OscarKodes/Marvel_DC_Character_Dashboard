@@ -20,40 +20,83 @@
         <!-- buttons -->
         <div id="buttons" class="white-frame">
 
-            <input type="radio" id="both-publishers" name="publisher" value="marvel dc" checked>
-            <label for="both-publishers">Both Publishers</label><br>
+            <div class="btn-container">
 
-            <input type="radio" id="marvel" name="publisher" value="marvel">
-            <label for="marvel">Marvel</label><br>
+                <h3>Publishers</h3>
 
-            <input type="radio" id="dc" name="publisher" value="dc">
-            <label for="dc">DC</label><br>
+                <div class="btn checked">
+                    <label for="both-publishers">All</label>
+                    <input type="radio" id="both-publishers" name="publisher" value="marvel dc" checked>
 
+                </div>
 
+                <div class="btn">
+                    <label for="marvel">Marvel</label>
+                    <input type="radio" id="marvel" name="publisher" value="marvel">
 
-            <input type="radio" id="all-genders" name="gender" value="male female other" checked>
-            <label for="all-genders">All Genders</label><br>
+                </div>
 
-            <input type="radio" id="male" name="gender" value="male">
-            <label for="male">Male</label><br>
+                <div class="btn">
+                    <label for="dc">DC</label>
+                    <input type="radio" id="dc" name="publisher" value="dc">
 
-            <input type="radio" id="female" name="gender" value="female">
-            <label for="female">Female</label><br>
+                </div>
 
-            <input type="radio" id="other" name="gender" value="other">
-            <label for="other">Other</label><br>
+            </div>
 
+            <div class="btn-container">
 
+                <h3>Genders</h3>
 
-            <input type="radio" id="both-sides" name="alignment" value="good bad" checked>
-            <label for="both-sides">Both Sides</label><br>
+                <div class="btn checked">
+                    <label for="all-genders">All</label>
+                    <input type="radio" id="all-genders" name="gender" value="male female other" checked>
 
-            <input type="radio" id="good" name="alignment" value="good">
-            <label for="good">Hero</label><br>
+                </div>
 
-            <input type="radio" id="bad" name="alignment" value="bad">
-            <label for="bad">Villain</label><br>
+                <div class="btn">
+                    <label for="male">Male</label>
+                    <input type="radio" id="male" name="gender" value="male">
 
+                </div>
+
+                <div class="btn">
+                    <label for="female">Female</label>
+                    <input type="radio" id="female" name="gender" value="female">
+
+                </div>
+
+                <div class="btn">
+                    <label for="other">Other</label>
+                    <input type="radio" id="other" name="gender" value="other">
+
+                </div>
+
+            </div>
+
+            <div class="btn-container">
+
+                <h3>Alignment</h3>
+
+                <div class="btn checked">
+                    <label for="both-sides">All</label>
+                    <input type="radio" id="both-sides" name="alignment" value="good bad" checked>
+
+                </div>
+
+                <div class="btn">
+                    <label for="good">Hero</label>
+                    <input type="radio" id="good" name="alignment" value="good">
+
+                </div>
+
+                <div class="btn">
+                    <label for="bad">Villain</label>
+                    <input type="radio" id="bad" name="alignment" value="bad">
+
+                </div>
+
+            </div>
 
 
 

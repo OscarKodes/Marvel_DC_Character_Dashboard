@@ -6,10 +6,6 @@ class RatioDisplay {
     }
   
     draw(ratioArr) {
-      console.log("Draw ratio-display");
-  
-    
-      console.log(ratioArr)
 
       const selectHeroNum = document.querySelector("#hero-num");
       const selectVillainNum = document.querySelector("#villain-num");

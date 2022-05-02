@@ -19,8 +19,6 @@ class PieChart {
   
       draw(filteredData) {
   
-        console.log(`Draw ${this.divId}`);
-  
 
         const barKey = this.divId.split("-")[0].slice(1);
 
@@ -66,7 +64,7 @@ class PieChart {
   
         const colorScale = d3.scaleOrdinal(propertyArr, propertyArr.map(d => colorRange[d]));
   
-        console.log(stableData)
+
         // DRAW PIE =====================================
 
         const radius = Math.min(this.width, this.height) / 2.5;

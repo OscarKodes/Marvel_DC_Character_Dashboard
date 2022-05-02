@@ -41,6 +41,27 @@ body {
   padding: 1rem;
 }
 
+.btn-container {
+  border-bottom: 1px solid grey;
+  margin-bottom: 1rem;
+}
+
+.btn:hover {
+  border: 1px solid grey;
+}
+
+.btn:active {
+  border: none;
+  background-color: rgba(81, 255, 0, 0.377);
+}
+
+.btn.checked {
+  background-color: rgba(120, 255, 102, 0.562);
+}
+
+input[type=radio] {
+  display: none;
+}
 
 
 

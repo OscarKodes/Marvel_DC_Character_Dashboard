@@ -19,9 +19,6 @@ class StickFigures {
 
   draw(ratioArr) {
 
-    console.log(`Draw ${this.divId}`);
-
-    console.log("Number of stick figures in ring:", ratioArr);
 
     let numVisible = this.alignment === "hero" ? ratioArr[0] : ratioArr[1];
 

@@ -65,8 +65,7 @@ function draw() {
 
     return publisherCheck && genderCheck && alignmentCheck;
   });
-  console.log("FILTERED DATA", filteredData)
-  console.log("ACTIVE BTNS", state.activeButtons)
+
   // GET RATIO OF HEROES AND VILLAINS =======================
 
   const countObj = {good: 0, bad: 0};
@@ -106,7 +105,6 @@ function draw() {
 // UTILITY FUNCTION: state updating function that we pass to our components so that they are able to update our global state object
 function setGlobalState(nextState) {
   state = { ...state, ...nextState };
-  console.log("state", state);
-  console.log("new state:", state);
+
   draw();
 }
