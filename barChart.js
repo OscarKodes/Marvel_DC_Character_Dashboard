@@ -16,7 +16,7 @@ class BarChart {
     }
 
     draw(filteredData) {
-
+      
       console.log(`Draw ${this.divId}`);
 
       const barKey = this.divId.split("-")[0].slice(1);

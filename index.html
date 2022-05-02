@@ -17,60 +17,46 @@
 
     <div id="dashboard">
 
-        <!-- sliders -->
-        <div id="sliders" class="white-frame">
+        <!-- buttons -->
+        <div id="buttons" class="white-frame">
 
-            <div class="single-slider">
-                Marvel
-                <label class="switch">
-                    <input id="marvel" class="slider_click" type="checkbox" checked>
-                    <span class="slider round"></span>
-                </label>
-            </div>
+            <input type="radio" id="both-publishers" name="publisher" value="marvel dc" checked>
+            <label for="both-publishers">Both Publishers</label><br>
 
-            <div class="single-slider">
-                DC
-                <label class="switch">
-                    <input id="dc" class="slider_click" type="checkbox" checked>
-                    <span class="slider round"></span>
-                </label>
-            </div>
+            <input type="radio" id="marvel" name="publisher" value="marvel">
+            <label for="marvel">Marvel</label><br>
 
-            <div class="single-slider">
-                Male
-                <label class="switch">
-                    <input id="male" class="slider_click" type="checkbox" checked>
-                    <span class="slider round"></span>
-                </label>
-            </div>
-            <div class="single-slider">
-                Female
-                <label class="switch">
-                    <input id="female" class="slider_click" type="checkbox" checked>
-                    <span class="slider round"></span>
-                </label>
-            </div>
-            <div class="single-slider">
-                Other
-                <label class="switch">
-                    <input id="other" class="slider_click" type="checkbox" checked>
-                    <span class="slider round"></span>
-                </label>
-            </div>
-            <div class="single-slider">
-                Hero
-                <label class="switch">
-                    <input id="good" class="slider_click" type="checkbox" checked>
-                    <span class="slider round"></span>
-                </label>
-            </div>
-            <div class="single-slider">
-                Villain
-                <label class="switch">
-                    <input id="bad" class="slider_click" type="checkbox" checked>
-                    <span class="slider round"></span>
-                </label>
-            </div>
+            <input type="radio" id="dc" name="publisher" value="dc">
+            <label for="dc">DC</label><br>
+
+
+
+            <input type="radio" id="all-genders" name="gender" value="male female other" checked>
+            <label for="all-genders">All Genders</label><br>
+
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male">Male</label><br>
+
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Female</label><br>
+
+            <input type="radio" id="other" name="gender" value="other">
+            <label for="other">Other</label><br>
+
+
+
+            <input type="radio" id="both-sides" name="alignment" value="good bad" checked>
+            <label for="both-sides">Both Sides</label><br>
+
+            <input type="radio" id="good" name="alignment" value="good">
+            <label for="good">Hero</label><br>
+
+            <input type="radio" id="bad" name="alignment" value="bad">
+            <label for="bad">Villain</label><br>
+
+
+
+
 
         </div>
 
