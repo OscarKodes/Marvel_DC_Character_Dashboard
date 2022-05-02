@@ -30,7 +30,7 @@ let state = {
   ]
 };
 
-d3.csv("./data/COMBINED_data.csv", d3.autoType).then(data => {
+d3.csv("./data/COMBINED_data_(Red_to_Ginger).csv", d3.autoType).then(data => {
 
   console.log("data", data);
   state.data = data;

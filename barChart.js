@@ -24,7 +24,10 @@ class BarChart {
       // Get the Property-Count Pairs for each category
       filteredData = d3.groups(filteredData, d => d[barKey]).map(d => {
 
-        return {property: d[0], count: d[1].length};
+        return {
+          property: d[0], 
+          count: d[1].length
+        };
       }).sort((a, b) => b.count - a.count);
 
 
@@ -43,7 +46,7 @@ class BarChart {
       // COLOR SCALE ==================================
       const propertyArr = filteredData.map(d => d.property)
 
-
+      console.log("PROPERTY ARR", propertyArr);
       // !!!
       // REMEMBER TO UPDATE
       // !!! REMEMBER TO UPDATE COLORS TO THE NEW GROUPINGS
@@ -54,6 +57,7 @@ class BarChart {
         'green': "green",
         'brown': "brown",
         'red': "red",
+        'ginger': "red",
         'white': "white",
         'black': "black",
         'silver': "silver",
@@ -69,7 +73,8 @@ class BarChart {
         "demon": "purple",
         "undead": "brown",
         "mixed-race": "magenta",
-        "animal": "orange"
+        "animal": "orange",
+        "NA": "grey"
       }
 
 
