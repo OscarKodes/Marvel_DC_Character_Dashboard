@@ -145,7 +145,7 @@ input:checked+.slider:before {
 #boxing-ring-container {
   display: grid;
   grid-template-rows: 60% 40%;
-  background-image: url("boxing-ring.png");
+  background-image: url("pics/boxing-ring.png");
   height: 20rem;
   background-repeat: no-repeat, repeat;
   background-color: lavender;
