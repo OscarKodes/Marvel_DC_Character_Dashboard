@@ -26,7 +26,7 @@ class StickFigures {
 
       const figure = document.querySelector(`#${this.alignment}-${i}`);
 
-      figure.classList = numVisible >= i ? [""] : ["invisible"];
+      figure.classList = numVisible < i ? ["invisible"] : [""];
     }
 
 
