@@ -150,3 +150,7 @@ input[type=radio] {
 #median-displays-container span {
   color: yellow;
 }
+
+#figures-container img {
+  width: 19%;
+}
