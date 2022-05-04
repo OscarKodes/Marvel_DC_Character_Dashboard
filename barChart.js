@@ -75,7 +75,8 @@ class BarChart {
       }
 
 
-      const colorScale = d3.scaleOrdinal(propertyArr, propertyArr.map(d => colorRange[d]));
+      const colorScale = d3.scaleOrdinal(propertyArr, 
+        propertyArr.map(d => barKey == "race" ? "gold" : colorRange[d]));
 
       
       // DRAW BARS =====================================
