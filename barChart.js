@@ -29,7 +29,6 @@ class BarChart {
       }).sort((a, b) => b.count - a.count);
 
 
-
       // SCALES =======================================
       const xScale = d3.scaleLinear()
         .domain([0, d3.max(filteredData, d => d.count)]).nice()
@@ -44,6 +43,7 @@ class BarChart {
       // COLOR SCALE ==================================
       const propertyArr = filteredData.map(d => d.property)
 
+      console.log("colors?", propertyArr)
       // !!!
       // REMEMBER TO UPDATE
       // !!! REMEMBER TO UPDATE COLORS TO THE NEW GROUPINGS
@@ -60,6 +60,7 @@ class BarChart {
         'silver': "silver",
         'mixed': "magenta",
         'purple': "purple",
+        "pink": "pink",
         "no hair": "lavender",
         "blond": "yellow",
         "burnette": "brown",

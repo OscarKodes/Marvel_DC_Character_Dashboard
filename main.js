@@ -30,7 +30,10 @@ let state = {
     "other",
     "good",
     "bad"
-  ]
+  ],
+  activeEyes: "all",
+  activeHair: "all",
+  activeRace: "all"
 };
 
 d3.csv("./data/COMBINED_data_(Red_to_Ginger).csv", d3.autoType).then(data => {
@@ -68,7 +71,16 @@ function draw() {
     let genderCheck = state.activeButtons.includes(d.gender);
     let alignmentCheck = state.activeButtons.includes(d.alignment);
 
-    return publisherCheck && genderCheck && alignmentCheck;
+    let eyeCheck = state.activeEyes === "all" ?
+                    true : d.eye === state.activeEyes;
+
+    let hairCheck = state.activeHair === "all" ?
+                    true : d.hair === state.activeHair;
+
+    let raceCheck = state.activeRace === "all" ?
+                    true : d.race === state.activeRace;
+
+    return publisherCheck && genderCheck && alignmentCheck && eyeCheck && hairCheck && raceCheck;
   });
 
   // GET RATIO OF HEROES AND VILLAINS =======================
@@ -87,6 +99,10 @@ function draw() {
     let ratioFloat = Math.round((smallerNum / biggerNum) * 5);
     
     ratioArr = heroBig ? [5, ratioFloat] : [ratioFloat, 5];
+  }
+
+  if (ratioArr[0] + ratioArr[1] === 10) {
+    ratioArr = [1, 1];
   }
 
   // GET MEDIANS OF HERO AND VILLAIN WEIGHT AND HEIGHT ======
@@ -110,7 +126,8 @@ function draw() {
 
 
   // DRAW THE CHARTS ========================================
-  
+  console.log("FILTERED DATA", filteredData);
+
   // Draw Bar Charts
   eyeBar.draw(filteredData);
   hairBar.draw(filteredData);
@@ -133,5 +150,6 @@ function draw() {
 function setGlobalState(nextState) {
   state = { ...state, ...nextState };
 
+  console.log("STATE", state)
   draw();
 }

@@ -3,6 +3,7 @@ class Buttons {
     constructor(state, setGlobalState) {
       
       
+      // FOR TOGGLE SWITCHES =============================
 
       // select the toggle switches
       let allButtons = document.querySelectorAll("input");
@@ -62,6 +63,151 @@ class Buttons {
         })
       }
 
+
+      // ################################################
+      // EYE DROPDOWN MENUS =============================
+
+      // Grab elements for listeners and values
+      const eyeMenu = d3.select("#eye-select");
+
+      const eyeColors = [
+        'blue', 'brown', 'green', 
+        'red', 'black', 'white', 
+        'yellow', 'silver', 'purple'
+      ].sort().concat(['mixed', "NA"]);
+
+      // Create array for holding vis options 
+      const eyeMenuData = [{key: "all", label: "All Eye Colors"}]
+
+      // Fill eyeMenuData with the possible data vis options
+      eyeColors.map(color => {
+        eyeMenuData.push({
+          key: color, 
+          label: color === "NA" ?
+                  "No Eye Color" :
+                  color === "mixed" ?
+                    "Heterochromatic Eyes":
+                    `${color[0].toUpperCase() + color.slice(1)} Eyes`
+        })
+      });
+
+      // Create options in UI menu for user to click
+      eyeMenu
+        .selectAll("option")
+        .data(eyeMenuData)
+        .join("option")
+        .attr("value", d => d.key)
+        .text(d => d.label);
+
+      // Listen for user changes on menu and call draw
+      eyeMenu.on("change", event => {
+
+        const selectedEyeColor = event.target.value;
+
+        setGlobalState({ 
+          activeEyes: selectedEyeColor
+        });
+      });
+
+
+
+      // ################################################
+      // HAIR DROPDOWN MENUS =============================
+
+      // Grab elements for listeners and values
+      const hairMenu = d3.select("#hair-select");
+
+      const hairColors = [
+        "burnette", "blond", "ginger", 
+        "white", "green", "silver", 
+        "purple", "blue", "pink"
+      ].sort().concat(['mixed', "no hair"]);
+
+      // Create array for holding vis options 
+      const hairMenuData = [{key: "all", label: "All Hair Colors"}]
+
+      // Fill hairMenuData with the possible data vis options
+      hairColors.map(color => {
+        hairMenuData.push({
+          key: color, 
+          label: color === "mixed" ?
+                  "Multi-Colored Hair":
+                    color === "no hair" ?
+                      "No Hair" :
+                      `${color[0].toUpperCase() + color.slice(1)} Hair`
+        })
+      });
+
+      // Create options in UI menu for user to click
+      hairMenu
+        .selectAll("option")
+        .data(hairMenuData)
+        .join("option")
+        .attr("value", d => d.key)
+        .text(d => d.label);
+
+      // Listen for user changes on menu and call draw
+      hairMenu.on("change", event => {
+
+        const selectedHairColor = event.target.value;
+
+        setGlobalState({ 
+          activeHair: selectedHairColor
+        });
+      });
+
+
+
+
+      // ################################################
+      // RACE DROPDOWN MENUS =============================
+
+      // Grab elements for listeners and values
+      const raceMenu = d3.select("#race-select");
+
+      const raceTypes = [
+        "human",
+        "alien",
+        "diety",
+        "robot",
+        "amazon/atlantean",
+        "demon",
+        "animal",
+        "undead"
+    ].sort().concat(["mixed-race", "NA"]);
+
+      // Create array for holding vis options 
+      const raceMenuData = [{key: "all", label: "All Races"}]
+
+      // Fill raceMenuData with the possible data vis options
+      raceTypes.map(race => {
+        raceMenuData.push({
+          key: race, 
+          label: race === "amazon/atlantean" ?
+                  "Amazons/Atlanteans": race === "NA" ?
+                      "Unknown race" : race === "diety" ?
+                        "Dieties" : race === "mixed-race" ?
+                          "Mixed-race" : `${race[0].toUpperCase() + race.slice(1)}s`
+        })
+      });
+
+      // Create options in UI menu for user to click
+      raceMenu
+        .selectAll("option")
+        .data(raceMenuData)
+        .join("option")
+        .attr("value", d => d.key)
+        .text(d => d.label);
+
+      // Listen for user changes on menu and call draw
+      raceMenu.on("change", event => {
+
+        const selectedRaceType = event.target.value;
+
+        setGlobalState({ 
+          activeRace: selectedRaceType
+        });
+      });
     }
   
   }
