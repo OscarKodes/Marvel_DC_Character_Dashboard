@@ -2,7 +2,7 @@ class BarChart {
 
     constructor(divId) {
 
-      this.width = window.innerWidth * 0.22;
+      this.width = window.innerWidth * 0.2;
       this.height = window.innerHeight * 0.2;
       this.margin = 20;
       this.duration = 1000;
@@ -13,7 +13,8 @@ class BarChart {
         .append("svg")
         .attr("width", this.width)
         .attr("height", this.height)
-        .style("background-color", "lavender");
+        // .style("background-color", "lavender")
+        .style("transform", "translate(30px, 0px)");
     }
 
     draw(filteredData) {
@@ -31,15 +32,18 @@ class BarChart {
 
 
       // SCALES =======================================
-      const xScale = d3.scaleLinear()
-        .domain([0, d3.max(filteredData, d => d.count)]).nice()
-        .range([0, this.width - this.margin * 2]).nice()
+      // const xScale = d3.scaleLinear()
+      //   .domain([0, d3.max(filteredData, d => d.count)]).nice()
+      //   .range([0, this.width - this.margin * 2]).nice()
+      const xScale = d3.scaleLog()
+        .domain([1, 100]).nice()
+        .range([0, 250]).nice()
   
       const yScale = d3.scaleBand()
           .domain(filteredData.map(d => d.property))
           .range([0, this.height - this.margin])
-          .paddingInner(.4)
-          .paddingOuter(.1)
+          .paddingInner(.6)
+          .paddingOuter(0)
   
       // COLOR SCALE ==================================
       const propertyArr = filteredData.map(d => d.property)
@@ -111,6 +115,7 @@ class BarChart {
         .attr("width", d => xScale(d.count))
         .attr("height", yScale.bandwidth())
         .attr("fill", d => colorScale(d.property))
+        .attr("opacity", "0.5")
         .attr("stroke", "black");
 
       // bars

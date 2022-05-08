@@ -2,7 +2,7 @@ class PieChart {
 
     constructor(divId) {
 
-        this.width = window.innerWidth * 0.2;
+        this.width = window.innerWidth * 0.108;
         this.height = window.innerHeight * 0.2;
         this.margin = 20;
         this.duration = 1000;
@@ -13,6 +13,7 @@ class PieChart {
           .append("svg")
           .attr("width", this.width)
           .attr("height", this.height)
+          // .style("background-color", "lavender")
           .append('g')
           .attr('transform', 'translate(' + this.width / 2 + ',' + this.height / 2 + ')');
       }
@@ -67,7 +68,7 @@ class PieChart {
 
         // DRAW PIE =====================================
 
-        const radius = Math.min(this.width, this.height) / 2.5;
+        const radius = Math.min(this.width, this.height) / 3;
 
         const pie = d3.pie()
             .value(d => d.count)
@@ -95,6 +96,7 @@ class PieChart {
             .duration(this.duration)
             .attr('d', arc)
             .attr('fill', (_, i) => colorScale(i))
+            .attr('opacity', 0.5)
             .attr("stroke", "black")
             .attrTween("d", arcTween);
 
