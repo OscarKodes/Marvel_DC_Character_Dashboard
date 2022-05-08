@@ -19,12 +19,55 @@ body {
   padding: 0.25rem;
 }
 
-#panel-1 {
+#panel-row-1 {
   display: grid;
   grid-template-columns: 40% 60%;
   /* grid-template-rows: 25% 25% 50%; */
-  border: 0.5rem solid grey;
 }
+
+#panel-row-2 {
+  /* display: grid;
+  grid-template-columns: 40% 60%;
+  grid-template-rows: 25% 25% 50%; */
+}
+
+#panel-row-3 {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+#panel-row-4 {
+  display: grid;
+  grid-template-columns: 25% 50% 25%;
+}
+
+.comic-panel-borders {
+  border: 0.5rem solid grey;
+  margin-top: 0.25rem;
+}
+
+
+
+/* h4 {
+	position: relative;
+	display: inline-block;
+  &:after {
+    z-index: -1;
+		content: "";
+		position: absolute;
+		top: 0;
+     left: 0;
+		height: 100%;
+		width: 100%;
+		background-color: inherit;
+     border: 1px solid maroon;
+		-webkit-transform: skewX(-10deg);
+		-moz-transform: skewX(-10deg);
+		-ms-transform: skewX(-10deg);
+		transform: skewX(-10deg);
+  }
+} */
+
 
 #title-panel {
   /* display: grid;
@@ -85,65 +128,8 @@ input[type=radio] {
 
 
 
-/* RATIO DISPLAY ============================ */
-#ratio-display {
-  text-align: center;
-  color: white;
-  background-color: black;
-  display: grid;
-  /* grid-template-columns: 19% 81%; */
-  grid-template-rows: 25% 75%;
-  font-family: 'Permanent Marker', cursive;
-}
-
-#three-parts-container {
-  display: grid;
-  grid-template-columns: 35% 30% 35%;
-}
-
-#to-every-text {
-  margin-top: 5rem;
-}
-
-.display-num {
-  font-size: 4.5rem;
-  color: yellow;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
-}
-
-.ratio-unit {
-  font-size: 1.5rem;
-}
-
 
 /* BOXING RING  ===================== */
-
-#panel-2 {
-  /* display: grid;
-  grid-template-columns: 40% 60%;
-  grid-template-rows: 25% 25% 50%; */
-  border: 0.5rem solid grey;
-  margin-top: 0.25rem;
-}
-
-#panel-3 {
-  display: grid;
-  grid-template-columns: 50% 50%;
-  border: 0.5rem solid grey;
-  margin-top: 0.25rem;
-}
-
-#panel-4 {
-  display: grid;
-  grid-template-columns: 25% 50% 25%;
-  border: 0.5rem solid grey;
-  margin-top: 0.25rem;
-}
-
-#panel-5 {
-  border: 0.5rem solid grey;
-  margin-top: 0.25rem;
-}
 
 #boxing-ring-container {
   display: grid;
