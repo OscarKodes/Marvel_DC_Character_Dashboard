@@ -9,6 +9,7 @@ body {
   margin: 0 auto;
 }
 
+
 /* GRID LAYOUT */
 
 #comic-page {
@@ -47,26 +48,6 @@ body {
 }
 
 
-
-/* h4 {
-	position: relative;
-	display: inline-block;
-  &:after {
-    z-index: -1;
-		content: "";
-		position: absolute;
-		top: 0;
-     left: 0;
-		height: 100%;
-		width: 100%;
-		background-color: inherit;
-     border: 1px solid maroon;
-		-webkit-transform: skewX(-10deg);
-		-moz-transform: skewX(-10deg);
-		-ms-transform: skewX(-10deg);
-		transform: skewX(-10deg);
-  }
-} */
 
 
 #title-panel {
