@@ -2,7 +2,7 @@ class BarChart {
 
     constructor(divId) {
 
-      this.width = window.innerWidth * 0.2;
+      this.width = window.innerWidth * 0.22;
       this.height = window.innerHeight * 0.2;
       this.margin = 20;
       this.duration = 1000;
@@ -12,7 +12,8 @@ class BarChart {
         .select(this.divId)
         .append("svg")
         .attr("width", this.width)
-        .attr("height", this.height);
+        .attr("height", this.height)
+        .style("background-color", "lavender");
     }
 
     draw(filteredData) {
@@ -37,7 +38,7 @@ class BarChart {
       const yScale = d3.scaleBand()
           .domain(filteredData.map(d => d.property))
           .range([0, this.height - this.margin])
-          .paddingInner(.2)
+          .paddingInner(.4)
           .paddingOuter(.1)
   
       // COLOR SCALE ==================================

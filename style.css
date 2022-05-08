@@ -71,6 +71,13 @@ body {
   /* grid-template-rows: 25% 25% 50%; */
 }
 
+
+.vis-title {
+  text-align: center;
+  letter-spacing: 5px;
+}
+
+
 /* Buttons ============================ */
 
 #buttons {
