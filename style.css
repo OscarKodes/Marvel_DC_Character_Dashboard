@@ -1,40 +1,54 @@
+html {
+  background-color: black;
+}
+
 body {
-  /* ref: https://fonts.google.com/specimen/Source+Sans+Pro?selection.family=Source+Sans+Pro */
-  /* font-family: "Source Sans Pro", sans-serif; */
+  width: 60rem;
+  color: grey;
   font-family: 'Bangers', cursive;
-  padding: 1em 3em;
-  background-color: lavender;
+  margin: 0 auto;
 }
 
 /* GRID LAYOUT */
 
-#dashboard {
-  display: grid;
+#comic-page {
+  /* display: grid;
   grid-template-columns: 19% 81%;
+  grid-template-rows: 25% 25% 50%; */
+  background-color: lavender;
+  padding: 0.25rem;
+}
+
+#panel-1 {
+  display: grid;
+  grid-template-columns: 40% 60%;
   /* grid-template-rows: 25% 25% 50%; */
-  background-color: black;
-  padding: 1rem;
-  /* width: 80%;
-  height: 90%; */
+  border: 0.5rem solid grey;
 }
 
-#bar-container {
+#title-panel {
+  /* display: grid;
+  grid-template-columns: 19% 81%;
+  grid-template-rows: 25% 25% 50%; */
+}
+
+#starring-panel {
   display: grid;
-  grid-template-columns: 34% 33% 33%;
+  /* grid-template-columns: 19% 81%; */
+  grid-template-rows: 10% 60% 30%;
 }
 
-#pie-container {
+#buttons-panel {
   display: grid;
-  grid-template-columns: 30% 40% 30%;
+  grid-template-columns: 33% 33% 34%;
+  /* grid-template-rows: 25% 25% 50%; */
 }
 
-.white-frame {
-  background-color: white;
-  border: gray 2px solid;
-  border-radius: 1rem;
-  margin: 1rem;
+#dropdown-panel {
+  display: grid;
+  grid-template-columns: 33% 33% 34%;
+  /* grid-template-rows: 25% 25% 50%; */
 }
-
 
 /* Buttons ============================ */
 
@@ -104,16 +118,41 @@ input[type=radio] {
 
 /* BOXING RING  ===================== */
 
+#panel-2 {
+  /* display: grid;
+  grid-template-columns: 40% 60%;
+  grid-template-rows: 25% 25% 50%; */
+  border: 0.5rem solid grey;
+  margin-top: 0.25rem;
+}
+
+#panel-3 {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  border: 0.5rem solid grey;
+  margin-top: 0.25rem;
+}
+
+#panel-4 {
+  display: grid;
+  grid-template-columns: 25% 50% 25%;
+  border: 0.5rem solid grey;
+  margin-top: 0.25rem;
+}
+
+#panel-5 {
+  border: 0.5rem solid grey;
+  margin-top: 0.25rem;
+}
+
 #boxing-ring-container {
   display: grid;
   grid-template-rows: 60% 40%;
   background-image: url("pics/boxing-ring.png");
   height: 30rem;
   background-repeat: no-repeat, repeat;
-  /* background-size: 75%; */
   background-color: black;
   background-position: center;
-  /* transform: translateY(-60px); */
 }
 
 #figures-container {

@@ -10,150 +10,137 @@
 </head>
 
 <body>
-    <header>
-        <h1>Marvel and DC Physical Character Traits</h1>
-        <h2>Dashboard</h2>
-    </header>
 
-    <div id="dashboard">
+    <div id="comic-page">
 
-        <!-- buttons -->
-        <div id="buttons" class="white-frame">
+        <!-- ################################## -->
+        <!-- PANEL 1 ########################## -->
+        <div id="panel-1">
 
-            <div class="btn-container">
+            <div id="title-panel">
+                <h1>TITLE</h1>
 
-                <h3>Publishers</h3>
+                <p id="description-box">
+                    Description box
+                </p>
 
-                <div class="btn checked">
-                    <label for="both-publishers">All</label>
-                    <input type="radio" id="both-publishers" name="publisher" value="marvel dc" checked>
+                <div>
+                    <p>Data Source</p>
+                    <p>My Links</p>
+                </div>
+            </div>
+
+            <div id="starring-panel">
+
+                <h2>Starring Characters With:</h2>
+
+                <div id="buttons-panel">
+
+                    <!-- publisher btns -->
+                    <div class="btn-container">
+
+                        <h3>Publishers</h3>
+
+                        <div class="btn checked">
+                            <label for="both-publishers">All</label>
+                            <input type="radio" id="both-publishers" name="publisher" value="marvel dc" checked>
+
+                        </div>
+
+                        <div class="btn">
+                            <label for="marvel">Marvel</label>
+                            <input type="radio" id="marvel" name="publisher" value="marvel">
+
+                        </div>
+
+                        <div class="btn">
+                            <label for="dc">DC</label>
+                            <input type="radio" id="dc" name="publisher" value="dc">
+
+                        </div>
+
+                    </div>
+
+                    <!-- gender btns -->
+                    <div class="btn-container">
+
+                        <h3>Genders</h3>
+
+                        <div class="btn checked">
+                            <label for="all-genders">All</label>
+                            <input type="radio" id="all-genders" name="gender" value="male female other" checked>
+
+                        </div>
+
+                        <div class="btn">
+                            <label for="male">Male</label>
+                            <input type="radio" id="male" name="gender" value="male">
+
+                        </div>
+
+                        <div class="btn">
+                            <label for="female">Female</label>
+                            <input type="radio" id="female" name="gender" value="female">
+
+                        </div>
+
+                        <div class="btn">
+                            <label for="other">Other</label>
+                            <input type="radio" id="other" name="gender" value="other">
+
+                        </div>
+
+                    </div>
+
+                    <!-- alignment btns -->
+                    <div class="btn-container">
+
+                        <h3>Alignment</h3>
+
+                        <div class="btn checked">
+                            <label for="both-sides">All</label>
+                            <input type="radio" id="both-sides" name="alignment" value="good bad" checked>
+
+                        </div>
+
+                        <div class="btn">
+                            <label for="good">Hero</label>
+                            <input type="radio" id="good" name="alignment" value="good">
+
+                        </div>
+
+                        <div class="btn">
+                            <label for="bad">Villain</label>
+                            <input type="radio" id="bad" name="alignment" value="bad">
+
+                        </div>
+
+                    </div>
+                    <!-- alignment btns end -->
 
                 </div>
+                <!-- buttons panel end -->
 
-                <div class="btn">
-                    <label for="marvel">Marvel</label>
-                    <input type="radio" id="marvel" name="publisher" value="marvel">
-
-                </div>
-
-                <div class="btn">
-                    <label for="dc">DC</label>
-                    <input type="radio" id="dc" name="publisher" value="dc">
-
+                <!-- DROP DOWN MENUS -->
+                <div id="dropdown-panel">
+                    <select name="eye-select" id="eye-select"></select>
+                    <select name="hair-select" id="hair-select"></select>
+                    <select name="race-select" id="race-select"></select>
                 </div>
 
             </div>
-
-            <div class="btn-container">
-
-                <h3>Genders</h3>
-
-                <div class="btn checked">
-                    <label for="all-genders">All</label>
-                    <input type="radio" id="all-genders" name="gender" value="male female other" checked>
-
-                </div>
-
-                <div class="btn">
-                    <label for="male">Male</label>
-                    <input type="radio" id="male" name="gender" value="male">
-
-                </div>
-
-                <div class="btn">
-                    <label for="female">Female</label>
-                    <input type="radio" id="female" name="gender" value="female">
-
-                </div>
-
-                <div class="btn">
-                    <label for="other">Other</label>
-                    <input type="radio" id="other" name="gender" value="other">
-
-                </div>
-
-            </div>
-
-            <div class="btn-container">
-
-                <h3>Alignment</h3>
-
-                <div class="btn checked">
-                    <label for="both-sides">All</label>
-                    <input type="radio" id="both-sides" name="alignment" value="good bad" checked>
-
-                </div>
-
-                <div class="btn">
-                    <label for="good">Hero</label>
-                    <input type="radio" id="good" name="alignment" value="good">
-
-                </div>
-
-                <div class="btn">
-                    <label for="bad">Villain</label>
-                    <input type="radio" id="bad" name="alignment" value="bad">
-
-                </div>
-
-            </div>
-
-            <!-- DROP DOWN MENUS -->
-
-            <select name="eye-select" id="eye-select"></select>
-            <select name="hair-select" id="hair-select"></select>
-            <select name="race-select" id="race-select"></select>
+            <!-- starring panel end -->
 
         </div>
+        <!-- panel-1 end -->
 
-        <div id="vis-container">
 
-            <div id="bar-container">
-                <div id="eye-bar" class="white-frame">eye-bar</div>
-                <div id="hair-bar" class="white-frame">hair-bar</div>
-                <div id="race-bar" class="white-frame">race-bar</div>
-            </div>
+        <!-- ################################## -->
+        <!-- PANEL 2 ########################## -->
 
-            <div id="pie-container">
-                <div id="publisher-pie" class="white-frame">publisher-pie</div>
+        <div id="panel-2">
 
-                <div id="ratio-display">
-
-                    <div>
-                        For all the selected categories,
-                        <br />
-                        there is a ratio of about:
-                    </div>
-
-                    <div id="three-parts-container">
-                        <div class="ratio-unit">
-                            <div id="hero-num" class="display-num">
-                                number
-                            </div>
-                            <div>
-                                Heroes
-                            </div>
-                        </div>
-                        <div id="to-every-text">
-                            to
-                            <br />
-                            every
-                        </div>
-                        <div class="ratio-unit">
-                            <div id="villain-num" class="display-num">n
-                                number
-                            </div>
-                            <div>
-                                Villains
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div id="gender-pie" class="white-frame">gender-pie</div>
-            </div>
-
+            <!-- BOXING RING CONTAINER -->
             <div id="boxing-ring-container">
 
                 <div id="figures-container">
@@ -205,6 +192,78 @@
                 </div>
             </div>
 
+        </div>
+        <!-- panel-2 end -->
+
+
+        <!-- ################################## -->
+        <!-- PANEL 3 ########################## -->
+
+        <div id="panel-3">
+            <div id="eye-bar">eye-bar</div>
+            <div id="hair-bar">hair-bar</div>
+        </div>
+        <!-- panel-3 end -->
+
+
+        <!-- ################################## -->
+        <!-- PANEL 4 ########################## -->
+
+        <div id="panel-4">
+            <div id="gender-pie">gender-pie</div>
+            <div id="race-bar">race-bar</div>
+            <div id="publisher-pie">publisher-pie</div>
+        </div>
+        <!-- panel-4 end -->
+
+
+        <!-- ################################## -->
+        <!-- PANEL 5 ########################## -->
+
+        <div id="panel-5">
+            <p>Data Source</p>
+            <p>My Links</p>
+        </div>
+        <!-- panel-5 end -->
+
+
+
+        <div id="vis-container">
+
+            <!-- RATIO DISPLAY -->
+            <div id="ratio-display">
+
+                <div>
+                    For all the selected categories,
+                    <br />
+                    there is a ratio of about:
+                </div>
+
+                <div id="three-parts-container">
+                    <div class="ratio-unit">
+                        <div id="hero-num" class="display-num">
+                            number
+                        </div>
+                        <div>
+                            Heroes
+                        </div>
+                    </div>
+                    <div id="to-every-text">
+                        to
+                        <br />
+                        every
+                    </div>
+                    <div class="ratio-unit">
+                        <div id="villain-num" class="display-num">n
+                            number
+                        </div>
+                        <div>
+                            Villains
+                        </div>
+                    </div>
+                </div>
+
+            </div>
 
 
 
