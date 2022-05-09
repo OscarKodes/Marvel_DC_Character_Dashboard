@@ -84,10 +84,10 @@ class Buttons {
         eyeMenuData.push({
           key: color, 
           label: color === "NA" ?
-                  "No Eye Color" :
+                  "Unknown" :
                   color === "mixed" ?
-                    "Multi-Colored Eyes":
-                    `${color[0].toUpperCase() + color.slice(1)} Eyes`
+                    "Multi-Colored":
+                    `${color[0].toUpperCase() + color.slice(1)}`
         })
       });
 
@@ -121,7 +121,7 @@ class Buttons {
         "burnette", "blond", "ginger", 
         "white", "green", "silver", 
         "purple", "blue", "pink"
-      ].sort().concat(['mixed', "no hair"]);
+      ].sort().concat(['mixed', "no hair", "NA"]);
 
       // Create array for holding vis options 
       const hairMenuData = [{key: "all", label: "All Hair Colors"}]
@@ -131,10 +131,10 @@ class Buttons {
         hairMenuData.push({
           key: color, 
           label: color === "mixed" ?
-                  "Multi-Colored Hair":
-                    color === "no hair" ?
-                      "No Hair" :
-                      `${color[0].toUpperCase() + color.slice(1)} Hair`
+                  "Multi-Colored": color === "no hair" ?
+                  "No Hair" : color === "NA" ?
+                    "Unknown" :
+                      `${color[0].toUpperCase() + color.slice(1)}`
         })
       });
 
@@ -185,7 +185,7 @@ class Buttons {
           key: race, 
           label: race === "amazon/atlantean" ?
                   "Amazons/Atlanteans": race === "NA" ?
-                      "Unknown race" : race === "diety" ?
+                      "Unknown" : race === "diety" ?
                         "Dieties" : race === "mixed-race" ?
                           "Mixed-race" : `${race[0].toUpperCase() + race.slice(1)}s`
         })

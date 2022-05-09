@@ -132,7 +132,8 @@ class BarChart {
         // .attr("dy", "-.5em")
         .style("font-size", 13)
         .attr("opacity", .85)
-        .style("font-family", "'Fira Code', monospace")
+        // .style("font-family", "'Fira Code', monospace")
+        .style("font-family", "'Comfortaa', cursive")
         .attr("transform", d => `translate(${xScale(d.count) + 80}, 9)`)
         .text(d => `${Math.round(d.count * 100 / totalCount) === 0 ? 
                       "<1" : Math.round(d.count * 100 / totalCount)}%`);
@@ -154,7 +155,8 @@ class BarChart {
       bars
         .select("text.label")
         .style("font-size", 13)
-        .style("font-family", "'Fira Code', monospace")
+        // .style("font-family", "'Fira Code', monospace")
+        .style("font-family", "'Comfortaa', cursive")
         .attr("opacity", .85)
         .attr("transform-origin", "right")
         .attr("transform", d => `translate(${
@@ -162,14 +164,16 @@ class BarChart {
           7 : d.property === "mixed" ?
           5 : d.property === "amazon/atlantean" ?
           8 : d.property === "mixed-race" ?
-          5 : d.property.length) * 8}, 8)`)
+          5 : d.property === "NA" ?
+          7 : d.property.length) * 8}, 8)`)
         .style("text-align", "right")
         .text(d => `${
           d.property === "no hair" ? 
           "No Hair" : d.property === "mixed" ?
           "Multi" : d.property === "amazon/atlantean" ?
           "Amz/Atln" : d.property === "mixed-race" ?
-          "Mixed" :
+          "Mixed" : d.property === "NA" ?
+          "Unknown" :
           d.property[0].toUpperCase() + 
           d.property.slice(1)}`);
     }

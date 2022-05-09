@@ -5,9 +5,15 @@
     <!-- this is the title that goes in the browser tab name  -->
     <title>Interactive Data Visualization Tutorial</title>
 
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
     <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Bangers&family=Fira+Code:wght@700&family=Permanent+Marker&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Bangers&family=Comfortaa&family=Fira+Code:wght@300&display=swap"
         rel="stylesheet">
 
     <link rel="stylesheet" href="./style.css">
@@ -22,28 +28,55 @@
         <div id="panel-row-1" class="comic-panel-borders">
 
             <div id="title-panel">
-                <h1>TITLE</h1>
+                <h1 class="title">
+                    Heroes vs Villains
+                </h1>
 
                 <p id="description-box">
-                    Description box
+                    Explore traits of Marvel & DC comic characters by
+                    selecting these filters.
+                    <span>➜</span>
                 </p>
 
-                <div>
-                    <p>Data Source</p>
-                    <p>My Links</p>
+                <p id="data-source">
+                    This dataset was taken from
+                    <a href="https://www.kaggle.com/datasets/claudiodavi/superhero-set" target="_blank"
+                        rel="noopener noreferrer">Kaggle</a>
+                    and scraped from SuperHeroDb
+                    on June 2017. There was some missing data that I
+                    filled in with data from the
+                    <a href="https://marvel.fandom.com/wiki/Marvel_Database" target="_blank"
+                        rel="noopener noreferrer">Marvel Wiki</a>
+                    and
+                    <a href="https://dc.fandom.com/wiki/DC_Comics_Database" target="_blank" rel="noopener noreferrer">DC
+                        Wiki</a>.
+                    This does not represent all currently known characters.
+                </p>
+
+                <div id="signature-container">
+                    <a class="signature name" href="https://www.oscarko.net" target="_blank" rel="noopener noreferrer">
+                        By Oscar Ko
+                    </a>
+                    <a class="signature" href="https://www.linkedin.com/in/oscar-ko/" target="_blank"
+                        rel="noopener noreferrer">
+                        <i class="fab fa-linkedin fa-lg"></i>
+                    </a>
+                    <a class="signature" href="https://github.com/OscarKodes" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github fa-lg"></i>
+                    </a>
                 </div>
             </div>
 
             <div id="starring-panel">
 
-                <h2>Starring Characters With:</h2>
+                <h2 class="title">Starring Characters With:</h2>
 
                 <div id="buttons-panel">
 
                     <!-- publisher btns -->
                     <div class="btn-container">
 
-                        <h3 class="vis-title">Publishers</h3>
+                        <h3 class="button-titles">Publishers:</h3>
 
                         <div class="btn checked">
                             <label for="both-publishers">All</label>
@@ -68,7 +101,7 @@
                     <!-- gender btns -->
                     <div class="btn-container">
 
-                        <h3 class="vis-title">Genders</h3>
+                        <h3 class="button-titles">Genders:</h3>
 
                         <div class="btn checked">
                             <label for="all-genders">All</label>
@@ -99,7 +132,7 @@
                     <!-- alignment btns -->
                     <div class="btn-container">
 
-                        <h3 class="vis-title">Alignment</h3>
+                        <h3 class="button-titles">Alignment:</h3>
 
                         <div class="btn checked">
                             <label for="both-sides">All</label>
@@ -127,9 +160,18 @@
 
                 <!-- DROP DOWN MENUS -->
                 <div id="dropdown-panel">
-                    <select name="eye-select" id="eye-select"></select>
-                    <select name="hair-select" id="hair-select"></select>
-                    <select name="race-select" id="race-select"></select>
+                    <div>
+                        <h3 class="dropdown-titles">Eye Colors:</h3>
+                        <select name="eye-select" id="eye-select"></select>
+                    </div>
+                    <div>
+                        <h3 class="dropdown-titles">Hair Colors:</h3>
+                        <select name="hair-select" id="hair-select"></select>
+                    </div>
+                    <div>
+                        <h3 class="dropdown-titles">Races:</h3>
+                        <select name="race-select" id="race-select"></select>
+                    </div>
                 </div>
 
             </div>

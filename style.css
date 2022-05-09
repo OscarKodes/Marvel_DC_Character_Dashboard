@@ -10,7 +10,7 @@ body {
 }
 
 
-/* GRID LAYOUT */
+/* COMIC BOOK PANEL ROWS */
 
 #comic-page {
   background-color: white;
@@ -45,18 +45,95 @@ body {
 }
 
 
-
+/* STARTING FROM THE TOP DOWN */
 
 #title-panel {
-  /* display: grid;
-  grid-template-columns: 19% 81%;
-  grid-template-rows: 25% 25% 50%; */
+  text-align: center;
 }
 
 #starring-panel {
   display: grid;
-  /* grid-template-columns: 19% 81%; */
-  grid-template-rows: 10% 60% 30%;
+  grid-template-rows: 10% 53% 37%;
+  text-align: center;
+}
+
+.title {
+  text-align: center;
+}
+
+h1.title {
+  font-size: xx-large;
+  letter-spacing: .3rem;
+  text-decoration: underline;
+}
+
+#description-box {
+  border: 1px solid black;
+  font-family: 'Comfortaa', cursive;
+  font-size: 1rem;
+  text-align: left;
+  margin: 0 0.5rem;
+  padding: 0.5rem;
+  background-color: rgba(255, 255, 0, 0.418);
+  line-height: 1.35rem;
+}
+
+#description-box span {
+  margin-left: 90%;
+}
+
+#data-source {
+  text-align: justify;
+  margin: 0 0.5rem;
+  padding: 0.7rem;
+  font-family: 'Comfortaa', cursive;
+  font-size: .8rem;
+  opacity: 0.9;
+  line-height: 1.1rem;
+}
+
+#data-source a {
+  text-decoration: none;
+  color: black;
+  opacity: .65;
+  font-weight: bold;
+}
+
+#signature-container {
+  margin-bottom: .8rem;
+}
+
+.signature {
+  color: black;
+  opacity: .45;
+  text-decoration: none;
+  margin: 0 .1rem;
+  font-family: 'Comfortaa', cursive;
+  font-size: 0.85rem;
+}
+
+.signature.name {
+  font-weight: bold;
+  opacity: .65;
+  font-size: 0.8rem;
+}
+
+a:hover,
+#data-source a:hover,
+.signature.name:hover {
+  opacity: 1;
+}
+
+#starring-panel h2.title {
+  font-size: x-large;
+  letter-spacing: .3rem;
+}
+
+h3.button-titles {
+  font-family: 'Comfortaa', cursive;
+  /* text-transform: uppercase; */
+  font-size: medium;
+  margin-top: 2rem;
 }
 
 #buttons-panel {
@@ -69,13 +146,12 @@ body {
   display: grid;
   grid-template-columns: 33% 33% 34%;
   /* grid-template-rows: 25% 25% 50%; */
+  border-top: 1px solid grey;
+  margin-top: 1rem;
 }
 
 
-.vis-title {
-  text-align: center;
-  letter-spacing: 5px;
-}
+
 
 
 /* Buttons ============================ */
@@ -83,32 +159,53 @@ body {
 #buttons {
   text-align: right;
   padding: 1rem;
-}
 
-.btn-container {
-  border-bottom: 1px solid grey;
-  margin-bottom: 1rem;
 }
 
 .btn {
   margin: 8px;
+  font-family: 'Comfortaa', cursive;
+  opacity: 0.8;
+  border: 1px solid rgba(128, 128, 128, 0.411);
 }
 
 .btn:hover {
-  box-shadow: 0px 0px 2px 2px rgba(128, 128, 128, 0.37);
+  /* box-shadow: 0px 0px 1px 1px rgba(128, 128, 128, 0.37); */
+  background-color: rgba(255, 255, 0, 0.336);
 }
 
 .btn:active {
-  border: none;
-  background-color: rgba(81, 255, 0, 0.377);
+  border-color: rgba(255, 255, 255, 0);
+  background-color: rgba(255, 255, 0, 0.418);
+  box-shadow: none;
 }
 
 .btn.checked {
-  background-color: rgba(120, 255, 102, 0.562);
+  border: 1px solid rgb(0, 0, 0);
+  background-color: rgba(255, 255, 0, 0.418);
+  opacity: 1;
 }
 
 input[type=radio] {
   display: none;
+}
+
+
+/* DROPDOWN LISTS */
+
+#dropdown-panel select {
+  height: 30%;
+  text-align: center;
+  width: 75%;
+  margin: 0 auto;
+  font-family: 'Comfortaa', cursive;
+}
+
+.dropdown-titles {
+  font-family: 'Comfortaa', cursive;
+  /* text-transform: uppercase; */
+  font-size: medium;
+  /* opacity: .6; */
 }
 
 
@@ -198,4 +295,12 @@ input[type=radio] {
 #villain-figures .bot-figures img {
   margin-left: 4rem;
   transform: translateY(-50px);
+}
+
+
+
+
+.vis-title {
+  text-align: center;
+  letter-spacing: 5px;
 }
