@@ -2,8 +2,10 @@ class BarChart {
 
     constructor(divId) {
 
-      this.width = window.innerWidth * 0.22;
-      this.height = window.innerHeight * 0.2;
+      // this.width = window.innerWidth * 0.22;
+      this.width = 424;
+      // this.height = window.innerHeight * 0.2;
+      this.height = 200;
       this.margin = 20;
       this.duration = 1000;
       this.divId = divId;
@@ -13,7 +15,7 @@ class BarChart {
         .append("svg")
         .attr("width", this.width)
         .attr("height", this.height)
-        // .style("background-color", "lavender")
+        .style("background-color", "lavender")
         .style("transform", "translate(2px, 0px)");
     }
 
@@ -36,7 +38,7 @@ class BarChart {
       // SCALES =======================================
       const xScale = d3.scaleLinear()
         .domain([0, d3.max(filteredData, d => d.count)]).nice()
-        .range([0, this.width - this.margin * 5]).nice()
+        .range([0, this.width - this.margin * 5.5]).nice()
       // const xScale = d3.scaleLog()
       //   .domain([1, 100]).nice()
       //   .range([0, 250]).nice()
@@ -44,7 +46,7 @@ class BarChart {
       const yScale = d3.scaleBand()
           .domain(filteredData.map(d => d.property))
           .range([0, this.height - this.margin])
-          .paddingInner(.5)
+          .paddingInner(.3)
           .paddingOuter(0)
   
       // COLOR SCALE ==================================
@@ -154,19 +156,13 @@ class BarChart {
 
       bars
         .select("text.label")
-        .style("font-size", 13)
-        // .style("font-family", "'Fira Code', monospace")
+        .style("font-size", 12.5)
+        // .style("letter-spacing", "3px")
         .style("font-family", "'Comfortaa', cursive")
-        .attr("opacity", .85)
-        .attr("transform-origin", "right")
-        .attr("transform", d => `translate(${
-          70 - (d.property === "no hair" ?
-          7 : d.property === "mixed" ?
-          5 : d.property === "amazon/atlantean" ?
-          8 : d.property === "mixed-race" ?
-          5 : d.property === "NA" ?
-          7 : d.property.length) * 8}, 8)`)
-        .style("text-align", "right")
+        .style("font-weight", 600)
+        .attr("opacity", .9)
+        .attr("transform", d => `translate(${70}, 11)`)
+        .style("text-anchor", "end")
         .text(d => `${
           d.property === "no hair" ? 
           "No Hair" : d.property === "mixed" ?
