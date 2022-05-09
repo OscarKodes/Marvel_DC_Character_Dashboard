@@ -140,6 +140,7 @@ h3.button-titles {
   display: grid;
   grid-template-columns: 33% 33% 34%;
   /* grid-template-rows: 25% 25% 50%; */
+  margin-bottom: 1rem;
 }
 
 #dropdown-panel {
@@ -163,10 +164,13 @@ h3.button-titles {
 }
 
 .btn {
-  margin: 8px;
+  margin: 4px auto;
   font-family: 'Comfortaa', cursive;
+  font-size: 0.9rem;
+  padding: .4rem 0 .4rem 0;
   opacity: 0.8;
   border: 1px solid rgba(128, 128, 128, 0.411);
+  width: 75%;
 }
 
 .btn:hover {
@@ -199,6 +203,8 @@ input[type=radio] {
   width: 75%;
   margin: 0 auto;
   font-family: 'Comfortaa', cursive;
+  background-color: rgba(255, 255, 0, 0.418);
+  border-color: black;
 }
 
 .dropdown-titles {
