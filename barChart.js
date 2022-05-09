@@ -134,7 +134,8 @@ class BarChart {
         .attr("opacity", .85)
         .style("font-family", "'Fira Code', monospace")
         .attr("transform", d => `translate(${xScale(d.count) + 80}, 9)`)
-        .text(d => `${Math.round(d.count * 100 / totalCount)}%`);
+        .text(d => `${Math.round(d.count * 100 / totalCount) === 0 ? 
+                      "<1" : Math.round(d.count * 100 / totalCount)}%`);
 
       // bars
       //   .select("text")
