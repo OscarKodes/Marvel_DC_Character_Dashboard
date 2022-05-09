@@ -86,7 +86,7 @@ class Buttons {
           label: color === "NA" ?
                   "No Eye Color" :
                   color === "mixed" ?
-                    "Heterochromatic Eyes":
+                    "Multi-Colored Eyes":
                     `${color[0].toUpperCase() + color.slice(1)} Eyes`
         })
       });
