@@ -15,7 +15,7 @@ class BarChart {
         .append("svg")
         .attr("width", this.width)
         .attr("height", this.height)
-        .style("background-color", "lavender")
+        // .style("background-color", "lavender")
         .style("transform", "translate(2px, 0px)");
     }
 
