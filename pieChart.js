@@ -96,7 +96,7 @@ class PieChart {
             .duration(this.duration)
             .attr('d', arc)
             .attr('fill', (_, i) => colorScale(i))
-            .attr('opacity', 0.5)
+            .attr('opacity', 0.6)
             .attr("stroke", "black")
             .attrTween("d", arcTween);
 
