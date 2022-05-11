@@ -109,7 +109,46 @@ class Buttons {
         });
       });
 
+      // ################################################
+      // TOP DROPDOWN MENUS =============================
 
+      // Grab elements for listeners and values
+      const publisherMenu = d3.select("#publisher-select");
+
+      const publisherChoices = [
+        "marvel", "dc"
+      ].sort();
+
+      // Create array for holding vis options 
+      const publisherMenuData = [{key: "all", label: "Both Publishers"}]
+
+      // Fill publisherMenuData with the possible data vis options
+      publisherChoices.map(choice => {
+        publisherMenuData.push({
+          key: choice, 
+          label: choice === "dc" ?
+              "DC" : 
+              `${choice[0].toUpperCase() + choice.slice(1)}`
+        })
+      });
+
+      // Create options in UI menu for user to click
+      publisherMenu
+        .selectAll("option")
+        .data(publisherMenuData)
+        .join("option")
+        .attr("value", d => d.key)
+        .text(d => d.label);
+
+      // Listen for user changes on menu and call draw
+      publisherMenu.on("change", event => {
+
+        const selectedPublisherChoice = event.target.value;
+
+        setGlobalState({ 
+          activePublisher: selectedPublisherChoice
+        });
+      });
 
       // ################################################
       // HAIR DROPDOWN MENUS =============================

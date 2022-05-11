@@ -23,14 +23,15 @@ villainMedian;
 let state = {
   data: [],
   activeButtons: [
-    "marvel",
-    "dc",
+    // "marvel",
+    // "dc",
     "male",
     "female",
     "other",
     "good",
     "bad"
   ],
+  activePublisher: "all",
   activeEyes: "all",
   activeHair: "all",
   activeRace: "all"
@@ -67,9 +68,12 @@ function draw() {
   
   let filteredData = state.data.filter(d => {
     
-    let publisherCheck = state.activeButtons.includes(d.publisher);
+    // let publisherCheck = state.activeButtons.includes(d.publisher);
     let genderCheck = state.activeButtons.includes(d.gender);
     let alignmentCheck = state.activeButtons.includes(d.alignment);
+
+    let publisherCheck = state.activePublisher === "all" ?
+                    true : d.publisher === state.activePublisher;
 
     let eyeCheck = state.activeEyes === "all" ?
                     true : d.eye === state.activeEyes;
