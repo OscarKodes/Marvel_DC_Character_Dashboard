@@ -36,6 +36,17 @@ body {
   grid-template-columns: 25% 50% 25%;
 }
 
+/* #panel-row-1,
+#panel-row-2,
+#eye-bar,
+#hair-bar,
+#gender-pie,
+#race-bar,
+#publisher-pie,
+#panel-row-5 {
+  background-color: #F0EAD6;
+} */
+
 .comic-panel-borders {
   border: 1px solid rgb(104, 104, 104);
   border-radius: 3px;
@@ -45,15 +56,15 @@ body {
 }
 
 
-/* STARTING FROM THE TOP DOWN */
+/* STARTING FROM THE TOP DOWN =================*/
+
+
+/* ######################################################### */
+/* PANEL ROW 1 ############################################# */
+
+/* TITLE PANEL ------------------- */
 
 #title-panel {
-  text-align: center;
-}
-
-#starring-panel {
-  display: grid;
-  grid-template-rows: 10% 53% 37%;
   text-align: center;
 }
 
@@ -124,80 +135,35 @@ a:hover,
   opacity: 1;
 }
 
+
+/* STARRING PANEL ------------------- */
+
+#starring-panel {
+  display: grid;
+  grid-template-rows: 20% 30% 30%;
+  text-align: center;
+}
+
 #starring-panel h2.title {
   font-size: x-large;
   letter-spacing: .3rem;
+  margin-top: 2rem;
+  opacity: 0.85;
 }
 
 h3.button-titles {
   font-family: 'Comfortaa', cursive;
-  /* text-transform: uppercase; */
   font-size: medium;
   margin-top: 2rem;
 }
 
-#buttons-panel {
+.dropdown-panel {
   display: grid;
   grid-template-columns: 33% 33% 34%;
-  /* grid-template-rows: 25% 25% 50%; */
-  margin-bottom: 1rem;
-}
-
-#dropdown-panel {
-  display: grid;
-  grid-template-columns: 33% 33% 34%;
-  /* grid-template-rows: 25% 25% 50%; */
-  border-top: 1px solid grey;
   margin-top: 1rem;
 }
 
-
-
-
-
-/* Buttons ============================ */
-
-#buttons {
-  text-align: right;
-  padding: 1rem;
-
-}
-
-.btn {
-  margin: 4px auto;
-  font-family: 'Comfortaa', cursive;
-  font-size: 0.9rem;
-  padding: .4rem 0 .4rem 0;
-  opacity: 0.8;
-  border: 1px solid rgba(128, 128, 128, 0.411);
-  width: 75%;
-}
-
-.btn:hover {
-  /* box-shadow: 0px 0px 1px 1px rgba(128, 128, 128, 0.37); */
-  background-color: rgba(255, 255, 0, 0.336);
-}
-
-.btn:active {
-  border-color: rgba(255, 255, 255, 0);
-  background-color: rgba(255, 255, 0, 0.418);
-  box-shadow: none;
-}
-
-.btn.checked {
-  border: 1px solid rgb(0, 0, 0);
-  background-color: rgba(255, 255, 0, 0.418);
-  opacity: 1;
-}
-
-input[type=radio] {
-  display: none;
-}
-
-
-/* DROPDOWN LISTS */
-
-#dropdown-panel select {
+.dropdown-panel select {
   height: 30%;
   text-align: center;
   width: 75%;
@@ -209,15 +175,17 @@ input[type=radio] {
 
 .dropdown-titles {
   font-family: 'Comfortaa', cursive;
-  /* text-transform: uppercase; */
   font-size: medium;
-  /* opacity: .6; */
 }
 
 
 
 
-/* BOXING RING  ===================== */
+/* ######################################################### */
+/* PANEL ROW 2 ############################################# */
+
+/* FIGURE PANEL ------------------- */
+
 
 #boxing-ring-container {
   display: grid;

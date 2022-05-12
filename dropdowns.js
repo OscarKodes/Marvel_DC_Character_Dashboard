@@ -1,68 +1,7 @@
-class Buttons {
+class Dropdowns {
 
-    constructor(state, setGlobalState) {
+    constructor(setGlobalState) {
       
-      
-      // FOR TOGGLE SWITCHES =============================
-
-      // select the toggle switches
-      let allButtons = document.querySelectorAll("input");
-
-
-      for (let i = 0; i < allButtons.length; i++) {
-
-        allButtons[i].addEventListener("click", function(event) {
-
-          let activeButtonsArr = [];
-
-          for (let j = 0; j < allButtons.length; j++) {
-            
-            let btn = allButtons[j];
-            let values = btn.value.split(" ");
-
-            if (btn.checked) {
-              activeButtonsArr = activeButtonsArr.concat(values);
-            }; 
-          }
-
-          // if a btn is clicked we change the .checked classes
-          
-
-          // theParentDiv.classList.add("checked");
-
-          const theContainerDiv = event.target.parentNode.parentNode;
-          const theClickedDiv = event.target.parentNode;
-          const allBtnDivs = theContainerDiv.querySelectorAll(".btn");
-
-          for (let i = 0; i < allBtnDivs.length; i++) {
-            let thisDiv = allBtnDivs[i];
-
-            thisDiv.classList.remove("checked");
-          }
-
-          theClickedDiv.classList.add("checked");
-
-
-          setGlobalState({ 
-            activeButtons: activeButtonsArr
-          });
-        });
-      };
-
-
-      // if click on the btn's div, it auto clicks the btn
-      const selectDiv = document.querySelectorAll(".btn");
-      
-      for (let i = 0; i < selectDiv.length; i++) {
-
-        const thisDiv = selectDiv[i];
-
-        thisDiv.addEventListener("click", function(event){
-
-          event.target.querySelector("input").click();
-        })
-      }
-
 
       // ################################################
       // EYE DROPDOWN MENUS =============================
@@ -77,7 +16,7 @@ class Buttons {
       ].sort().concat(['mixed', "NA"]);
 
       // Create array for holding vis options 
-      const eyeMenuData = [{key: "all", label: "All Eye Colors"}]
+      const eyeMenuData = [{key: "all", label: "All"}]
 
       // Fill eyeMenuData with the possible data vis options
       eyeColors.map(color => {
@@ -110,7 +49,7 @@ class Buttons {
       });
 
       // ################################################
-      // TOP DROPDOWN MENUS =============================
+      // PUBLISHER DROPDOWN MENUS =============================
 
       // Grab elements for listeners and values
       const publisherMenu = d3.select("#publisher-select");
@@ -120,7 +59,7 @@ class Buttons {
       ].sort();
 
       // Create array for holding vis options 
-      const publisherMenuData = [{key: "all", label: "Both Publishers"}]
+      const publisherMenuData = [{key: "all", label: "All"}]
 
       // Fill publisherMenuData with the possible data vis options
       publisherChoices.map(choice => {
@@ -150,6 +89,96 @@ class Buttons {
         });
       });
 
+
+
+
+      // ################################################
+      // ALIGHTMENT DROPDOWN MENUS =============================
+
+      // Grab elements for listeners and values
+      const alignmentMenu = d3.select("#alignment-select");
+
+      const alignmentChoices = [
+        "good", "bad"
+      ].sort();
+
+      // Create array for holding vis options 
+      const alignmentMenuData = [{key: "all", label: "All"}]
+
+      // Fill alignmentMenuData with the possible data vis options
+      alignmentChoices.map(choice => {
+        alignmentMenuData.push({
+          key: choice, 
+          label: choice === "good" ?
+              "Hero" : choice === "bad" ?
+              "Villain" : 
+              `${choice[0].toUpperCase() + choice.slice(1)}`
+        })
+      });
+
+      // Create options in UI menu for user to click
+      alignmentMenu
+        .selectAll("option")
+        .data(alignmentMenuData)
+        .join("option")
+        .attr("value", d => d.key)
+        .text(d => d.label);
+
+      // Listen for user changes on menu and call draw
+      alignmentMenu.on("change", event => {
+
+        const selectedAlignmentChoice = event.target.value;
+
+        setGlobalState({ 
+          activeAlignment: selectedAlignmentChoice
+        });
+      });
+
+
+
+      // ################################################
+      // GENDERS DROPDOWN MENUS =============================
+
+      // Grab elements for listeners and values
+      const genderMenu = d3.select("#gender-select");
+
+      const genderChoices = [
+        "male", "female", "other"
+      ].sort();
+
+      // Create array for holding vis options 
+      const genderMenuData = [{key: "all", label: "All"}]
+
+      // Fill genderMenuData with the possible data vis options
+      genderChoices.map(choice => {
+        genderMenuData.push({
+          key: choice, 
+          label: `${choice[0].toUpperCase() + choice.slice(1)}`
+        })
+      });
+
+      // Create options in UI menu for user to click
+      genderMenu
+        .selectAll("option")
+        .data(genderMenuData)
+        .join("option")
+        .attr("value", d => d.key)
+        .text(d => d.label);
+
+      // Listen for user changes on menu and call draw
+      genderMenu.on("change", event => {
+
+        const selectedGenderChoice = event.target.value;
+
+        setGlobalState({ 
+          activeGender: selectedGenderChoice
+        });
+      });
+
+
+
+
+
       // ################################################
       // HAIR DROPDOWN MENUS =============================
 
@@ -163,7 +192,7 @@ class Buttons {
       ].sort().concat(['mixed', "no hair", "NA"]);
 
       // Create array for holding vis options 
-      const hairMenuData = [{key: "all", label: "All Hair Colors"}]
+      const hairMenuData = [{key: "all", label: "All"}]
 
       // Fill hairMenuData with the possible data vis options
       hairColors.map(color => {
@@ -216,7 +245,7 @@ class Buttons {
     ].sort().concat(["mixed-race", "NA"]);
 
       // Create array for holding vis options 
-      const raceMenuData = [{key: "all", label: "All Races"}]
+      const raceMenuData = [{key: "all", label: "All"}]
 
       // Fill raceMenuData with the possible data vis options
       raceTypes.map(race => {
@@ -251,5 +280,5 @@ class Buttons {
   
   }
   
-  export { Buttons };
+  export { Dropdowns };
   

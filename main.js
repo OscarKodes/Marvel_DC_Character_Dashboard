@@ -1,5 +1,5 @@
 // // import our components
-import { Buttons } from "./buttons.js";
+import { Dropdowns } from "./dropdowns.js";
 import { BarChart } from "./barChart.js";
 import { PieChart } from "./pieChart.js";
 import { RatioDisplay } from "./ratio-display.js";
@@ -8,7 +8,7 @@ import { MedianDisplay } from "./medianDisplay.js";
 
 
 let eyeBar, 
-buttons, 
+dropdowns, 
 hairBar, 
 raceBar, 
 publisherPie, 
@@ -22,16 +22,9 @@ villainMedian;
 // global state
 let state = {
   data: [],
-  activeButtons: [
-    // "marvel",
-    // "dc",
-    "male",
-    "female",
-    "other",
-    "good",
-    "bad"
-  ],
   activePublisher: "all",
+  activeGender: "all",
+  activeAlignment: "all",
   activeEyes: "all",
   activeHair: "all",
   activeRace: "all"
@@ -46,7 +39,7 @@ d3.csv("./data/COMBINED_data_(Red_to_Ginger).csv", d3.autoType).then(data => {
 });
 
 function init() {
-  buttons = new Buttons(state, setGlobalState);
+  dropdowns = new Dropdowns(setGlobalState);
   eyeBar = new BarChart("#eye-bar");
   hairBar = new BarChart("#hair-bar");
   raceBar = new BarChart("#race-bar");
@@ -68,12 +61,14 @@ function draw() {
   
   let filteredData = state.data.filter(d => {
     
-    // let publisherCheck = state.activeButtons.includes(d.publisher);
-    let genderCheck = state.activeButtons.includes(d.gender);
-    let alignmentCheck = state.activeButtons.includes(d.alignment);
-
     let publisherCheck = state.activePublisher === "all" ?
                     true : d.publisher === state.activePublisher;
+
+    let genderCheck = state.activeGender === "all" ?
+                    true : d.gender === state.activeGender;
+
+    let alignmentCheck = state.activeAlignment === "all" ?
+                    true : d.alignment === state.activeAlignment;
 
     let eyeCheck = state.activeEyes === "all" ?
                     true : d.eye === state.activeEyes;

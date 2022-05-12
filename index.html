@@ -41,7 +41,8 @@
                     This dataset was taken from
                     <a href="https://www.kaggle.com/datasets/claudiodavi/superhero-set" target="_blank"
                         rel="noopener noreferrer">Kaggle</a>
-                    and scraped from SuperHeroDb
+                    and scraped from
+                    <a href="https://www.superherodb.com/" target="_blank" rel="noopener noreferrer">SuperHeroDb</a>
                     on June 2017. There was some missing data that I
                     filled in with data from the
                     <a href="https://marvel.fandom.com/wiki/Marvel_Database" target="_blank"
@@ -54,7 +55,7 @@
 
                 <div id="signature-container">
                     <a class="signature name" href="https://www.oscarko.net" target="_blank" rel="noopener noreferrer">
-                        By Oscar Ko
+                        Oscar Ko
                     </a>
                     <a class="signature" href="https://www.linkedin.com/in/oscar-ko/" target="_blank"
                         rel="noopener noreferrer">
@@ -70,99 +71,24 @@
 
                 <h2 class="title">Starring Characters With:</h2>
 
-                <div id="buttons-panel">
-
-                    <!-- publisher btns -->
+                <!-- TOP ROW - DROP DOWN MENUS -->
+                <div class="dropdown-panel">
                     <div>
                         <h3 class="dropdown-titles">Publishers:</h3>
                         <select name="publisher-select" id="publisher-select"></select>
                     </div>
-                    <!-- <div class="btn-container">
-
-                        <h3 class="button-titles">Publishers:</h3>
-
-                        <div class="btn checked">
-                            <label for="both-publishers">All</label>
-                            <input type="radio" id="both-publishers" name="publisher" value="marvel dc" checked>
-
-                        </div>
-
-                        <div class="btn">
-                            <label for="marvel">Marvel</label>
-                            <input type="radio" id="marvel" name="publisher" value="marvel">
-
-                        </div>
-
-                        <div class="btn">
-                            <label for="dc">DC</label>
-                            <input type="radio" id="dc" name="publisher" value="dc">
-
-                        </div>
-
-                    </div> -->
-
-                    <!-- gender btns -->
-                    <div class="btn-container">
-
-                        <h3 class="button-titles">Genders:</h3>
-
-                        <div class="btn checked">
-                            <label for="all-genders">All</label>
-                            <input type="radio" id="all-genders" name="gender" value="male female other" checked>
-
-                        </div>
-
-                        <div class="btn">
-                            <label for="male">Male</label>
-                            <input type="radio" id="male" name="gender" value="male">
-
-                        </div>
-
-                        <div class="btn">
-                            <label for="female">Female</label>
-                            <input type="radio" id="female" name="gender" value="female">
-
-                        </div>
-
-                        <div class="btn">
-                            <label for="other">Other</label>
-                            <input type="radio" id="other" name="gender" value="other">
-
-                        </div>
-
+                    <div>
+                        <h3 class="dropdown-titles">Genders:</h3>
+                        <select name="gender-select" id="gender-select"></select>
                     </div>
-
-                    <!-- alignment btns -->
-                    <div class="btn-container">
-
-                        <h3 class="button-titles">Alignment:</h3>
-
-                        <div class="btn checked">
-                            <label for="both-sides">All</label>
-                            <input type="radio" id="both-sides" name="alignment" value="good bad" checked>
-
-                        </div>
-
-                        <div class="btn">
-                            <label for="good">Hero</label>
-                            <input type="radio" id="good" name="alignment" value="good">
-
-                        </div>
-
-                        <div class="btn">
-                            <label for="bad">Villain</label>
-                            <input type="radio" id="bad" name="alignment" value="bad">
-
-                        </div>
-
+                    <div>
+                        <h3 class="dropdown-titles">Alignment:</h3>
+                        <select name="alignment-select" id="alignment-select"></select>
                     </div>
-                    <!-- alignment btns end -->
-
                 </div>
-                <!-- buttons panel end -->
 
-                <!-- DROP DOWN MENUS -->
-                <div id="dropdown-panel">
+                <!-- BOT ROW - DROP DOWN MENUS -->
+                <div class="dropdown-panel bottom-row">
                     <div>
                         <h3 class="dropdown-titles">Eye Colors:</h3>
                         <select name="eye-select" id="eye-select"></select>
