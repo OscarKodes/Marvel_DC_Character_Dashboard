@@ -5,45 +5,19 @@ class RatioDisplay {
       this.duration = 1000
     }
   
-    draw(ratioArr) {
+    draw(totalNums, ratioArr) {
 
-      const selectHeroNum = document.querySelector("#hero-num");
-      const selectVillainNum = document.querySelector("#villain-num");
+      const selectHeroTotal = document.querySelector("#hero-total");
+      const selectVillainTotal = document.querySelector("#villain-total");
 
-      selectHeroNum.innerHTML = ratioArr[0];
-      selectVillainNum.innerHTML = ratioArr[1];
-  
-      // const metric = this.container
-      //   .selectAll("div.metric")
-      //   .data(metricData, d => d.State)
-      //   .join(
-      //     enter =>
-      //       enter
-      //         .append("div")
-      //         .attr("class", "metric")
-      //         .call(enter => enter.append("div").attr("class", "title"))
-      //         .call(enter => enter.append("div").attr("class", "number")),
-      //       update => update,
-      //       exit => exit.remove()
-      //   ).on("click",  (event, d)=> {
-      //     setGlobalState({ selectedMetric: d.metric });
-      //   })
-  
-  
-      // metric.select("div.title")
-      //   .text(d => d.metric)
-  
-      // const format = d3.format(",." + d3.precisionFixed(1) + "f")
-  
-      // metric.select("div.number")
-      //   // reference: https://observablehq.com/@d3/transition-texttween
-      //   .transition()
-      //   .duration(this.duration)
-      //   .style("color", d => d.metric === state.selectedMetric ? "purple" : "#ccc")
-      //   .textTween(function(d) {
-      //     const i = d3.interpolate(0, d.value);
-      //     return function(t) { return format(i(t)); };
-      //   })
+      selectHeroTotal.innerHTML = totalNums[0];
+      selectVillainTotal.innerHTML = totalNums[1];
+
+      const selectHeroRatio = document.querySelector("#hero-ratio");
+      const selectVillainRatio = document.querySelector("#villain-ratio");
+
+      selectHeroRatio.innerHTML = ratioArr[0];
+      selectVillainRatio.innerHTML = ratioArr[1];
     }
   }
   

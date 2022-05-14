@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "Wild Words";
+  src: url("fonts/CC Wild Words Roman.ttf");
+}
+
 html {
   background-color: black;
 }
@@ -8,7 +13,6 @@ body {
   font-family: 'Bangers', cursive;
   margin: 0 auto;
 }
-
 
 /* COMIC BOOK PANEL ROWS */
 
@@ -187,25 +191,51 @@ h3.button-titles {
 /* FIGURE PANEL ------------------- */
 
 
-#boxing-ring-container {
+#platform {
   display: grid;
-  grid-template-rows: 60% 40%;
-  background-image: url("pics/boxing-ring.png");
-  height: 30rem;
-  background-repeat: no-repeat, repeat;
-  background-color: black;
-  background-position: center;
+  grid-template-rows: 33% 34% 33%;
+  /* background-image: url("pics/platform.png"); */
+  /* height: 30rem; */
+  /* background-repeat: no-repeat, repeat; */
+  background-color: lavender;
+  /* background-position: center; */
 }
+
+#total-ratio-numbers {
+  display: inline-block;
+  margin: 0 auto;
+  font-family: 'Comfortaa', cursive;
+  /* font-family: "Wild Words";
+  font-size: 1.3rem; */
+  background-color: rgba(255, 255, 0, 0.418);
+  border: 1px solid black;
+  height: 55%;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  text-align: center;
+  font-weight: 800;
+}
+
+.num-labels {
+  text-align: center;
+  font-weight: bold;
+}
+
+.num-containers {
+  margin: .5rem auto;
+}
+
+#ratio-container {
+  /* font-size: large; */
+  font-weight: 800;
+}
+
 
 #figures-container {
   display: grid;
   grid-template-columns: 50% 50%;
 }
 
-#median-displays-container {
-  display: grid;
-  grid-template-columns: 50% 50%;
-}
 
 .invisible {
   /* display: none; */
@@ -214,42 +244,6 @@ h3.button-titles {
 
 #hero-figures {
   text-align: right;
-}
-
-#hero-medians {
-  display: grid;
-  grid-template-columns: 50% 50%;
-  margin-left: auto;
-}
-
-#villain-medians {
-  display: grid;
-  grid-template-columns: 50% 50%;
-}
-
-.median-display {
-  background-color: rgb(43, 43, 43);
-  margin: 1rem;
-  padding: .5rem;
-  border-radius: 1rem;
-  color: white;
-  width: 60%;
-  height: 40%;
-  font-size: 1.35rem;
-}
-
-.median-text p {
-  margin: .5rem 0;
-
-}
-
-#median-displays-container span {
-  color: yellow;
-}
-
-#median-displays-container h3 {
-  font-size: 3rem;
-  margin: .5rem 0 0 2rem;
 }
 
 #figures-container img {

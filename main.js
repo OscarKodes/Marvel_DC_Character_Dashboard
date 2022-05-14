@@ -39,15 +39,20 @@ d3.csv("./data/COMBINED_data_(Red_to_Ginger).csv", d3.autoType).then(data => {
 });
 
 function init() {
+  
   dropdowns = new Dropdowns(setGlobalState);
+
   eyeBar = new BarChart("#eye-bar");
   hairBar = new BarChart("#hair-bar");
   raceBar = new BarChart("#race-bar");
+
   publisherPie = new PieChart("#publisher-pie");
   genderPie = new PieChart("#gender-pie");
+
   ratioDisplay = new RatioDisplay("#ratio-display");
   heroFigures = new StickFigures("hero");
   villainFigures = new StickFigures("villain");
+
   heroMedian = new MedianDisplay("#hero-medians");
   villainMedian = new MedianDisplay("#villain-medians");
   
@@ -89,6 +94,7 @@ function draw() {
 
   // Create hero to villain ratio by dividing by the smaller num
   let ratioArr = [countObj.good, countObj.bad];
+  let totalNums = ratioArr;
 
   if (ratioArr[0] + ratioArr[1] > 0) {
     let heroBig = ratioArr[0] >= ratioArr[1];
@@ -137,7 +143,7 @@ function draw() {
   genderPie.draw(filteredData);
 
   // Draw Ratio Display and BoxingRing
-  ratioDisplay.draw(ratioArr);
+  ratioDisplay.draw(totalNums, ratioArr);
   heroFigures.draw(ratioArr);
   villainFigures.draw(ratioArr);
 
