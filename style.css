@@ -195,7 +195,7 @@ h3.button-titles {
   grid-template-rows: 25% 45% 30%; */
   background-image: url("pics/platform.png");
   background-repeat: no-repeat, repeat;
-  background-position: bottom;
+  background-position: bottom 1.2rem right 50%;
 }
 
 /* #platform {
@@ -274,33 +274,57 @@ h3.button-titles {
   /* background-color: lavender; */
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 49% 51%;
   /* height: 6rem; */
-  border: 1px red solid;
-  width: 36rem;
-  transform: translateY(-20px);
-  color: rgba(255, 255, 0, 0.418);
-  letter-spacing: .15rem;
+  /* border: 1px red solid; */
+  background-color: rgba(116, 255, 202, 0.452);
+  width: 40rem;
+  height: 4.5rem;
+  padding: 0 1rem;
+  transform: translateY(-30px);
+  color: rgb(0, 0, 0);
+  font-family: 'Press Start 2P', cursive;
+  clip-path: polygon(2.5% 0, 98.2% 0, 100% 100%, 0% 100%);
+  line-height: 1.2rem;
+}
+
+#villain-medians {
+  margin-left: 1rem;
 }
 
 #medians-container h2 {
-  text-align: right;
+  letter-spacing: .15rem;
+  font-size: .9rem;
+  margin: .95rem 0 0 .5rem;
+  opacity: .65;
 }
 
 .median-values-container {
-  text-align: center;
+  font-size: .9rem;
+  margin: 1rem 0 0 1rem;
+  argo display: inline-block;
+  -webkit-transform: scale(.8, 1);
+  /* Safari and Chrome */
+  -moz-transform: scale(.8, 1);
+  /* Firefox */
+  -ms-transform: scale(.8, 1);
+  /* IE 9 */
+  -o-transform: scale(.8, 1);
+  /* Opera */
+  transform: scale(.8, 1);
+  /* W3C */
 }
 
 #hero-medians {
   /* background-color: aquamarine; */
   display: grid;
-  grid-template-columns: 35% 65%;
+  grid-template-columns: 35% 75%;
 }
 
 #villain-medians {
   /* background-color: blueviolet; */
   display: grid;
-  grid-template-columns: 35% 65%;
+  grid-template-columns: 35% 75%;
 }
 
 

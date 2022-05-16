@@ -24,8 +24,8 @@ class MedianDisplay {
             height = 0;
         }
 
-        selectSpans[0].innerHTML = `Median Weight: ${weight} kg`;
-        selectSpans[1].innerHTML = `Median Height: ${height} cm`;
+        selectSpans[0].innerHTML = `Weight: ${weight} kg`;
+        selectSpans[1].innerHTML = `Height: ${height} cm`;
     
       }
     }
