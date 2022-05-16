@@ -40,6 +40,11 @@ body {
   grid-template-columns: 25% 50% 25%;
 }
 
+#panel-row-5 {
+  text-align: right;
+  padding: 0.1rem 1rem 0.1rem 0;
+}
+
 /* #panel-row-1,
 #panel-row-2,
 #eye-bar,
@@ -330,5 +335,16 @@ h3.button-titles {
 
 .vis-title {
   text-align: center;
-  letter-spacing: 5px;
+  /* letter-spacing: 5px; */
+  /* background-color: rgba(255, 255, 0, 0.418); */
+  background-color: rgba(255, 255, 0, 0.25);
+  font-family: 'Comfortaa', cursive;
+  font-weight: 700;
+  /* font-size: 1.25rem; */
+  /* display: inline-block; */
+  width: 10rem;
+  margin: .5rem auto;
+  padding: .2rem;
+  color: rgba(0, 0, 0, 0.8);
+  border: 1px solid black;
 }
