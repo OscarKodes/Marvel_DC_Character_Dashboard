@@ -190,30 +190,34 @@ h3.button-titles {
 
 /* FIGURE PANEL ------------------- */
 
-
-#platform {
-  display: grid;
-  grid-template-rows: 33% 34% 33%;
-  /* background-image: url("pics/platform.png"); */
-  /* height: 30rem; */
-  /* background-repeat: no-repeat, repeat; */
-  background-color: lavender;
-  /* background-position: center; */
+#figure-grid-container {
+  /* display: grid;
+  grid-template-rows: 25% 45% 30%; */
+  background-image: url("pics/platform.png");
+  background-repeat: no-repeat, repeat;
+  background-position: bottom;
 }
 
+/* #platform {
+  display: grid;
+  
+  background-size: 700px;
+  height: 30rem;
+  
+  background-color: lavender;
+  
+} */
+
 #total-ratio-numbers {
-  display: inline-block;
-  margin: 0 auto;
+  /* display: inline-block; */
+  margin: .4rem 30%;
   font-family: 'Comfortaa', cursive;
-  /* font-family: "Wild Words";
-  font-size: 1.3rem; */
   background-color: rgba(255, 255, 0, 0.418);
   border: 1px solid black;
-  height: 55%;
-  margin-top: 1rem;
-  padding: 0.5rem;
+  height: 3.2rem;
+  /* padding: .2rem auto 1rem; */
   text-align: center;
-  font-weight: 800;
+  line-height: .9rem;
 }
 
 .num-labels {
@@ -223,11 +227,12 @@ h3.button-titles {
 
 .num-containers {
   margin: .5rem auto;
+  font-weight: 400;
 }
 
 #ratio-container {
   /* font-size: large; */
-  font-weight: 800;
+  font-weight: 700;
 }
 
 
@@ -256,16 +261,47 @@ h3.button-titles {
 }
 
 #hero-figures .bot-figures img {
-  margin-right: 4rem;
-  transform: translateY(-50px);
+  margin-right: 3.8rem;
+  transform: translateY(-75px);
 }
 
 #villain-figures .bot-figures img {
-  margin-left: 4rem;
-  transform: translateY(-50px);
+  margin-left: 3.8rem;
+  transform: translateY(-75px);
 }
 
+#medians-container {
+  /* background-color: lavender; */
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  /* height: 6rem; */
+  border: 1px red solid;
+  width: 36rem;
+  transform: translateY(-20px);
+  color: rgba(255, 255, 0, 0.418);
+  letter-spacing: .15rem;
+}
 
+#medians-container h2 {
+  text-align: right;
+}
+
+.median-values-container {
+  text-align: center;
+}
+
+#hero-medians {
+  /* background-color: aquamarine; */
+  display: grid;
+  grid-template-columns: 35% 65%;
+}
+
+#villain-medians {
+  /* background-color: blueviolet; */
+  display: grid;
+  grid-template-columns: 35% 65%;
+}
 
 
 .vis-title {
