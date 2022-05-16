@@ -15,7 +15,7 @@ class PieChart {
           .attr("height", this.height)
           // .style("background-color", "lavender")
           .append('g')
-          .attr('transform', 'translate(' + this.width / 2.12 + ',' + this.height / 3 + ')');
+          .attr('transform', 'translate(' + this.width / 2.12 + ',' + this.height / 2.9 + ')');
       
         
         // LEGENDS ==========

@@ -87,7 +87,8 @@ class BarChart {
       const colorScale = d3.scaleOrdinal(propertyArr, 
         propertyArr.map(d => barKey == "race" ? "gold" : colorRange[d]));
 
-      
+
+
       // DRAW BARS =====================================
       const bars = this.svg
         .selectAll(`g.${barKey}-bar`)
@@ -133,26 +134,13 @@ class BarChart {
         .select("text.num")
         // .attr("dy", "-.5em")
         .style("font-size", 13)
-        .attr("opacity", .85)
         // .style("font-family", "'Fira Code', monospace")
         .style("font-family", "'Comfortaa', cursive")
         .attr("transform", d => `translate(${xScale(d.count) + 80}, 9)`)
         .text(d => `${Math.round(d.count * 100 / totalCount) === 0 ? 
-                      "<1" : Math.round(d.count * 100 / totalCount)}%`);
-
-      // bars
-      //   .select("text")
-      //   // .attr("dy", "-.5em")
-      //   .style("font-size", 13)
-      //   .style("font-family", "'Prompt', sans-serif")
-      //   .attr("transform", d => `translate(${xScale(d.count) + 5}, 7)`)
-      //   .text(d => `${
-      //     d.property === "no hair" ? 
-      //     "No Hair" : d.property === "mixed" ?
-      //     "Multi-Color" : d.property === "amazon/atlantean" ?
-      //     "Amazon/Atlantean" :
-      //     d.property[0].toUpperCase() + 
-      //     d.property.slice(1)} ${Math.round(d.count * 100 / totalCount)}%`);
+                      "<1" : Math.round(d.count * 100 / totalCount)}%`)
+        // .on("moveover", tipMouseover)
+        // .on("mouseout", tipMouseout);
 
       bars
         .select("text.label")
@@ -160,7 +148,6 @@ class BarChart {
         // .style("letter-spacing", "3px")
         .style("font-family", "'Comfortaa', cursive")
         .style("font-weight", 600)
-        .attr("opacity", .9)
         .attr("transform", d => `translate(${70}, 11)`)
         .style("text-anchor", "end")
         .text(d => `${
@@ -172,6 +159,60 @@ class BarChart {
           "Unknown" :
           d.property[0].toUpperCase() + 
           d.property.slice(1)}`);
+
+      bars
+          .style("opacity", .85);
+
+
+
+      // Tooltip Handling =============================================
+      const tooltip = d3.select("#tooltip");
+
+      // Tooltip Mouseover 
+      const tipMouseover = function(event, d) {
+
+        tooltip
+          .style("opacity", 1); // Make tooltip div visible
+
+        const tooltipHTML = `
+          <div id="tooltip-box">
+              ${d.count}
+              ${d.property} 
+              ${barKey}
+          </div>
+          <div id="tooltip-arrow-frame">
+          </div>
+          <div id="tooltip-arrow">
+          </div>
+        `;
+
+        // const titleLabel = event.target.parentNode.parentNode.parentNode.querySelector("h3");
+        // const xCoord = titleLabel.getBoundingClientRect().left;
+        // const yCoord = titleLabel.getBoundingClientRect().top;
+
+        tooltip.html(tooltipHTML)
+          .style("left", event.pageX + "px")  
+          .style("top", event.pageY - 102 + "px")
+
+        d3.select(this)
+          .style("opacity", 1)
+          .style("stroke", "black");
+      };
+
+      // Tooltip Mouseout
+      const tipMouseout = function(event, d) {
+
+        tooltip
+          .style("opacity", 0); // Make tooltip div invisible
+
+        d3.select(this)
+          .style("opacity", 0.85)
+          .style("stroke", "none");
+      };
+
+      bars
+        .on("mouseover", tipMouseover)
+        .on("mouseout", tipMouseout);
     }
   }
   

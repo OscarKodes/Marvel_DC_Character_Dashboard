@@ -348,3 +348,51 @@ h3.button-titles {
   color: rgba(0, 0, 0, 0.8);
   border: 1px solid black;
 }
+
+
+/* TOOLTIP RELATED STYLES ====================== */
+
+/* div#tooltip {
+  display: absolute;
+  
+  z-index: 1000;
+} */
+div#tooltip {
+  position: absolute;
+  height: 6rem;
+  /* width: auto;
+  height: auto; */
+  pointer-events: none;
+  opacity: 0;
+  z-index: 1000;
+}
+
+#tooltip-box {
+  background-color: white;
+  width: 8rem;
+  height: 3.4rem;
+  padding: .2rem;
+  border-radius: 1.5rem;
+  border: 2px rgb(41, 41, 41) solid;
+  text-align: center;
+}
+
+#tooltip-arrow {
+  background-color: white;
+  width: 2rem;
+  height: 2rem;
+  clip-path: polygon(54% 0, 33% 100%, 100% 0);
+  position: relative;
+  bottom: 39px;
+  left: 7px;
+}
+
+#tooltip-arrow-frame {
+  background-color: black;
+  width: 2.5rem;
+  height: 2.3rem;
+  clip-path: polygon(54% 0, 33% 100%, 100% 0);
+  position: relative;
+  bottom: 1px;
+  left: 1px;
+}
