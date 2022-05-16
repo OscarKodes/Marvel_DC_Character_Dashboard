@@ -2,8 +2,8 @@ class PieChart {
 
     constructor(divId) {
 
-        this.width = window.innerWidth * 0.108;
-        this.height = window.innerHeight * 0.2;
+        this.width = 880 * 0.25;
+        this.height = this.width;
         this.margin = 20;
         this.duration = 1000;
         this.divId = divId;
@@ -15,7 +15,53 @@ class PieChart {
           .attr("height", this.height)
           // .style("background-color", "lavender")
           .append('g')
-          .attr('transform', 'translate(' + this.width / 2 + ',' + this.height / 2 + ')');
+          .attr('transform', 'translate(' + this.width / 2.12 + ',' + this.height / 3 + ')');
+      
+        
+        // LEGENDS ==========
+
+        this.legendColor = {
+          "#publisher-pie": ["blue", 
+                              "red"],
+          "#gender-pie": ["purple", 
+                          "green", 
+                          "grey"]
+        }[this.divId];
+
+        this.legendText = {
+          "#publisher-pie": ["DC", 
+                              "Marvel"],
+          "#gender-pie": ["Female", 
+                          "Male", 
+                          "Other"]
+        }[this.divId];
+
+        this.svg
+          .selectAll("circle.legend-color")
+          .data(this.legendColor)
+          .join("circle")
+          .attr("class", "legend-color")
+          .attr("cx", -40)
+          .attr("cy", (_, i) => 97 + i * 18)
+          .attr("r", 6)
+          .style("fill", d => d)
+          .attr("opacity", 0.6)
+          .attr("stroke", "black");
+
+        this.svg
+          .selectAll("text.legend-text")
+          .data(this.legendText)
+          .join("text")
+          .attr("class", "legend-text")
+          .attr("x", -25)
+          .attr("y", (_, i) => 98 + i * 18)
+          .text(d => d)
+          .style("font-size", "13px")
+          .style("font-weight", "700")
+          .style("font-family", "'Comfortaa', cursive")
+          .attr("alignment-baseline","middle");
+
+        
       }
   
       draw(filteredData) {
