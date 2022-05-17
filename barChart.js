@@ -168,17 +168,90 @@ class BarChart {
       // Tooltip Handling =============================================
       const tooltip = d3.select("#tooltip");
 
+      // Tooltip extra descriptions ---------------
+
+      const extraTexts = {
+        "eye-yellow": ["gold"],
+        "eye-purple": ["violet", "indigo"],
+        "eye-silver": ["grey"],
+        "eye-brown": ["amber", "hazel"],
+        "hair-burnette": ["black", "brown"],
+        "hair-blond": ["gold", "yellow"],
+        "hair-ginger": ["red", "orange", "auburn"],
+        "hair-purple": ["indigo", "magenta"],
+        "hair-silver": ["grey"],
+        "race-diety" : ["New God", 
+                        "Cosmic Entity",
+                        "Demi-God",
+                        "God",
+                        "Eternal",
+                        "Planet"],
+        "race-alien": ["Martian", 
+                      "Kryptonian", 
+                      "Tamaranean", 
+                      "and many other races from outer space."],
+        "race-demon": ["Neyaphem"],
+        "race-human": [
+          "Metahuman",
+          "Mutant", 
+          "Inhuman",
+          "Human-clone"
+        ],
+        "race-animal": ["Gorilla"],
+        "race-amazon/atlantean": ["Amazonian", "Atlantean"],
+        "race-robot": ["Cyborg", "Android"]
+      }
+
       // Tooltip Mouseover 
       const tipMouseover = function(event, d) {
 
         tooltip
           .style("opacity", 1); // Make tooltip div visible
 
+
+        let tooltipText;
+
+        if (d.property === "NA") {
+          tooltipText = `
+          There are ${d.count} characters that 
+          have unknown ${barKey} features.
+          `
+        }
+        
+        else if (barKey !== "race") {
+
+          tooltipText = `
+          There are ${d.count} characters
+          with ${d.property}${d.property === "no hair" ?
+                                    "" : " " + barKey + 
+                                              (barKey === "eye" ? 
+                                                "s" : "")}.
+          `
+        }
+        
+        else {
+          tooltipText = `
+                      There are ${d.count} ${d.property} characters.
+                      `
+        }
+        
+
+        let specificKey = barKey + "-" + d.property;
+        let yesExtraText = Object.keys(extraTexts).includes(specificKey);
+        let extraText = yesExtraText ?
+                          `
+                          <span id="tooltip-extra-space"></span>
+                          '${d.property[0].toUpperCase() + d.property.slice(1)}' 
+                            also includes:
+                          <br>
+                           `  + extraTexts[specificKey].join(", ") + "." : 
+                          "";
+                        
         const tooltipHTML = `
           <div id="tooltip-box">
-              ${d.count}
-              ${d.property} 
-              ${barKey}
+              
+              ${tooltipText}
+              ${extraText}
           </div>
           <div id="tooltip-arrow-frame">
           </div>
@@ -186,13 +259,16 @@ class BarChart {
           </div>
         `;
 
-        // const titleLabel = event.target.parentNode.parentNode.parentNode.querySelector("h3");
-        // const xCoord = titleLabel.getBoundingClientRect().left;
-        // const yCoord = titleLabel.getBoundingClientRect().top;
+        const xCoord = yesExtraText ? 
+                        event.pageX - 15 : 
+                        event.pageX - 15;
+        const yCoord = yesExtraText ? 
+                        event.pageY - 133 : 
+                        event.pageY - 100;
 
         tooltip.html(tooltipHTML)
-          .style("left", event.pageX + "px")  
-          .style("top", event.pageY - 102 + "px")
+          .style("left", xCoord + "px")  
+          .style("top", yCoord + "px")
 
         d3.select(this)
           .style("opacity", 1)

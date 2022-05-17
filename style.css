@@ -369,12 +369,20 @@ div#tooltip {
 
 #tooltip-box {
   background-color: white;
-  width: 8rem;
-  height: 3.4rem;
-  padding: .2rem;
+  width: 12rem;
+  height: auto;
   border-radius: 1.5rem;
   border: 2px rgb(41, 41, 41) solid;
   text-align: center;
+  font-family: 'Comfortaa', cursive;
+  font-size: 12px;
+  line-height: 1.08rem;
+  padding: .35rem .5rem;
+}
+
+#tooltip-extra-space {
+  display: block;
+  height: .4rem;
 }
 
 #tooltip-arrow {
