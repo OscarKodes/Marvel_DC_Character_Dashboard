@@ -5,6 +5,7 @@
 
 html {
   background-color: black;
+  cursor: default;
 }
 
 body {
@@ -376,6 +377,7 @@ div#tooltip {
   text-align: center;
   font-family: 'Comfortaa', cursive;
   font-size: 12px;
+  font-weight: 700;
   line-height: 1.08rem;
   padding: .35rem .5rem;
 }

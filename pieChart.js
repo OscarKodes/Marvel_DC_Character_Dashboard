@@ -69,6 +69,8 @@ class PieChart {
 
         const barKey = this.divId.split("-")[0].slice(1);
 
+        const totalCount = filteredData.length;
+
         // Get the Property-Count Pairs for each category
         const groupedData = d3.groups(filteredData, d => d[barKey]).map(d => {
   
@@ -172,12 +174,15 @@ class PieChart {
 
         tooltip
           .style("opacity", 1); // Make tooltip div visible
-
+        console.log(d.data);
         const tooltipHTML = `
           <div id="tooltip-box">
-              ${d.count}
-              ${d.property} 
-              ${barKey}
+              There are ${d.data.count}
+              <br>
+              ${d.data.property.toUpperCase()}
+              ${d.data.property === "other" ? "gender" : ""}
+              characters.
+              
           </div>
           <div id="tooltip-arrow-frame">
           </div>

@@ -214,7 +214,7 @@ class BarChart {
         if (d.property === "NA") {
           tooltipText = `
           There are ${d.count} characters that 
-          have unknown ${barKey} features.
+          have UNKNOWN ${barKey} features.
           `
         }
         
@@ -222,7 +222,7 @@ class BarChart {
 
           tooltipText = `
           There are ${d.count} characters
-          with ${d.property}${d.property === "no hair" ?
+          with ${d.property.toUpperCase()}${d.property === "no hair" ?
                                     "" : " " + barKey + 
                                               (barKey === "eye" ? 
                                                 "s" : "")}.
@@ -231,7 +231,7 @@ class BarChart {
         
         else {
           tooltipText = `
-                      There are ${d.count} ${d.property} characters.
+                      There are ${d.count} ${d.property.toUpperCase()} characters.
                       `
         }
         
