@@ -45,6 +45,63 @@ class StickFigures {
     
     // DRAW BARS =====================================
 
+    // Tooltip Handling =============================================
+    const tooltip = d3.select("#tooltip");
+    const figures = d3.selectAll(`#${this.alignment}-figures img`);
+
+    // Tooltip Mouseover 
+    const tipMouseover = function(event, d) {
+
+      console.log(event.target.parentNode.classList.value);
+
+      tooltip
+        .style("opacity", 1); // Make tooltip div visible
+
+      const tooltipHTML = `
+        <div id="tooltip-box">
+            test
+        </div>
+        <div id="tooltip-arrow-frame">
+        </div>
+        <div id="tooltip-arrow">
+        </div>
+      `;
+
+      // const titleLabel = event.target.parentNode.parentNode.parentNode.querySelector("h3");
+      // const xCoord = titleLabel.getBoundingClientRect().left;
+      // const yCoord = titleLabel.getBoundingClientRect().top;
+      const isTopFigure = event.target.parentNode.classList.value === "top-figures"
+      const xCoord = isTopFigure ?
+                      event.target.offsetLeft + 13 :
+                      event.target.offsetLeft + 11;
+      const yCoord = isTopFigure ?
+                      event.target.offsetTop - 100 :
+                      event.target.offsetTop - 172 ;
+
+      tooltip.html(tooltipHTML)
+        .style("left", xCoord + "px")  
+        .style("top", yCoord + "px")
+
+      // d3.select(this)
+      //   .style("opacity", 1)
+      //   .attr("stroke", "black");
+    };
+
+    // Tooltip Mouseout
+    const tipMouseout = function(event, d) {
+
+      tooltip
+        .style("opacity", 0); // Make tooltip div invisible
+
+      // d3.select(this)
+      //   .style("opacity", 0.85)
+      //   .style("stroke", "none");
+    };
+
+    figures
+      .on("mouseover", tipMouseover)
+      .on("mouseout", tipMouseout);
+
   }
 
 }

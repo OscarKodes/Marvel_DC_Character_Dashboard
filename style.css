@@ -246,10 +246,10 @@ h3.button-titles {
   grid-template-columns: 50% 50%;
 }
 
-
 .invisible {
   /* display: none; */
   opacity: 0;
+  pointer-events: none;
 }
 
 #hero-figures {

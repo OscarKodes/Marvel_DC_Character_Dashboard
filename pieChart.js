@@ -60,9 +60,9 @@ class PieChart {
           .style("font-weight", "700")
           .style("font-family", "'Comfortaa', cursive")
           .attr("alignment-baseline","middle");
-
-        
       }
+
+
   
       draw(filteredData) {
   
@@ -142,9 +142,11 @@ class PieChart {
             .duration(this.duration)
             .attr('d', arc)
             .attr('fill', (_, i) => colorScale(i))
-            .attr('opacity', 0.6)
             .attr("stroke", "black")
             .attrTween("d", arcTween);
+
+        wedge
+            .attr("opacity", .6)
 
         function arcTween(a) {
 
@@ -161,6 +163,51 @@ class PieChart {
         //     .attr('transform', d => 'translate(' + arc.centroid(d) + ')')
         //     .text((_, i) => stableData[i].count)
         //     .attr('fill', 'white')
+
+              // Tooltip Handling =============================================
+      const tooltip = d3.select("#tooltip");
+
+      // Tooltip Mouseover 
+      const tipMouseover = function(event, d) {
+
+        tooltip
+          .style("opacity", 1); // Make tooltip div visible
+
+        const tooltipHTML = `
+          <div id="tooltip-box">
+              ${d.count}
+              ${d.property} 
+              ${barKey}
+          </div>
+          <div id="tooltip-arrow-frame">
+          </div>
+          <div id="tooltip-arrow">
+          </div>
+        `;
+
+        tooltip.html(tooltipHTML)
+          .style("left", event.pageX + "px")  
+          .style("top", event.pageY - 102 + "px")
+
+        d3.select(this)
+          .style("opacity", 1)
+          .style("stroke", "black");
+        };
+
+        // Tooltip Mouseout
+        const tipMouseout = function(event, d) {
+
+          tooltip
+            .style("opacity", 0); // Make tooltip div invisible
+
+          d3.select(this)
+            .style("opacity", .6)
+            .style("stroke", "none");
+        };
+
+        wedge
+          .on("mouseover", tipMouseover)
+          .on("mouseout", tipMouseout);
 
       }
     }
