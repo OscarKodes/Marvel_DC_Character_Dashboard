@@ -241,7 +241,7 @@ class BarChart {
         let extraText = yesExtraText ?
                           `
                           <span id="tooltip-extra-space"></span>
-                          '${d.property[0].toUpperCase() + d.property.slice(1)}' 
+                          ${d.property.toUpperCase()} 
                             also includes:
                           <br>
                            `  + extraTexts[specificKey].join(", ") + "." : 
@@ -258,7 +258,7 @@ class BarChart {
           <div id="tooltip-arrow">
           </div>
         `;
-        console.log(extraText.length);
+
         const xCoord = yesExtraText ? 
                         event.pageX - 15 : 
                         event.pageX - 15;
