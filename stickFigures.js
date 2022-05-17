@@ -87,9 +87,8 @@ class StickFigures {
         .style("left", xCoord + "px")  
         .style("top", yCoord + "px")
 
-      // d3.select(this)
-      //   .style("opacity", 1)
-      //   .attr("stroke", "black");
+      d3.select(this)
+        .style("filter", "contrast(250%)");
     };
 
     // Tooltip Mouseout
@@ -98,9 +97,8 @@ class StickFigures {
       tooltip
         .style("opacity", 0); // Make tooltip div invisible
 
-      // d3.select(this)
-      //   .style("opacity", 0.85)
-      //   .style("stroke", "none");
+        d3.select(this)
+        .style("filter", "brightness(115%)");
     };
 
     figures

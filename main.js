@@ -96,7 +96,9 @@ function draw() {
   let ratioArr = [countObj.good, countObj.bad];
   let totalNums = ratioArr;
 
-  if (ratioArr[0] + ratioArr[1] > 0) {
+  let isSmallRatio = ratioArr[0] <= 5 && ratioArr[1] <= 5;
+
+  if (!isSmallRatio && ratioArr[0] + ratioArr[1] > 0) {
     let heroBig = ratioArr[0] >= ratioArr[1];
     let biggerNum = heroBig ? ratioArr[0] : ratioArr[1];
     let smallerNum = heroBig ? ratioArr[1] : ratioArr[0];
@@ -106,9 +108,9 @@ function draw() {
     ratioArr = heroBig ? [5, ratioFloat] : [ratioFloat, 5];
   }
 
-  if (ratioArr[0] + ratioArr[1] === 10) {
-    ratioArr = [1, 1];
-  }
+  // if (ratioArr[0] + ratioArr[1] === 10) {
+  //   ratioArr = [1, 1];
+  // }
 
   // GET MEDIANS OF HERO AND VILLAIN WEIGHT AND HEIGHT ======
 

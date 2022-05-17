@@ -172,17 +172,17 @@ class PieChart {
             .attr('transform', d => 'translate(' + arc.centroid(d) + ')')
             .text((_, i) => Math.round(stableData[i].count * 100 / totalCount) + "%")
             .attr('fill', 'white')
-            .style("font-size", "13px")
+            .style("font-size", "15px")
             .style("font-weight", "700")
             .style("font-family", "'Comfortaa', cursive")
-            .style("pointer-events", "none")
+            .style("pointer-events", "none");
 
 
         wedge
         // .style("filter", "saturate(85%)")
         // .style("filter", "brightness(85%) contrast(100%)")
         // .style("filter", "brightness(85%)")
-        .style("filter", "contrast(88%)");
+        .style("filter", "contrast(95%)");
 
 
               // Tooltip Handling =============================================
@@ -216,9 +216,9 @@ class PieChart {
         d3.select(this)
           // .style("filter", "saturate(150%)")
           // .style("filter", "brightness(100%)")
-          .style("filter", "contrast(140%)");
+          .style("filter", "contrast(200%)");
 
-        d3.select(this).select("text").style("color", "purple");
+        // d3.select(this).select("text").style("color", "purple");
         };
 
         // Tooltip Mouseout
@@ -230,7 +230,7 @@ class PieChart {
           d3.select(this)
             // .style("filter", "saturate(85%)")
             // .style("filter", "brightness(85%)");
-            .style("filter", "contrast(88%)");
+            .style("filter", "contrast(95%)");
         };
 
         wedge

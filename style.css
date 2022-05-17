@@ -22,6 +22,15 @@ body {
   padding: 0.25rem;
 }
 
+#panel-row-1,
+#panel-row-2,
+#panel-row-3,
+#panel-row-4 {
+  background-image: url(textures/fabric.png);
+  /* Background pattern from Toptal Subtle Patterns */
+  overflow: hidden
+}
+
 #panel-row-1 {
   display: grid;
   grid-template-columns: 40% 60%;
@@ -260,6 +269,7 @@ h3.button-titles {
 #figures-container img {
   /* transform: translateY(60px); */
   width: 12%;
+  filter: brightness(115%)
 }
 
 .top-figures img {
@@ -283,7 +293,7 @@ h3.button-titles {
   grid-template-columns: 49% 51%;
   /* height: 6rem; */
   /* border: 1px red solid; */
-  background-color: rgba(116, 255, 202, 0.452);
+  background-color: rgba(138, 218, 187, 0.637);
   width: 40rem;
   height: 4.5rem;
   padding: 0 1rem;
