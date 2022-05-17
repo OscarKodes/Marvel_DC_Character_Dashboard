@@ -17,16 +17,25 @@ class PieChart {
           .append('g')
           .attr('transform', 'translate(' + this.width / 2.12 + ',' + this.height / 2.9 + ')');
       
+        this.colorOpacity = 0.7
+
+        this.colorRange = {
+            "marvel": `rgba(193, 0, 0, ${this.colorOpacity})`,
+            "dc": `rgba(0, 74, 202, ${this.colorOpacity})`,
+            "male": `rgba(32, 122, 11, ${this.colorOpacity})`,
+            "female": `rgba(77, 28, 147, ${this.colorOpacity})`,
+            "other": `rgba(107, 107, 107, ${this.colorOpacity})`
+          }
         
         // LEGENDS ==========
 
-        this.legendColor = {
-          "#publisher-pie": ["blue", 
-                              "red"],
-          "#gender-pie": ["purple", 
-                          "green", 
-                          "grey"]
-        }[this.divId];
+        // this.legendColor = {
+        //   "#publisher-pie": ["blue", 
+        //                       "red"],
+        //   "#gender-pie": ["purple", 
+        //                   "green", 
+        //                   "grey"]
+        // }[this.divId];
 
         this.legendText = {
           "#publisher-pie": ["DC", 
@@ -38,15 +47,14 @@ class PieChart {
 
         this.svg
           .selectAll("circle.legend-color")
-          .data(this.legendColor)
+          .data(this.legendText.map(d => this.colorRange[d.toLowerCase()]))
           .join("circle")
           .attr("class", "legend-color")
           .attr("cx", -40)
           .attr("cy", (_, i) => 97 + i * 18)
           .attr("r", 6)
           .style("fill", d => d)
-          .attr("opacity", 0.6)
-          .attr("stroke", "black");
+          .attr("stroke", "#464646");
 
         this.svg
           .selectAll("text.legend-text")
@@ -103,15 +111,17 @@ class PieChart {
         // REMEMBER TO UPDATE
         // !!! REMEMBER TO UPDATE COLORS TO THE NEW GROUPINGS
   
-        const colorRange = {
-          "marvel": "red",
-          "dc": "blue",
-          "male": "green",
-          "female": "purple",
-          "other": "grey"
-        }
+        
+        // const colorRange = {
+        //   "marvel": "red",
+        //   "dc": "blue",
+        //   "male": "green",
+        //   "female": "purple",
+        //   "other": "grey"
+        // }
   
-        const colorScale = d3.scaleOrdinal(propertyArr, propertyArr.map(d => colorRange[d]));
+        const colorScale = d3.scaleOrdinal(propertyArr, 
+          propertyArr.map(d => this.colorRange[d]));
   
 
         // DRAW PIE =====================================
@@ -133,8 +143,8 @@ class PieChart {
                   enter
                     .append("g")
                     .attr("class", `${barKey}-wedge`)
-                    .call(enter => enter.append("path")),
-                    // .call(enter => enter.append("text")),
+                    .call(enter => enter.append("path"))
+                    .call(enter => enter.append("text")),
                 update => update,
                 exit => exit.remove())
 
@@ -144,11 +154,8 @@ class PieChart {
             .duration(this.duration)
             .attr('d', arc)
             .attr('fill', (_, i) => colorScale(i))
-            .attr("stroke", "black")
+            .attr("stroke", "#464646")
             .attrTween("d", arcTween);
-
-        wedge
-            .attr("opacity", .6)
 
         function arcTween(a) {
 
@@ -158,13 +165,25 @@ class PieChart {
           return t => arc(i(t));
         }    
 
-        // wedge
-        //     .select("text")
-        //     .transition()
-        //     .duration(this.duration)
-        //     .attr('transform', d => 'translate(' + arc.centroid(d) + ')')
-        //     .text((_, i) => stableData[i].count)
-        //     .attr('fill', 'white')
+        wedge
+            .select("text")
+            .transition()
+            .duration(this.duration)
+            .attr('transform', d => 'translate(' + arc.centroid(d) + ')')
+            .text((_, i) => Math.round(stableData[i].count * 100 / totalCount) + "%")
+            .attr('fill', 'white')
+            .style("font-size", "13px")
+            .style("font-weight", "700")
+            .style("font-family", "'Comfortaa', cursive")
+            .style("pointer-events", "none")
+
+
+        wedge
+        // .style("filter", "saturate(85%)")
+        // .style("filter", "brightness(85%) contrast(100%)")
+        // .style("filter", "brightness(85%)")
+        .style("filter", "contrast(88%)");
+
 
               // Tooltip Handling =============================================
       const tooltip = d3.select("#tooltip");
@@ -174,7 +193,7 @@ class PieChart {
 
         tooltip
           .style("opacity", 1); // Make tooltip div visible
-        console.log(d.data);
+
         const tooltipHTML = `
           <div id="tooltip-box">
               There are ${d.data.count}
@@ -195,8 +214,11 @@ class PieChart {
           .style("top", event.pageY - 102 + "px")
 
         d3.select(this)
-          .style("opacity", 1)
-          .style("stroke", "black");
+          // .style("filter", "saturate(150%)")
+          // .style("filter", "brightness(100%)")
+          .style("filter", "contrast(140%)");
+
+        d3.select(this).select("text").style("color", "purple");
         };
 
         // Tooltip Mouseout
@@ -206,8 +228,9 @@ class PieChart {
             .style("opacity", 0); // Make tooltip div invisible
 
           d3.select(this)
-            .style("opacity", .6)
-            .style("stroke", "none");
+            // .style("filter", "saturate(85%)")
+            // .style("filter", "brightness(85%)");
+            .style("filter", "contrast(88%)");
         };
 
         wedge
