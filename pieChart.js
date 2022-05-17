@@ -20,11 +20,11 @@ class PieChart {
         this.colorOpacity = 0.7
 
         this.colorRange = {
-            "marvel": `rgba(193, 0, 0, ${this.colorOpacity})`,
-            "dc": `rgba(0, 74, 202, ${this.colorOpacity})`,
-            "male": `rgba(32, 122, 11, ${this.colorOpacity})`,
-            "female": `rgba(77, 28, 147, ${this.colorOpacity})`,
-            "other": `rgba(107, 107, 107, ${this.colorOpacity})`
+            "marvel": `rgba(243, 50, 50, ${this.colorOpacity})`,
+            "dc": `rgba(50, 124, 252, ${this.colorOpacity})`,
+            "male": `rgba(82, 172, 61, ${this.colorOpacity})`,
+            "female": `rgba(127, 78, 197, ${this.colorOpacity})`,
+            "other": `rgba(157, 157, 157, ${this.colorOpacity})`
           }
         
         // LEGENDS ==========

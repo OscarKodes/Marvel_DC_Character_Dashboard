@@ -59,11 +59,12 @@ class StickFigures {
 
       const tooltipHTML = `
         <div id="tooltip-box">
-            test
+            Hello. <br> 
+            I'm Superman.
         </div>
         <div id="tooltip-arrow-frame">
         </div>
-        <div id="tooltip-arrow">
+        <div id="tooltip-arrow" style="bottom: 40px;">
         </div>
       `;
 
@@ -75,8 +76,8 @@ class StickFigures {
                       event.target.offsetLeft + 13 :
                       event.target.offsetLeft + 11;
       const yCoord = isTopFigure ?
-                      event.target.offsetTop - 100 :
-                      event.target.offsetTop - 172 ;
+                      event.target.offsetTop - 90 :
+                      event.target.offsetTop - 162 ;
 
       tooltip.html(tooltipHTML)
         .style("left", xCoord + "px")  

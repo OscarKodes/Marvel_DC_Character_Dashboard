@@ -308,7 +308,7 @@ h3.button-titles {
 .median-values-container {
   font-size: .9rem;
   margin: 1rem 0 0 1rem;
-  argo display: inline-block;
+  display: inline-block;
   -webkit-transform: scale(.8, 1);
   /* Safari and Chrome */
   -moz-transform: scale(.8, 1);
