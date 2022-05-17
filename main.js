@@ -144,8 +144,8 @@ function draw() {
 
   // Draw Ratio Display and BoxingRing
   ratioDisplay.draw(totalNums, ratioArr);
-  heroFigures.draw(ratioArr);
-  villainFigures.draw(ratioArr);
+  heroFigures.draw(ratioArr, heroesOnly);
+  villainFigures.draw(ratioArr, villainsOnly);
 
   heroMedian.draw(heroMedianWeight, heroMedianHeight);
   villainMedian.draw(villainMedianWeight, villainMedianHeight);

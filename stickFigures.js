@@ -17,7 +17,7 @@ class StickFigures {
     this.alignment = alignment;
   }
 
-  draw(ratioArr) {
+  draw(ratioArr, filteredData) {
 
 
     let numVisible = this.alignment === "hero" ? ratioArr[0] : ratioArr[1];
@@ -28,8 +28,6 @@ class StickFigures {
 
       figure.classList = numVisible < i ? ["invisible"] : [""];
     }
-
-
 
 
     // const barKey = this.divId.split("-")[0].slice(1);
@@ -49,10 +47,16 @@ class StickFigures {
     const tooltip = d3.select("#tooltip");
     const figures = d3.selectAll(`#${this.alignment}-figures img`);
 
+    
+    
+
     // Tooltip Mouseover 
     const tipMouseover = function(event, d) {
 
-      console.log(event.target.parentNode.classList.value);
+      const randomIdx = Math.floor(Math.random() * filteredData.length);
+      const characterName = filteredData[randomIdx].name;
+
+      // console.log(event.target);
 
       tooltip
         .style("opacity", 1); // Make tooltip div visible
@@ -60,7 +64,7 @@ class StickFigures {
       const tooltipHTML = `
         <div id="tooltip-box">
             Hello. <br> 
-            I'm Superman.
+            I'm ${characterName}.
         </div>
         <div id="tooltip-arrow-frame">
         </div>
