@@ -24,11 +24,14 @@ body {
 
 #panel-row-1,
 #panel-row-2,
-#panel-row-3,
-#panel-row-4 {
+#eye-bar,
+#hair-bar,
+#gender-pie,
+#race-bar,
+#publisher-pie {
   background-image: url(textures/fabric.png);
   /* Background pattern from Toptal Subtle Patterns */
-  overflow: hidden
+  overflow: hidden;
 }
 
 #panel-row-1 {

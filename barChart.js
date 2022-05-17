@@ -258,11 +258,15 @@ class BarChart {
           <div id="tooltip-arrow">
           </div>
         `;
-
+        console.log(extraText.length);
         const xCoord = yesExtraText ? 
                         event.pageX - 15 : 
                         event.pageX - 15;
-        const yCoord = yesExtraText ? 
+        const yCoord = yesExtraText ?
+                        barKey === "race" ?
+                        event.pageY - (
+                          133 + Math.ceil((extraText.length - 220)/1.5)
+                          ) :
                         event.pageY - 133 : 
                         event.pageY - 100;
 
