@@ -4,8 +4,10 @@
 }
 
 html {
-  background-color: black;
   cursor: default;
+  background-image: url("textures/carbon_fibre.png");
+  background-color: rgb(116, 116, 116);
+  background-blend-mode: screen;
 }
 
 body {

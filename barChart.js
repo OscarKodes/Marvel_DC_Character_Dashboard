@@ -79,9 +79,25 @@ class BarChart {
           .stroke("white")
           .background("grey");
 
+      // const race = textures
+      //     .lines()
+      //     .orientation("3/8", "7/8")
+      //     .size(9)
+      //     .strokeWidth(2)
+      //     .background("rgba(92, 146, 126, 0.637)")
+      //     .stroke("black");
+
+      // const spiderWeb = textures
+      //   .lines()
+      //   .orientation("3/8", "7/8")
+      //   .size(10)
+      //   .strokeWidth(1)
+      //   .background("red");
+
       this.svg.call(mixed);
       this.svg.call(unknown);
       this.svg.call(noHair);
+      // this.svg.call(race);
 
       const colorRange = {
         'yellow': "#EBE240",
@@ -111,7 +127,8 @@ class BarChart {
       }
 
       const colorScale = d3.scaleOrdinal(propertyArr, 
-        propertyArr.map(d => barKey == "race" ? "gold" : colorRange[d]));
+        propertyArr.map(d => barKey == "race" ? "rgb(214, 186, 28)" : colorRange[d]));
+        // propertyArr.map(d => colorRange[d]));
 
 
 
