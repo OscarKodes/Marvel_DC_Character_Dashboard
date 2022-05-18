@@ -58,30 +58,30 @@ class BarChart {
       // !!! REMEMBER TO UPDATE COLORS TO THE NEW GROUPINGS
 
       const colorRange = {
-        'yellow': "yellow",
-        'blue': "blue",
-        'green': "green",
-        'brown': "brown",
-        'red': "red",
-        'ginger': "red",
+        'yellow': "#EBE240",
+        'blue': "#475BB7",
+        'green': "#5B9B25",
+        'brown': "#7E561F",
+        'red': "#CA3434",
+        'ginger': "#D53B0B",
         'white': "white",
         'black': "black",
         'silver': "silver",
-        'mixed': "magenta",
-        'purple': "purple",
+        'mixed': "#FFF",
+        'purple': "#9739AF",
         "pink": "pink",
-        "no hair": "lavender",
-        "blond": "yellow",
-        "burnette": "brown",
+        "no hair": "#FFF",
+        "blond": "#FCFF72",
+        "burnette": "#483700",
         "human": "tan",
         "alien": "green",
         "amazon/atlantean": "cerulean",
         "diety": "yellow",
         "demon": "purple",
         "undead": "brown",
-        "mixed-race": "magenta",
+        "mixed-race": "#FFF",
         "animal": "orange",
-        "NA": "grey"
+        "NA": "#FFF"
       }
 
       const colorScale = d3.scaleOrdinal(propertyArr, 
@@ -126,7 +126,7 @@ class BarChart {
         .attr("width", d => xScale(d.count))
         .attr("height", yScale.bandwidth())
         .attr("fill", d => colorScale(d.property))
-        .attr("opacity", "0.6")
+        .attr("opacity", .65)
         .attr("stroke", "black")
         .attr("transform", d => `translate(75, 0)`);
 
@@ -160,9 +160,14 @@ class BarChart {
           d.property[0].toUpperCase() + 
           d.property.slice(1)}`);
 
-      bars
-          .style("opacity", .85);
+      // bars
+      //     .style("opacity", .8)
 
+      // bars
+      //   // .style("filter", "saturate(85%)")
+      //   // .style("filter", "brightness(85%) contrast(100%)")
+      //   // .style("filter", "brightness(85%)")
+      //   .style("filter", "contrast(65%)");
 
 
       // Tooltip Handling =============================================
@@ -178,7 +183,7 @@ class BarChart {
         "hair-burnette": ["black", "brown"],
         "hair-blond": ["gold", "yellow"],
         "hair-ginger": ["red", "orange", "auburn"],
-        "hair-purple": ["indigo", "magenta"],
+        "hair-purple": ["indigo", "#FFF"],
         "hair-silver": ["grey"],
         "race-diety" : ["New God", 
                         "Cosmic Entity",
@@ -275,8 +280,10 @@ class BarChart {
           .style("top", yCoord + "px")
 
         d3.select(this)
-          .style("opacity", 1)
-          .style("stroke", "black");
+          .style("stroke", "black")
+          // .style("filter", "contrast(100%)");
+
+        this.querySelector("rect").style.opacity = 1;
       };
 
       // Tooltip Mouseout
@@ -286,8 +293,11 @@ class BarChart {
           .style("opacity", 0); // Make tooltip div invisible
 
         d3.select(this)
-          .style("opacity", 0.85)
-          .style("stroke", "none");
+          // .style("opacity", 0.85)
+          .style("stroke", "none")
+          // .style("filter", "contrast(65%)");
+
+        this.querySelector("rect").style.opacity = .65;
       };
 
       bars
