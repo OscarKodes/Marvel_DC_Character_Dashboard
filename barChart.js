@@ -57,6 +57,32 @@ class BarChart {
       // REMEMBER TO UPDATE
       // !!! REMEMBER TO UPDATE COLORS TO THE NEW GROUPINGS
 
+
+      const mixed = textures
+        .lines()
+        .size(8)
+        .strokeWidth(2)
+        .stroke("pink")
+        .background("grey");
+
+      const unknown = textures
+        .lines()
+        .size(7)
+        .strokeWidth(4)
+        .stroke("grey")
+        .background("white");
+
+      const noHair = textures
+          .lines()
+          .size(7)
+          .strokeWidth(4)
+          .stroke("white")
+          .background("grey");
+
+      this.svg.call(mixed);
+      this.svg.call(unknown);
+      this.svg.call(noHair);
+
       const colorRange = {
         'yellow': "#EBE240",
         'blue': "#475BB7",
@@ -67,10 +93,10 @@ class BarChart {
         'white': "white",
         'black': "black",
         'silver': "silver",
-        'mixed': "#FFF",
+        'mixed': mixed.url(),
         'purple': "#9739AF",
         "pink": "pink",
-        "no hair": "#FFF",
+        "no hair": noHair.url(),
         "blond": "#FCFF72",
         "burnette": "#483700",
         "human": "tan",
@@ -81,7 +107,7 @@ class BarChart {
         "undead": "brown",
         "mixed-race": "#FFF",
         "animal": "orange",
-        "NA": "#FFF"
+        "NA": unknown.url()
       }
 
       const colorScale = d3.scaleOrdinal(propertyArr, 
