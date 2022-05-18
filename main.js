@@ -84,7 +84,8 @@ function draw() {
     let raceCheck = state.activeRace === "all" ?
                     true : d.race === state.activeRace;
 
-    return publisherCheck && genderCheck && alignmentCheck && eyeCheck && hairCheck && raceCheck;
+    return publisherCheck && genderCheck && alignmentCheck && 
+            eyeCheck && hairCheck && raceCheck;
   });
 
   // GET RATIO OF HEROES AND VILLAINS =======================

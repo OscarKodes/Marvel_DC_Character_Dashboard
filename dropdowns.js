@@ -276,8 +276,47 @@ class Dropdowns {
           activeRace: selectedRaceType
         });
       });
+
+
+
+      // CREATE RESET BUTTON LISTENER
+
+      const selectResetBtn = document.querySelector("#reset-container");
+
+      let menuNames = [
+        "publisher",
+        "gender",
+        "alignment",
+        "hair",
+        "eye",
+        "race"
+      ]
+
+      selectResetBtn.addEventListener("click", function() {
+
+
+        // change all dropdown values to all
+        menuNames.map(name => {
+
+          let id = `#${name}-select`;
+
+          let selectDropdown = document.querySelector(id);
+
+          selectDropdown.value = "all";
+        })
+
+        setGlobalState({ 
+          activePublisher: "all",
+          activeGender: "all",
+          activeAlignment: "all",
+          activeEyes: "all",
+          activeHair: "all",
+          activeRace: "all"
+        });
+      })
+
+      
     }
-  
   }
   
   export { Dropdowns };
