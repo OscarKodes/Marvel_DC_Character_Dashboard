@@ -253,7 +253,9 @@ class BarChart {
 
           tooltipText = `
           There are ${d.count} characters
-          with ${d.property.toUpperCase()}${d.property === "no hair" ?
+          with ${d.property === "mixed" ? 
+                  "MULTI-COLORED" : 
+                  d.property.toUpperCase()}${d.property === "no hair" ?
                                     "" : " " + barKey + 
                                               (barKey === "eye" ? 
                                                 "s" : "")}.
