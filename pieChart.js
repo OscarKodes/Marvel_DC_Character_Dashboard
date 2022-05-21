@@ -2,8 +2,8 @@ class PieChart {
 
     constructor(divId) {
 
-        this.width = 880 * 0.25;
-        this.height = this.width;
+        this.width = 215;
+        this.height = 180;
         this.margin = 20;
         this.duration = 1000;
         this.divId = divId;
@@ -15,7 +15,7 @@ class PieChart {
           .attr("height", this.height)
           // .style("background-color", "lavender")
           .append('g')
-          .attr('transform', 'translate(' + this.width / 2.12 + ',' + this.height / 2.9 + ')');
+          .attr('transform', 'translate(' + this.width / 2 + ',' + this.height / 2.7 + ')');
       
         this.colorOpacity = 0.7
 
@@ -51,8 +51,8 @@ class PieChart {
           .join("circle")
           .attr("class", "legend-color")
           .attr("cx", -40)
-          .attr("cy", (_, i) => 97 + i * 18)
-          .attr("r", 6)
+          .attr("cy", (_, i) => 73 + i * 16)
+          .attr("r", 5)
           .style("fill", d => d)
           .attr("stroke", "#464646");
 
@@ -62,9 +62,9 @@ class PieChart {
           .join("text")
           .attr("class", "legend-text")
           .attr("x", -25)
-          .attr("y", (_, i) => 98 + i * 18)
+          .attr("y", (_, i) => 75 + i * 16)
           .text(d => d)
-          .style("font-size", "13px")
+          .style("font-size", "11px")
           .style("font-weight", "700")
           .style("font-family", "'Comfortaa', cursive")
           .attr("alignment-baseline","middle");
@@ -172,7 +172,7 @@ class PieChart {
             .attr('transform', d => 'translate(' + arc.centroid(d) + ')')
             .text((_, i) => Math.round(stableData[i].count * 100 / totalCount) + "%")
             .attr('fill', 'white')
-            .style("font-size", "15px")
+            .style("font-size", "13px")
             .style("font-weight", "700")
             .style("font-family", "'Comfortaa', cursive")
             .style("pointer-events", "none");

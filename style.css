@@ -11,7 +11,8 @@ html {
 }
 
 body {
-  width: 55rem;
+  width: 57rem;
+  /* height: 50rem; */
   color: black;
   font-family: 'Bangers', cursive;
   margin: 0 auto;
@@ -20,8 +21,12 @@ body {
 /* COMIC BOOK PANEL ROWS */
 
 #comic-page {
-  background-color: white;
+  height: 100vh;
+  background-color: rgb(255, 255, 255);
   padding: 0.25rem;
+  padding-top: .5rem;
+  display: grid;
+  grid-template-rows: 18% 33% 24% 25%;
 }
 
 #panel-row-1,
@@ -102,14 +107,15 @@ h1.title {
   font-size: xx-large;
   letter-spacing: .3rem;
   text-decoration: underline;
+  margin: .65rem;
 }
 
 #description-box {
   border: 1px solid black;
   font-family: 'Comfortaa', cursive;
-  font-size: 1rem;
-  text-align: left;
-  margin: 0 0.5rem;
+  font-size: 95%;
+  text-align: center;
+  margin: 1rem 0.5rem .5rem 1rem;
   padding: 0.5rem;
   background-color: rgba(255, 255, 0, 0.418);
   line-height: 1.35rem;
@@ -119,25 +125,10 @@ h1.title {
   margin-left: 90%;
 }
 
-#data-source {
-  text-align: justify;
-  margin: 0 0.5rem;
-  padding: 0.7rem;
-  font-family: 'Comfortaa', cursive;
-  font-size: .8rem;
-  opacity: 0.9;
-  line-height: 1.1rem;
-}
 
-#data-source a {
-  text-decoration: none;
-  color: rgb(0, 74, 117);
-  opacity: .65;
-  font-weight: bold;
-}
 
 #signature-container {
-  margin-bottom: .8rem;
+  margin: .5rem;
 }
 
 .signature {
@@ -162,49 +153,13 @@ a:hover,
   opacity: 1;
 }
 
-#relative-0 {
-  position: relative;
-  width: 0;
-  height: 0;
-}
-
-#reset-container {
-  position: absolute;
-  /* position: relative; */
-  left: 48.75rem;
-  bottom: 1rem;
-  padding: .25rem;
-  /* opacity: .65; */
-  width: 3.75rem;
-}
-
-#reset-container:hover {
-  background-color: rgba(128, 128, 128, 0.5);
-}
-
-#reset-container:active {
-  background-color: rgba(128, 128, 128, 0.781);
-}
-
-#reset-button {
-  opacity: .7;
-  display: inline-block;
-}
-
-#reset-button span {
-  font-family: 'Comfortaa', cursive;
-  font-size: 0.85rem;
-  font-weight: 700;
-  opacity: .88;
-  user-select: none;
-}
 
 
 /* STARRING PANEL ------------------- */
 
 #starring-panel {
   display: grid;
-  grid-template-rows: 20% 30% 30%;
+  grid-template-rows: 30% 30% 10%;
   text-align: center;
 }
 
@@ -215,20 +170,20 @@ a:hover,
   opacity: 0.85;
 }
 
-h3.button-titles {
+/* h3.button-titles {
   font-family: 'Comfortaa', cursive;
   font-size: medium;
   margin-top: 2rem;
-}
+} */
 
 .dropdown-panel {
   display: grid;
   grid-template-columns: 33% 33% 34%;
-  margin-top: 1rem;
+  margin-bottom: 2.5rem;
 }
 
 .dropdown-panel select {
-  height: 30%;
+  /* height: 30%; */
   text-align: center;
   width: 75%;
   margin: 0 auto;
@@ -240,7 +195,44 @@ h3.button-titles {
 .dropdown-titles {
   font-family: 'Comfortaa', cursive;
   font-size: medium;
+  margin: .5rem 0 .5rem 0;
 }
+
+.top-row {
+  margin-top: .5rem;
+}
+
+
+/* RESET BUTTON ----------- */
+
+#reset-container {
+  padding: .25rem;
+  width: 3.75rem;
+  margin: 0 1rem 0 auto;
+  font-size: 0.85rem;
+}
+
+#reset-container:hover {
+  /* background-color: rgba(128, 128, 128, 0.5); */
+  color: rgb(7, 69, 110)
+}
+
+#reset-container:active {
+  /* background-color: rgba(128, 128, 128, 0.781); */
+  color: rgb(45, 121, 172)
+}
+
+#reset-button {
+  opacity: .7;
+}
+
+#reset-button span {
+  font-family: 'Comfortaa', cursive;
+  font-weight: 700;
+  opacity: .88;
+  user-select: none;
+}
+
 
 
 
@@ -255,7 +247,7 @@ h3.button-titles {
   grid-template-rows: 25% 45% 30%; */
   background-image: url("pics/platform.png");
   background-repeat: no-repeat, repeat;
-  background-position: bottom 1.2rem right 50%;
+  background-position: bottom 2.35rem right 50%;
 }
 
 /* #platform {
@@ -270,7 +262,7 @@ h3.button-titles {
 
 #total-ratio-numbers {
   /* display: inline-block; */
-  margin: .4rem 30%;
+  margin: .2rem 30%;
   font-family: 'Comfortaa', cursive;
   background-color: rgba(255, 255, 0, 0.418);
   border: 1px solid black;
@@ -323,12 +315,12 @@ h3.button-titles {
 
 #hero-figures .bot-figures img {
   margin-right: 3.8rem;
-  transform: translateY(-75px);
+  transform: translateY(-85px);
 }
 
 #villain-figures .bot-figures img {
   margin-left: 3.8rem;
-  transform: translateY(-75px);
+  transform: translateY(-85px);
 }
 
 #medians-container {
@@ -342,7 +334,7 @@ h3.button-titles {
   width: 40rem;
   height: 4.5rem;
   padding: 0 1rem;
-  transform: translateY(-30px);
+  transform: translateY(-45px);
   color: rgb(0, 0, 0);
   font-family: 'Press Start 2P', cursive;
   clip-path: polygon(2.5% 0, 98.2% 0, 100% 100%, 0% 100%);
@@ -396,14 +388,42 @@ h3.button-titles {
   background-color: rgba(255, 255, 0, 0.25);
   font-family: 'Comfortaa', cursive;
   font-weight: 700;
+  font-size: medium;
   /* font-size: 1.25rem; */
   /* display: inline-block; */
   width: 10rem;
-  margin: .5rem auto;
+  margin: .2rem auto;
   padding: .2rem;
   color: rgba(0, 0, 0, 0.8);
   border: 1px solid black;
 }
+
+
+#bot-sig {
+  text-align: right;
+}
+
+#data-source {
+  text-align: left;
+  margin: 0;
+  padding: .2rem 3rem 1rem;
+  font-family: 'Comfortaa', cursive;
+  font-size: .8rem;
+  /* line-height: 1.1rem; */
+  /* width: 57rem; */
+  background-color: white;
+
+}
+
+#data-source a {
+  text-decoration: none;
+  color: rgb(0, 74, 117);
+  opacity: .65;
+  font-weight: bold;
+}
+
+
+
 
 
 /* TOOLTIP RELATED STYLES ====================== */

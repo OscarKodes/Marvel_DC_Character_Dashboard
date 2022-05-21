@@ -3,10 +3,10 @@ class BarChart {
     constructor(divId) {
 
       // this.width = window.innerWidth * 0.22;
-      this.width = 424;
+      this.width = 438;
       // this.height = window.innerHeight * 0.2;
-      this.height = 200;
-      this.margin = 20;
+      this.height = 177;
+      this.margin = 18;
       this.duration = 1000;
       this.divId = divId;
 
@@ -15,8 +15,8 @@ class BarChart {
         .append("svg")
         .attr("width", this.width)
         .attr("height", this.height)
-        // .style("background-color", "lavender")
-        .style("transform", "translate(2px, 0px)");
+        // .style("background-color", "olive")
+        .style("transform", "translate(2px, -5px)");
     }
 
     draw(filteredData) {
@@ -46,7 +46,7 @@ class BarChart {
       const yScale = d3.scaleBand()
           .domain(filteredData.map(d => d.property))
           .range([0, this.height - this.margin])
-          .paddingInner(.3)
+          .paddingInner(.2)
           .paddingOuter(0)
   
       // COLOR SCALE ==================================
