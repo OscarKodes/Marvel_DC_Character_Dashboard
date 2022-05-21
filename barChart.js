@@ -5,8 +5,8 @@ class BarChart {
       // this.width = window.innerWidth * 0.22;
       this.width = 438;
       // this.height = window.innerHeight * 0.2;
-      this.height = 177;
-      this.margin = 18;
+      this.height = 185;
+      this.margin = 20;
       this.duration = 1000;
       this.divId = divId;
 
@@ -45,7 +45,7 @@ class BarChart {
   
       const yScale = d3.scaleBand()
           .domain(filteredData.map(d => d.property))
-          .range([0, this.height - this.margin])
+          .range([0, this.height - this.margin / 1.5])
           .paddingInner(.2)
           .paddingOuter(0)
   

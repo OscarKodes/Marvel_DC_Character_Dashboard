@@ -62,7 +62,7 @@ class PieChart {
           .join("text")
           .attr("class", "legend-text")
           .attr("x", -25)
-          .attr("y", (_, i) => 75 + i * 16)
+          .attr("y", (_, i) => 74 + i * 16)
           .text(d => d)
           .style("font-size", "11px")
           .style("font-weight", "700")
