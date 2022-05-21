@@ -16,7 +16,7 @@ class BarChart {
         .attr("width", this.width)
         .attr("height", this.height)
         // .style("background-color", "olive")
-        .style("transform", "translate(2px, -5px)");
+        .style("transform", "translate(2px, 0px)");
     }
 
     draw(filteredData) {
