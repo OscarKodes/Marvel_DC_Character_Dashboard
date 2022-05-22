@@ -6,7 +6,7 @@ html {
 }
 
 body {
-  width: 57rem;
+  width: 57.8rem;
 
   /* height: 50rem; */
   color: black;
@@ -23,7 +23,7 @@ body {
   padding: 0.25rem;
   padding-top: .5rem;
   display: grid;
-  grid-template-rows: 18% 33% 24% 25%;
+  grid-template-rows: 17.5% 33% 24.5% 25%;
 }
 
 @media screen and (min-height: 1150px) {
@@ -55,8 +55,7 @@ body {
 #panel-row-1 {
   display: grid;
   grid-template-columns: 40% 60%;
-  margin: 0.25rem;
-  margin-bottom: 0.5rem;
+  /* margin-bottom: 0.45rem; */
 }
 
 #panel-row-2 {}
@@ -64,11 +63,13 @@ body {
 #panel-row-3 {
   display: grid;
   grid-template-columns: 50% 50%;
+  /* margin-top: .18rem; */
 }
 
 #panel-row-4 {
   display: grid;
   grid-template-columns: 25% 50% 25%;
+  /* margin-top: .22rem; */
 }
 
 #panel-row-5 {
@@ -90,7 +91,7 @@ body {
 .comic-panel-borders {
   border: 1px solid rgb(104, 104, 104);
   border-radius: 3px;
-  margin: 0.25rem;
+  margin: .38rem;
   -webkit-box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.5);
   box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.5);
 }
@@ -256,7 +257,7 @@ a:hover,
   grid-template-rows: 25% 45% 30%; */
   background-image: url("pics/platform.png");
   background-repeat: no-repeat, repeat;
-  background-position: bottom 2.35rem right 50%;
+  background-position: bottom 2.8rem right 50%;
 }
 
 /* #platform {
@@ -320,16 +321,17 @@ a:hover,
 
 .top-figures img {
   margin: 0 1.25rem;
+  transform: translateY(-6px);
 }
 
 #hero-figures .bot-figures img {
-  margin-right: 3.8rem;
-  transform: translateY(-85px);
+  margin-right: 3.7rem;
+  transform: translateY(-92px);
 }
 
 #villain-figures .bot-figures img {
-  margin-left: 3.8rem;
-  transform: translateY(-85px);
+  margin-left: 3.7rem;
+  transform: translateY(-92px);
 }
 
 #medians-container {
@@ -343,7 +345,7 @@ a:hover,
   width: 40rem;
   height: 4.5rem;
   padding: 0 1rem;
-  transform: translateY(-45px);
+  transform: translateY(-55px);
   color: rgb(0, 0, 0);
   font-family: 'Press Start 2P', cursive;
   clip-path: polygon(2.5% 0, 98.2% 0, 100% 100%, 0% 100%);
