@@ -1,8 +1,11 @@
 html {
   cursor: default;
-  background-image: url("textures/carbon_fibre.png");
-  background-color: rgb(116, 116, 116);
-  background-blend-mode: screen;
+  /* background-image: url("textures/carbon_fibre.png"); */
+  background-image: url(textures/fabric.png);
+  /* background-color: rgb(116, 116, 116); */
+  background-color: rgb(170, 170, 170);
+  background-blend-mode: difference;
+  /* background-blend-mode: hard-light; */
 }
 
 body {
@@ -24,6 +27,7 @@ body {
   padding-top: .5rem;
   display: grid;
   grid-template-rows: 17.5% 33% 24.5% 25%;
+  /* background-image: url("textures/carbon_fibre.png"); */
 }
 
 @media screen and (min-height: 1150px) {
@@ -46,10 +50,23 @@ body {
 #race-bar,
 #publisher-pie {
   background-image: url(textures/fabric.png);
+  background-color: rgb(37, 34, 0);
+  /* background-color: rgb(59, 63, 17); */
+  /* background-blend-mode: screen; */
+  background-blend-mode: hard-light;
+  /* background-blend-mode: darken; */
+
+  /* background-image: url("textures/carbon_fibre.png"); */
+  /* background-color: rgb(184, 184, 147); */
+  /* background-color: rgb(182, 157, 157); */
+  /* background-blend-mode: screen; */
+
+
   /* Background pattern from Toptal Subtle Patterns */
   /* overflow: hidden; */
-  background-color: rgba(134, 125, 0, 0.603);
-  background-blend-mode: hard-light;
+
+
+
 }
 
 #panel-row-1 {
@@ -153,7 +170,7 @@ h1.title {
 .signature.name {
   /* font-weight: bold; */
   color: rgb(0, 74, 117);
-  opacity: .65;
+  opacity: .85;
   font-size: 0.8rem;
 }
 
